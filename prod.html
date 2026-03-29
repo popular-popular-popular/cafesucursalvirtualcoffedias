@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú - Café Aroma del Río</title>
+    <meta name="description" content="Disfruta café artesanal, bebidas calientes y postres en Magangué.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #f5f5f5;
+            background-color: #1c1c1c;
+        }
+
+        :root {
+            --primary-color: #c8a27a;
+            --secondary-color: #8b5e3c;
+            --dark-color: #121212;
+            --card-color: #2a2a2a;
+        }
+
+        /* NAV */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: var(--dark-color);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 40vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+        }
+
+        /* SECTION */
+        .section-padding {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* GRID */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* CARD */
+        .card {
+            background: var(--card-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark-color);
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 40px 8%;
+        }
+
+        .footer-col h3 {
+            color: var(--primary-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 15px;
+            background: black;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-mug-hot"></i> Café Aroma del Río
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Menú</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<div class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1920&q=80');">
+    <h1>Nuestro Café</h1>
+</div>
+
+<section class="section-padding">
+    <h2 class="section-title">Especialidades</h2>
+
+    <div class="grid-3">
+
+        <div class="card">
+            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348');"></div>
+            <div class="card-content">
+                <h3 class="card-title">Café Espresso</h3>
+                <p>Intenso y aromático, preparado al momento.</p>
+                <p><strong>$4.000 COP</strong></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1523942839745-7848d3f4d7c8');"></div>
+            <div class="card-content">
+                <h3 class="card-title">Cappuccino</h3>
+                <p>Perfecta mezcla de café, leche y espuma.</p>
+                <p><strong>$6.000 COP</strong></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');"></div>
+            <div class="card-content">
+                <h3 class="card-title">Latte</h3>
+                <p>Suave y cremoso, ideal para cualquier momento.</p>
+                <p><strong>$6.500 COP</strong></p>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top: 30px;">
+        <a href="#" class="btn">Ordenar Ahora</a>
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h3>Café Aroma del Río</h3>
+            <p>El mejor café artesanal en Magangué.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contacto</h3>
+            <ul>
+                <li>Calle 10 # 3-25</li>
+                <li>+57 300 123 4567</li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Horarios</h3>
+            <ul>
+                <li>Lunes a Domingo</li>
+                <li>6:00 AM - 9:00 PM</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Café Aroma del Río</p>
+    </div>
+</footer>
+
+</body>
+</html>
