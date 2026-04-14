@@ -4,17 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Café Aroma del Río | Café artesanal en Magangué</title>
-    <meta name="description" content="Disfruta café artesanal, bebidas especiales y postres en Café Aroma del Río. Calidad y sabor en cada taza.">
+    <meta name="description" content="Disfruta café artesanal, bebidas especiales y postres en Café Aroma del Río en Magangué.">
 
-                       <!-- Google tag (gtag.js) -->
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18088544449"></script>
-                    <script>
-                      window.dataLayer = window.dataLayer || [];
-                      function gtag(){dataLayer.push(arguments);}
-                      gtag('js', new Date());
-                    
-                      gtag('config', 'AW-18088544449');
-                    </script>
+    <!-- SEO extra -->
+    <meta name="robots" content="index, follow">
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -34,7 +28,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: Arial, sans-serif;
             background: #121212;
             color: #f5f5f5;
         }
@@ -48,7 +42,6 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             color: var(--primary);
             text-decoration: none;
@@ -65,10 +58,6 @@
             color: #ddd;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
         .hero {
             height: 90vh;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
@@ -76,7 +65,6 @@
             background-size: cover;
             display: flex;
             align-items: center;
-            color: white;
         }
 
         .hero-content {
@@ -85,7 +73,6 @@
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
             font-size: 3rem;
             margin-bottom: 1rem;
         }
@@ -98,19 +85,8 @@
             text-decoration: none;
         }
 
-        .btn:hover {
-            background: var(--secondary);
-            color: white;
-        }
-
         .section-padding {
             padding: 4rem 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-family: 'Playfair Display', serif;
         }
 
         .grid-3 {
@@ -123,11 +99,6 @@
             background: var(--gray-bg);
             border-radius: 10px;
             overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: scale(1.03);
         }
 
         .card-img {
@@ -141,7 +112,6 @@
 
         footer {
             background: var(--dark);
-            color: white;
             padding: 2rem 5%;
             text-align: center;
         }
@@ -151,7 +121,6 @@
             bottom: 0;
             width: 100%;
             background: black;
-            color: white;
             padding: 1rem;
             display: flex;
             justify-content: space-between;
@@ -161,23 +130,6 @@
             background: var(--primary);
             border: none;
             padding: 8px 15px;
-            cursor: pointer;
-        }
-
-        @media(max-width:768px){
-            .nav-links{
-                display:none;
-                flex-direction: column;
-                background:#1a1a1a;
-                position:absolute;
-                top:60px;
-                right:5%;
-                padding:1rem;
-            }
-
-            .nav-links.active{
-                display:flex;
-            }
         }
     </style>
 </head>
@@ -186,18 +138,14 @@
 
 <header>
     <nav class="navbar">
-        <a href="prod.html" class="logo"><i class="fa-solid fa-mug-hot"></i> Café Aroma del Río</a>
+        <a href="/" class="logo"><i class="fa-solid fa-mug-hot"></i> Café Aroma del Río</a>
 
-        <ul class="nav-links" id="menu">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Menú</a></li>
-            <li><a href="#">Contacto</a></li>
+        <ul class="nav-links">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="/prod.html">Menú</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
-
-        <div onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
     </nav>
 </header>
 
@@ -205,12 +153,17 @@
     <div class="hero-content">
         <h1>El mejor café artesanal en cada taza</h1>
         <p>Disfruta bebidas calientes, cafés especiales y postres preparados con pasión.</p>
-        <a href="prod.html" class="btn">Ver menú</a>
+        <a href="/prod.html" class="btn">Ver menú</a>
     </div>
 </section>
 
+<section class="section-padding" id="nosotros">
+    <h2>Sobre nosotros</h2>
+    <p>Somos una cafetería en Magangué dedicada a ofrecer café artesanal de alta calidad y una experiencia única.</p>
+</section>
+
 <section class="section-padding">
-    <h2 class="section-title">Nuestras especialidades</h2>
+    <h2>Nuestras especialidades</h2>
 
     <div class="grid-3">
         <div class="card">
@@ -225,7 +178,7 @@
             <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523942839745-7848d3f4d7c8');"></div>
             <div class="card-content">
                 <h3>Cappuccino</h3>
-                <p>Perfecta mezcla de café, leche y espuma.</p>
+                <p>Mezcla perfecta de café y leche.</p>
             </div>
         </div>
 
@@ -233,14 +186,21 @@
             <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');"></div>
             <div class="card-content">
                 <h3>Latte</h3>
-                <p>Suave, cremoso y delicioso.</p>
+                <p>Suave y cremoso.</p>
             </div>
         </div>
     </div>
 </section>
 
+<section class="section-padding" id="contacto">
+    <h2>Contacto</h2>
+    <p>📍 Magangué, Colombia</p>
+    <p>📞 +57 300 000 0000</p>
+    <p>📧 contacto@cafe.com</p>
+</section>
+
 <footer>
-    <p>© 2026 Café Aroma del Río - Todos los derechos reservados</p>
+    <p>© 2026 Café Aroma del Río</p>
 </footer>
 
 <div id="cookie-banner">
@@ -249,10 +209,6 @@
 </div>
 
 <script>
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
-}
-
 function acceptCookies(){
     document.getElementById("cookie-banner").style.display="none";
 }
