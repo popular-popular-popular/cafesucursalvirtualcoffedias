@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Café Aroma del Río | Café artesanal en Magangué</title>
     <meta name="description" content="Disfruta café artesanal, bebidas especiales y postres en Café Aroma del Río en Magangué.">
-
-    <!-- SEO extra -->
     <meta name="robots" content="index, follow">
 
     <!-- FontAwesome -->
@@ -116,6 +114,12 @@
             text-align: center;
         }
 
+        footer a {
+            color: #ccc;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
         #cookie-banner {
             position: fixed;
             bottom: 0;
@@ -133,27 +137,15 @@
         }
     </style>
 
-    
-                    <!-- Google tag (gtag.js) -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18088544449"></script>
-                <script>
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                
-                  gtag('config', 'AW-18088544449');
-                </script>
+    <!-- Google tag (SOLO CONFIG, SIN CONVERSIONES) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18088544449"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18088544449');
+    </script>
 
-                    <!-- Event snippet for Compra (1) conversion page -->
-                <script>
-                  gtag('event', 'conversion', {
-                      'send_to': 'AW-18088544449/wpm6CKnmzZ0cEMGRpbFD',
-                      'transaction_id': ''
-                      // 'new_customer': true /* calculate dynamically, populate with true/false */,
-                  });
-                </script>
-
-    
 </head>
 
 <body>
@@ -192,7 +184,7 @@
             <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1511920170033-f8396924c348');"></div>
             <div class="card-content">
                 <h3>Espresso</h3>
-                <p>Fuerte, intenso y lleno de aroma.</p>
+                <p>$4.000 COP</p>
             </div>
         </div>
 
@@ -200,7 +192,7 @@
             <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523942839745-7848d3f4d7c8');"></div>
             <div class="card-content">
                 <h3>Cappuccino</h3>
-                <p>Mezcla perfecta de café y leche.</p>
+                <p>$6.000 COP</p>
             </div>
         </div>
 
@@ -208,7 +200,7 @@
             <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');"></div>
             <div class="card-content">
                 <h3>Latte</h3>
-                <p>Suave y cremoso.</p>
+                <p>$6.500 COP</p>
             </div>
         </div>
     </div>
@@ -216,13 +208,16 @@
 
 <section class="section-padding" id="contacto">
     <h2>Contacto</h2>
-    <p>📍 Magangué, Colombia</p>
-    <p>📞 +57 300 000 0000</p>
-    <p>📧 contacto@cafe.com</p>
+    <p>📍 Calle 12 #3-45, Magangué, Bolívar</p>
+    <p>📞 +57 301 234 5678</p>
+    <p>📧 hola@cafearomadelrio.com</p>
 </section>
 
 <footer>
     <p>© 2026 Café Aroma del Río</p>
+    <a href="/privacidad.html">Privacidad</a> |
+    <a href="/terminos.html">Términos</a> |
+    <a href="/cookies.html">Cookies</a>
 </footer>
 
 <div id="cookie-banner">
