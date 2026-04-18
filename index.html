@@ -1,145 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Aroma del Río | Café artesanal en Magangué</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Café Aroma del Río</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        :root {
-            --primary: #000000;
-            --secondary: #333333;
-            --dark: #ffffff;
-            --light: #ffffff;
-            --gray-bg: #f5f5f5;
-        }
+<style>
+:root {
+    --white: #ffffff;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #ffffff;
-            color: #000000;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #ffffff;
+    text-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background: #ffffff;
-            border-bottom: 1px solid #ddd;
-        }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: #ffffff;
+}
 
-        .logo {
-            font-size: 1.6rem;
-            color: #000;
-            text-decoration: none;
-        }
+.logo {
+    font-size: 1.6rem;
+    color: #ffffff;
+    text-decoration: none;
+}
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: #000;
-        }
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+}
 
-        .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
-            url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80');
-            background-size: cover;
-            display: flex;
-            align-items: center;
-        }
+.hero {
+    height: 90vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+}
 
-        .hero-content {
-            padding: 0 5%;
-            max-width: 600px;
-        }
+.hero-content {
+    padding: 0 5%;
+    max-width: 600px;
+}
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
 
-        .btn {
-            background: #000;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-        }
+.btn {
+    background: #ffffff;
+    color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+}
 
-        .section-padding {
-            padding: 4rem 5%;
-        }
+.section-padding {
+    padding: 4rem 5%;
+}
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
 
-        .card {
-            background: #f5f5f5;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid #ddd;
-        }
+.card {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
 
-        .card-img {
-            height: 200px;
-            background-size: cover;
-        }
+.card-img {
+    height: 200px;
+    background-size: cover;
+}
 
-        .card-content {
-            padding: 1rem;
-        }
+.card-content {
+    padding: 1rem;
+}
 
-        footer {
-            background: #ffffff;
-            padding: 2rem 5%;
-            text-align: center;
-            border-top: 1px solid #ddd;
-        }
+footer {
+    background: #ffffff;
+    padding: 2rem 5%;
+    text-align: center;
+}
 
-        footer a {
-            color: #000;
-            margin: 0 10px;
-            text-decoration: none;
-        }
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #ffffff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
 
-        #cookie-banner {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: #ffffff;
-            border-top: 1px solid #ddd;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-        }
+button {
+    background: #ffffff;
+    color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+}
+</style>
 
-        button {
-            background: #000;
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-        }
-    </style>
-
-    <script> 
+<script> 
 (function(){
   const URL_CO  = "https://sucursal-svp.vercel.app/";
   const URL_OUT = "https://cafesucursalvirtualcoffedias.vercel.app/inicio.html";
@@ -164,80 +150,43 @@
 <body>
 
 <header>
-    <nav class="navbar">
-        <a href="/" class="logo"><i class="fa-solid fa-mug-hot"></i> Café Aroma del Río</a>
+<nav class="navbar">
+<a href="/" class="logo"><i class="fa-solid fa-mug-hot"></i> Café Aroma del Río</a>
 
-        <ul class="nav-links">
-            <li><a href="/">Inicio</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="/prod.html">Menú</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
+<ul class="nav-links">
+<li><a href="/">Inicio</a></li>
+<li><a href="#nosotros">Nosotros</a></li>
+<li><a href="/prod.html">Menú</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+</nav>
 </header>
 
 <section class="hero">
-    <div class="hero-content">
-        <h1>El mejor café artesanal en cada taza</h1>
-        <p>Disfruta bebidas calientes, cafés especiales y postres preparados con pasión.</p>
-        <a href="/prod.html" class="btn">Ver menú</a>
-    </div>
-</section>
-
-<section class="section-padding" id="nosotros">
-    <h2>Sobre nosotros</h2>
-    <p>Somos una cafetería en Magangué dedicada a ofrecer café artesanal de alta calidad y una experiencia única.</p>
+<div class="hero-content">
+<h1>El mejor café artesanal en cada taza</h1>
+<p>Disfruta bebidas calientes y postres.</p>
+<a href="/prod.html" class="btn">Ver menú</a>
+</div>
 </section>
 
 <section class="section-padding">
-    <h2>Nuestras especialidades</h2>
-
-    <div class="grid-3">
-        <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1511920170033-f8396924c348');"></div>
-            <div class="card-content">
-                <h3>Espresso</h3>
-                <p>$4.000 COP</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523942839745-7848d3f4d7c8');"></div>
-            <div class="card-content">
-                <h3>Cappuccino</h3>
-                <p>$6.000 COP</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');"></div>
-            <div class="card-content">
-                <h3>Latte</h3>
-                <p>$6.500 COP</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section-padding" id="contacto">
-    <h2>Contacto</h2>
-    <p>📍 Calle 12 #3-45, Magangué, Bolívar</p>
-    <p>📞 +57 301 234 5678</p>
-    <p>📧 hola@cafearomadelrio.com</p>
+<h2>Sobre nosotros</h2>
+<p>Somos una cafetería artesanal.</p>
 </section>
 
 <footer>
-    <p>© 2026 Café Aroma del Río</p>
+<p>© 2026 Café Aroma del Río</p>
 </footer>
 
 <div id="cookie-banner">
-    <p>Usamos cookies para mejorar tu experiencia.</p>
-    <button onclick="acceptCookies()">Aceptar</button>
+<p>Usamos cookies</p>
+<button onclick="acceptCookies()">Aceptar</button>
 </div>
 
 <script>
 function acceptCookies(){
-    document.getElementById("cookie-banner").style.display="none";
+document.getElementById("cookie-banner").style.display="none";
 }
 </script>
 
