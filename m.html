@@ -1,771 +1,520 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ICBC Multipay · Portal Corporativo</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Arial, Helvetica, sans-serif;
-        }
-
-        body {
-            background: #eef1f5;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            color: #1a2634;
-        }
-
-        /* HEADER */
-        .top-bar {
-            background: #ffffff;
-            padding: 16px 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 4px solid #c8102e;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .top-bar .brand {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .top-bar .brand .icbc {
-            font-size: 38px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #1a2b3c;
-        }
-
-        .top-bar .brand .icbc span {
-            font-weight: 300;
-            color: #c8102e;
-        }
-
-        .top-bar .brand .multipay {
-            background: #c8102e;
-            color: white;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 4px 14px;
-            border-radius: 30px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .top-bar .lang {
-            color: #666;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* BIENVENIDA */
-        .welcome-strip {
-            background: #f0f2f5;
-            padding: 24px 80px;
-            font-size: 30px;
-            font-weight: 400;
-            color: #1a2b3c;
-            border-bottom: 1px solid #d5dae3;
-        }
-
-        .welcome-strip strong {
-            font-weight: 600;
-        }
-
-        /* CONTENEDOR PRINCIPAL - ESCRITORIO */
-        .main-container {
-            max-width: 1280px;
-            width: 92%;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            flex: 1;
-        }
-
-        /* TARJETA LOGIN */
-        .login-card {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 44px 48px 48px 48px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            align-self: start;
-        }
-
-        .login-card h2 {
-            font-size: 36px;
-            font-weight: 400;
-            color: #1a2b3c;
-            margin-bottom: 32px;
-            letter-spacing: -0.2px;
-        }
-
-        .login-card h2 small {
-            font-size: 18px;
-            font-weight: 300;
-            color: #777;
-            margin-left: 8px;
-        }
-
-        .field-group {
-            margin-bottom: 26px;
-        }
-
-        .field-group label {
-            display: block;
-            font-weight: 700;
-            font-size: 16px;
-            color: #1a2b3c;
-            margin-bottom: 6px;
-            letter-spacing: 0.2px;
-        }
-
-        .field-group label .hint {
-            font-weight: 400;
-            color: #7a7f8a;
-            font-size: 14px;
-            margin-left: 4px;
-        }
-
-        .field-group input {
-            width: 100%;
-            height: 54px;
-            border: none;
-            border-bottom: 2px solid #d0d5dd;
-            font-size: 20px;
-            padding: 0 4px;
-            background: transparent;
-            transition: border 0.15s;
-            outline: none;
-            color: #1a2b3c;
-        }
-
-        .field-group input:focus {
-            border-bottom-color: #c8102e;
-        }
-
-        .field-group input::placeholder {
-            color: #b0b8c4;
-            font-weight: 300;
-            font-size: 18px;
-        }
-
-        /* Imagen de seguridad */
-        .security-image {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin: 10px 0 22px 0;
-            padding: 14px 20px;
-            background: #f5f7fa;
-            border-radius: 12px;
-            border: 1px solid #e6e9ef;
-        }
-
-        .security-image .icon {
-            font-size: 40px;
-            background: #c8102e;
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .security-image .text {
-            font-size: 16px;
-            color: #1a2b3c;
-        }
-
-        .security-image .text strong {
-            display: block;
-            font-size: 17px;
-        }
-
-        /* Botones */
-        .btn-group {
-            display: flex;
-            gap: 14px;
-            margin-top: 8px;
-        }
-
-        .btn-group .btn {
-            flex: 1;
-            padding: 16px 0;
-            font-size: 20px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.15s;
-            border: none;
-            text-align: center;
-        }
-
-        .btn-group .btn:active {
-            transform: scale(0.98);
-        }
-
-        .btn-atras {
-            background: #e6e9ef;
-            color: #1a2b3c;
-        }
-
-        .btn-atras:hover {
-            background: #d5dae3;
-        }
-
-        .btn-ingresar {
-            background: #c8102e;
-            color: white;
-        }
-
-        .btn-ingresar:hover {
-            background: #a80d26;
-        }
-
-        .btn-siguiente {
-            background: #c8102e;
-            color: white;
-            border: none;
-            padding: 16px 0;
-            font-size: 22px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.15s;
-            width: 100%;
-            letter-spacing: 0.5px;
-            margin-top: 8px;
-        }
-
-        .btn-siguiente:hover {
-            background: #a80d26;
-        }
-
-        .btn-siguiente:active {
-            transform: scale(0.98);
-        }
-
-        /* Enlaces */
-        .login-links {
-            margin-top: 28px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px 20px;
-            border-top: 1px solid #e6e9ef;
-            padding-top: 26px;
-            justify-content: center;
-        }
-
-        .login-links a {
-            color: #1a6bb0;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .login-links a:hover {
-            text-decoration: underline;
-        }
-
-        .login-links .sep {
-            color: #b0b8c4;
-        }
-
-        /* Vistas de login */
-        .login-step {
-            display: none;
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        .login-step.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* SIDE PANEL (derecha) */
-        .side-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-
-        /* ALERTA DE ESTAFA */
-        .alert-card {
-            background: #c8102e;
-            color: white;
-            padding: 28px 30px 26px 30px;
-            border-radius: 14px;
-            box-shadow: 0 6px 18px rgba(200, 16, 46, 0.18);
-        }
-
-        .alert-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 14px;
-            letter-spacing: -0.2px;
-        }
-
-        .alert-card p {
-            font-size: 16px;
-            line-height: 1.6;
-            opacity: 0.95;
-            margin-bottom: 14px;
-        }
-
-        .alert-card .warning-box {
-            background: rgba(255, 255, 255, 0.10);
-            padding: 14px 18px;
-            border-radius: 10px;
-            border-left: 4px solid #ffcc00;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .alert-card .help-contact {
-            margin-top: 16px;
-            font-size: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 16px;
-            line-height: 1.8;
-        }
-
-        .alert-card .help-contact a {
-            color: white;
-            text-decoration: underline;
-            font-weight: 500;
-        }
-
-        /* REGISTRATE */
-        .register-card {
-            background: white;
-            padding: 28px 30px 30px 30px;
-            border-radius: 14px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-        }
-
-        .register-card h4 {
-            font-size: 22px;
-            font-weight: 600;
-            color: #1a2b3c;
-            margin-bottom: 6px;
-        }
-
-        .register-card .sub-text {
-            color: #555;
-            font-size: 16px;
-            margin-bottom: 16px;
-        }
-
-        .register-card .btn-register {
-            width: 100%;
-            background: white;
-            color: #c8102e;
-            border: 2px solid #c8102e;
-            padding: 16px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 18px;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-
-        .register-card .btn-register:hover {
-            background: #c8102e;
-            color: white;
-        }
-
-        .register-card .btn-register:active {
-            transform: scale(0.98);
-        }
-
-        .register-card .sub-links {
-            margin-top: 18px;
-            font-size: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .register-card .sub-links a {
-            color: #1a6bb0;
-            text-decoration: none;
-        }
-
-        .register-card .sub-links a:hover {
-            text-decoration: underline;
-        }
-
-        .register-card .legal-small {
-            margin-top: 16px;
-            font-size: 13px;
-            color: #6f7a8a;
-            line-height: 1.6;
-        }
-
-        /* BLOQUE ACTIVAR WINDOWS */
-        .win-activate-block {
-            background: #fafbfc;
-            padding: 14px 20px;
-            border-radius: 30px;
-            text-align: center;
-            font-size: 15px;
-            color: #555;
-            border: 1px solid #e0e4ec;
-        }
-
-        /* FOOTER */
-        .footer-legal {
-            max-width: 1280px;
-            width: 92%;
-            margin: 30px auto 30px;
-            text-align: center;
-            color: #6a7380;
-            font-size: 14px;
-            line-height: 1.8;
-            border-top: 1px solid #d8dde6;
-            padding-top: 30px;
-        }
-
-        .footer-legal .legal-text {
-            font-size: 13px;
-            color: #7f8896;
-            max-width: 900px;
-            margin: 6px auto 0;
-        }
-
-        .footer-legal .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px 24px;
-            margin: 14px 0 10px 0;
-            font-size: 14px;
-        }
-
-        .footer-legal .footer-links a {
-            color: #1a6bb0;
-            text-decoration: none;
-        }
-
-        .footer-legal .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-legal .copy {
-            font-size: 13px;
-            color: #888;
-            margin-top: 6px;
-        }
-
-        /* RESPONSIVE para tablets */
-        @media (max-width: 1024px) {
-            .top-bar {
-                padding: 14px 40px;
-            }
-            .welcome-strip {
-                padding: 20px 40px;
-                font-size: 26px;
-            }
-            .main-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .login-card {
-                padding: 36px 32px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .top-bar {
-                padding: 12px 16px;
-                flex-wrap: wrap;
-            }
-            .top-bar .brand .icbc {
-                font-size: 26px;
-            }
-            .top-bar .brand .multipay {
-                font-size: 11px;
-                padding: 3px 10px;
-            }
-            .welcome-strip {
-                padding: 16px 16px;
-                font-size: 20px;
-                text-align: center;
-            }
-            .login-card {
-                padding: 24px 18px;
-            }
-            .login-card h2 {
-                font-size: 28px;
-            }
-            .btn-siguiente,
-            .btn-ingresar,
-            .btn-register {
-                font-size: 18px;
-                padding: 14px 0;
-            }
-            .btn-group .btn {
-                font-size: 17px;
-                padding: 14px 0;
-            }
-            .security-image .icon {
-                width: 44px;
-                height: 44px;
-                font-size: 30px;
-            }
-            .alert-card {
-                padding: 20px 18px;
-            }
-            .alert-card h3 {
-                font-size: 18px;
-            }
-            .register-card {
-                padding: 22px 18px;
-            }
-            .footer-legal {
-                padding-top: 20px;
-            }
-            .footer-legal .footer-links {
-                gap: 10px 16px;
-                font-size: 13px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maqueta de Login</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #555;
+    font-size: 12px;
+}
+
+/* CABECERA */
+.header {
+    width: 100%;
+    background: #fff;
+}
+
+.logo-area {
+    height: 48px;
+    border-bottom: 1px solid #b71925;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    color: #111;
+}
+
+.logo span {
+    color: #c51622;
+    border: 2px solid #c51622;
+    border-radius: 50%;
+    font-size: 16px;
+    margin-left: 4px;
+    padding: 1px 4px;
+}
+
+.language {
+    height: 32px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 17%;
+    font-size: 10px;
+    color: #555;
+}
+
+.language::before {
+    content: "🌐";
+    margin-right: 5px;
+}
+
+/* BANNER */
+.welcome {
+    height: 90px;
+    background: #f1f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #444;
+}
+
+/* CONTENEDOR */
+.main {
+    min-height: 1120px;
+    padding-top: 28px;
+}
+
+/* TARJETA LOGIN */
+.login-card {
+    width: 76%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 38px 48px 35px;
+    background: white;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+}
+
+.login-card h2 {
+    font-size: 17px;
+    font-weight: normal;
+    color: #444;
+    margin-bottom: 35px;
+}
+
+.form-group {
+    margin-bottom: 27px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 27px;
+    border: none;
+    border-bottom: 2px solid #b9dce4;
+    background: #f1f2f2;
+    padding: 5px;
+    outline: none;
+    font-size: 12px;
+}
+
+.form-group input:focus {
+    border-bottom-color: #bd1420;
+}
+
+.security-title {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 22px;
+    font-size: 11px;
+}
+
+.security-image {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 35px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #d9d9d9, #777);
+    opacity: .7;
+    position: relative;
+}
+
+.security-image::after {
+    content: "🔒";
+    position: absolute;
+    font-size: 33px;
+    top: 17px;
+    left: 18px;
+}
+
+/* BOTONES */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.btn {
+    width: 150px;
+    height: 42px;
+    border: 1px solid #bd1420;
+    background: white;
+    color: #b71925;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-primary {
+    background: #c8101e;
+    color: white;
+}
+
+.btn:hover {
+    opacity: .9;
+}
+
+/* ENLACES */
+.links {
+    text-align: center;
+    margin-top: 20px;
+    line-height: 23px;
+}
+
+.links a {
+    color: #4c9cae;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* AVISO */
+.warning {
+    width: 230px;
+    margin: 30px auto 0;
+    background: #c8101e;
+    color: white;
+    padding: 12px 10px;
+    border-radius: 8px;
+    font-size: 9px;
+    line-height: 12px;
+}
+
+.warning strong {
+    display: block;
+    font-size: 13px;
+    line-height: 15px;
+    margin-bottom: 7px;
+}
+
+/* INFORMACIÓN */
+.info {
+    text-align: center;
+    margin-top: 15px;
+    line-height: 17px;
+    color: #777;
+}
+
+.info a {
+    color: #4d9cac;
+    text-decoration: none;
+}
+
+.register {
+    display: block;
+    width: 115px;
+    height: 35px;
+    margin: 14px auto;
+    border: 1px solid #bd1420;
+    color: #b71925;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.legal {
+    max-width: 750px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 10px;
+    line-height: 15px;
+    color: #999;
+}
+
+/* BOTÓN AYUDA */
+.help {
+    position: fixed;
+    right: 20px;
+    bottom: 82px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.help-text {
+    border: 1px solid #b71925;
+    border-radius: 20px;
+    padding: 7px 13px;
+    font-size: 10px;
+    color: #555;
+    background: white;
+}
+
+.help-icon {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #b71925;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+/* FOOTER */
+.footer {
+    background: #c5c5c5;
+    min-height: 82px;
+    padding: 20px 10%;
+    color: #777;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.footer-links a {
+    color: #777;
+    text-decoration: none;
+    padding: 0 14px;
+    border-right: 1px solid #999;
+    font-size: 11px;
+}
+
+.footer-links a:first-child {
+    padding-left: 0;
+}
+
+.footer-links a:last-child {
+    border-right: none;
+}
+
+.footer-copy {
+    background: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 10px;
+    color: #777;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+
+    .language {
+        padding-right: 8%;
+    }
+
+    .welcome {
+        height: 85px;
+        font-size: 14px;
+    }
+
+    .main {
+        min-height: 1050px;
+        padding-top: 25px;
+    }
+
+    .login-card {
+        width: 88%;
+        padding: 32px 25px;
+    }
+
+    .login-card h2 {
+        margin-bottom: 30px;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    .btn {
+        width: 50%;
+        font-size: 11px;
+    }
+
+    .warning {
+        width: 230px;
+    }
+
+    .legal {
+        padding: 0 20px;
+    }
+
+    .help {
+        right: 8px;
+        bottom: 75px;
+    }
+
+    .help-text {
+        font-size: 9px;
+    }
+
+    .footer {
+        padding: 20px 25px;
+    }
+
+    .footer-links a {
+        margin-bottom: 8px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- HEADER ICBC -->
-    <header class="top-bar">
-        <div class="brand">
-            <span class="icbc">ICBC <span>Multipay</span></span>
-            <span class="multipay">Corporativo</span>
-        </div>
-        <div class="lang">
-            <span>🌐</span> Español
-        </div>
-    </header>
+<header class="header">
 
-    <!-- BIENVENIDA -->
-    <div class="welcome-strip">
-        Bienvenido a <strong>ICBC Multipay</strong>
-    </div>
-
-    <!-- CONTENEDOR PRINCIPAL -->
-    <div class="main-container">
-
-        <!-- COLUMNA IZQUIERDA: LOGIN -->
-        <div class="login-card">
-
-            <h2>Login <small>acceso</small></h2>
-
-            <!-- PASO 1: CUIT + Usuario + Siguiente -->
-            <div class="login-step active" id="step1">
-                <div class="field-group">
-                    <label>CUIT <span class="hint">· Ingresá el CUIT</span></label>
-                    <input type="text" id="cuitInput" placeholder="30-12345678-9" value="30718546261" />
-                </div>
-
-                <div class="field-group">
-                    <label>Usuario <span class="hint">· Ingresá el usuario</span></label>
-                    <input type="text" id="userInput" placeholder="usuario.empresa" value="jperez_icbc" />
-                </div>
-
-                <button class="btn-siguiente" id="btnSiguiente">Siguiente</button>
-
-                <div class="login-links">
-                    <a href="#">Olvidé mi usuario</a>
-                    <span class="sep">|</span>
-                    <a href="#">Olvidé mi Contraseña</a>
-                    <span class="sep">|</span>
-                    <a href="#">Gestiona el segundo factor de autenticación/Token</a>
-                </div>
-            </div>
-
-            <!-- PASO 2: Contraseña + Imagen de seguridad + Atrás / Ingresar -->
-            <div class="login-step" id="step2">
-                <div class="field-group">
-                    <label>Contraseña <span class="hint">· Ingresá tu clave</span></label>
-                    <input type="password" id="passwordInput" placeholder="········" value="12345678" />
-                </div>
-
-                <!-- Imagen de seguridad -->
-                <div class="security-image">
-                    <div class="icon">🔒</div>
-                    <div class="text">
-                        <strong>Imagen de seguridad</strong>
-                        <span>Verificá que esta imagen coincida con tu registro</span>
-                    </div>
-                </div>
-
-                <div class="btn-group">
-                    <button class="btn btn-atras" id="btnAtras">Atrás</button>
-                    <button class="btn btn-ingresar" id="btnIngresar">Ingresar</button>
-                </div>
-
-                <div class="login-links">
-                    <a href="#">Olvidé mi usuario</a>
-                    <span class="sep">|</span>
-                    <a href="#">Olvidé mi Contraseña</a>
-                    <span class="sep">|</span>
-                    <a href="#">Gestiona el segundo factor de autenticación/Token</a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- COLUMNA DERECHA: SIDE PANEL -->
-        <div class="side-panel">
-
-            <!-- ALERTA DE ESTAFA -->
-            <div class="alert-card">
-                <h3>⚠️ CUIDADO CON ESTA NUEVA MODALIDAD DE ESTAFA</h3>
-                <p>
-                    Recordá que solo vamos a pedirte Clave Token para confirmar o liberar operaciones y gestiones de administración; <strong>nunca para acceder a tu cuenta.</strong>
-                </p>
-                <div class="warning-box">
-                    <strong>Si pierdes el control de la pantalla</strong> porque aparenta cargar una actualización y te pide Clave Token, <strong>NO LA INGRESES.</strong> Probablemente, estés siendo víctima de una estafa.
-                </div>
-                <div class="help-contact">
-                    📞 Mesa de ayuda: <strong>0810-444-5463</strong> (lun a vie 8–19 h)<br />
-                    ✉️ <a href="mailto:ayuda_canales_electronicos@icbc.com.ar">ayuda_canales_electronicos@icbc.com.ar</a>
-                </div>
-            </div>
-
-            <!-- REGISTRATE -->
-            <div class="register-card">
-                <h4>Regístrate</h4>
-                <div class="sub-text">Ya tengo una solicitud de adhesión generada</div>
-                <button class="btn-register">Solicita nuevo administrador</button>
-                <div class="sub-links">
-                    <a href="#">Términos y Condiciones</a>
-                    <a href="#">Ayuda</a>
-                </div>
-                <div class="legal-small">
-                    Industrial and Commercial Bank of China (Argentina) S.A.U.
-                </div>
-            </div>
-
-            <!-- ACTIVAR WINDOWS -->
-            <div class="win-activate-block">
-                ⚙️ Activar Windows · Ve a Configuración para activar Windows.
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- FOOTER LEGAL -->
-    <div class="footer-legal">
-        <div>
-            Operar con ICBC Multipay implica que aceptas en su totalidad los <strong>Términos y Condiciones</strong>.
-        </div>
-        <div class="legal-text">
-            Industrial and Commercial Bank of China (Argentina) S.A.U. es una Sociedad Anónima constituida bajo las leyes de la República Argentina. Sus operaciones son independientes de otras compañías del grupo ICBC. Sus accionistas limitan su responsabilidad al capital aportado.
-        </div>
-
-        <div class="footer-links">
-            <a href="#">Política de privacidad</a>
-            <a href="#">Gerenciamiento de riesgos</a>
-            <a href="#">Términos y condiciones</a>
-            <a href="#">Seguridad en canales</a>
-            <a href="#">Mapa del sitio</a>
-        </div>
-
-        <div class="copy">
-            Industrial and Commercial Bank of China (Argentina) S.A.U. · Todos los Derechos Reservados
+    <div class="logo-area">
+        <div class="logo">
+            ICBC <span>✚</span>
         </div>
     </div>
 
-    <script>
-        // Elementos
-        const step1 = document.getElementById('step1');
-        const step2 = document.getElementById('step2');
-        const btnSiguiente = document.getElementById('btnSiguiente');
-        const btnAtras = document.getElementById('btnAtras');
-        const btnIngresar = document.getElementById('btnIngresar');
-        const cuitInput = document.getElementById('cuitInput');
-        const userInput = document.getElementById('userInput');
-        const passwordInput = document.getElementById('passwordInput');
+    <div class="language">
+        In English
+    </div>
 
-        // Mostrar paso 2 (contraseña)
-        btnSiguiente.addEventListener('click', function() {
-            if (cuitInput.value.trim() === '' || userInput.value.trim() === '') {
-                if (cuitInput.value.trim() === '') {
-                    cuitInput.style.borderBottomColor = '#c8102e';
-                    setTimeout(() => { cuitInput.style.borderBottomColor = '#d0d5dd'; }, 1500);
-                }
-                if (userInput.value.trim() === '') {
-                    userInput.style.borderBottomColor = '#c8102e';
-                    setTimeout(() => { userInput.style.borderBottomColor = '#d0d5dd'; }, 1500);
-                }
-                return;
-            }
+</header>
 
-            step1.classList.remove('active');
-            step2.classList.add('active');
+<section class="welcome">
+    Bienvenido a Mi Portal
+</section>
 
-            setTimeout(() => {
-                passwordInput.focus();
-            }, 350);
-        });
+<main class="main">
 
-        // Volver al paso 1 (Atrás)
-        btnAtras.addEventListener('click', function() {
-            step2.classList.remove('active');
-            step1.classList.add('active');
-            setTimeout(() => {
-                cuitInput.focus();
-            }, 350);
-        });
+    <section class="login-card">
 
-        // Ingresar (simulación)
-        btnIngresar.addEventListener('click', function() {
-            if (passwordInput.value.trim() === '') {
-                passwordInput.style.borderBottomColor = '#c8102e';
-                setTimeout(() => { passwordInput.style.borderBottomColor = '#d0d5dd'; }, 1500);
-                return;
-            }
-            alert('✅ Sesión iniciada correctamente');
-        });
+        <h2>Login</h2>
 
-        // Navegación con Enter
-        cuitInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') userInput.focus();
-        });
+        <div class="form-group">
+            <label>CUIT</label>
+            <input type="text" placeholder="Ingrese su CUIT">
+        </div>
 
-        userInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') btnSiguiente.click();
-        });
+        <div class="form-group">
+            <label>Usuario</label>
+            <input type="text" placeholder="Ingrese su usuario">
+        </div>
 
-        passwordInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') btnIngresar.click();
-        });
-    </script>
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" placeholder="Ingrese su contraseña">
+        </div>
+
+        <div class="security-title">
+            Imagen de seguridad
+        </div>
+
+        <div class="security-image"></div>
+
+        <div class="buttons">
+            <button class="btn">
+                Anterior
+            </button>
+
+            <button class="btn btn-primary">
+                Ingresar
+            </button>
+        </div>
+
+        <div class="links">
+            <a href="#">Olvidé mi usuario</a> |
+            <a href="#">Olvidé mi contraseña</a>
+            <br>
+
+            <a href="#">
+                Gestioná el segundo factor de autenticación/Token
+            </a>
+        </div>
+
+    </section>
+
+    <div class="warning">
+        <strong>CUIDADO CON ESTA NUEVA MODALIDAD DE ESTAFA</strong>
+
+        Recordá que solo vamos a pedirte Clave Token para confirmar o liberar operaciones y gestiones de administración; nunca para acceder a tu cuenta.
+        <br><br>
+
+        Si perdés el control de la pantalla porque aparenta cargar una actualización y te pide Clave Token, NO LA INGRESES.
+    </div>
+
+    <div class="info">
+
+        Si tenés dudas, comunicate con la Mesa de ayuda
+        <br>
+
+        <a href="#">
+            ayuda@ejemplo.com
+        </a>
+
+        <a href="#" class="register">
+            Registrate
+        </a>
+
+        <a href="#">
+            Ya tengo una solicitud de adhesión generada
+        </a>
+
+        <br>
+
+        <a href="#">
+            Solicitar nuevo administrador
+        </a>
+
+    </div>
+
+    <div class="legal">
+        Operar con este portal implica que aceptás en su totalidad los
+        <a href="#">Términos y Condiciones</a>.
+        <br>
+        Tus operaciones son independientes de otras compañías y entidades.
+    </div>
+
+</main>
+
+<div class="help">
+    <div class="help-text">
+        ¿Necesitás ayuda?
+    </div>
+
+    <div class="help-icon">
+        ☺
+    </div>
+</div>
+
+<footer class="footer">
+
+    <div class="footer-links">
+        <a href="#privacidad">Política de privacidad</a>
+        <a href="#riesgos">Gerenciamiento de riesgos</a>
+        <a href="#terminos">Términos y condiciones</a>
+        <a href="#seguridad">Seguridad en canales</a>
+        <a href="#mapa">Mapa del sitio</a>
+    </div>
+
+</footer>
+
+<div class="footer-copy">
+    Todos los Derechos Reservados
+</div>
 
 </body>
 </html>
