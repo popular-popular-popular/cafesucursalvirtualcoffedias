@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Maqueta de Login</title>
 
 <style>
@@ -38,19 +39,10 @@ body {
     align-items: center;
 }
 
-.logo {
-    font-size: 18px;
-    font-weight: bold;
-    color: #111;
-}
-
-.logo span {
-    color: #c51622;
-    border: 2px solid #c51622;
-    border-radius: 50%;
-    font-size: 13px;
-    margin-left: 4px;
-    padding: 1px 4px;
+.logo-img {
+    width: 105px;
+    height: auto;
+    display: block;
 }
 
 .language {
@@ -453,25 +445,31 @@ body {
 
 <header class="header">
 
+
     <div class="logo-area">
 
-        <div class="logo">
-            ICBC <span>✚</span>
-        </div>
+        <img
+            src="https://www.multipay.com.ar/static/minb/assets/images/icbc-logo.svg"
+            alt="ICBC"
+            class="logo-img"
+        >
 
     </div>
 
 
     <div class="language">
+
         In English
+
     </div>
+
 
 </header>
 
 
 <section class="welcome">
 
-    Bienvenido a ICBC Multipay
+    Bienvenido a Mi Portal
 
 </section>
 
@@ -484,16 +482,22 @@ body {
 
 
         <h2>
+
             Login
+
         </h2>
 
 
         <!-- CUIT -->
         <div class="form-group">
 
+
             <label>
+
                 CUIT
+
             </label>
+
 
             <input
                 type="text"
@@ -501,21 +505,27 @@ body {
                 placeholder="Ingrese su CUIT"
             >
 
+
         </div>
 
 
         <!-- USUARIO -->
         <div class="form-group">
 
+
             <label>
+
                 Usuario
+
             </label>
+
 
             <input
                 type="text"
                 id="usuario"
                 placeholder="Ingrese su usuario"
             >
+
 
         </div>
 
@@ -526,15 +536,20 @@ body {
 
             <div class="form-group">
 
+
                 <label>
+
                     Contraseña
+
                 </label>
+
 
                 <input
                     type="password"
                     id="password"
                     placeholder="Ingrese su contraseña"
                 >
+
 
             </div>
 
@@ -599,7 +614,9 @@ body {
 
 
             <a href="#">
+
                 Olvidé mi usuario
+
             </a>
 
 
@@ -607,7 +624,9 @@ body {
 
 
             <a href="#">
+
                 Olvidé mi contraseña
+
             </a>
 
 
@@ -615,7 +634,9 @@ body {
 
 
             <a href="#">
+
                 Gestioná el segundo factor de autenticación/Token
+
             </a>
 
 
@@ -630,7 +651,9 @@ body {
 
 
         <strong>
+
             CUIDADO CON ESTA NUEVA MODALIDAD DE ESTAFA
+
         </strong>
 
 
@@ -658,17 +681,23 @@ body {
 
 
         <a href="#">
+
             ayuda@ejemplo.com
+
         </a>
 
 
         <a href="#" class="register">
+
             Registrate
+
         </a>
 
 
         <a href="#">
+
             Ya tengo una solicitud de adhesión generada
+
         </a>
 
 
@@ -676,7 +705,9 @@ body {
 
 
         <a href="#">
+
             Solicitar nuevo administrador
+
         </a>
 
 
@@ -691,7 +722,9 @@ body {
 
 
         <a href="#">
+
             Términos y Condiciones
+
         </a>
 
 
@@ -739,27 +772,37 @@ body {
 
 
         <a href="#privacidad">
+
             Política de privacidad
+
         </a>
 
 
         <a href="#riesgos">
+
             Gerenciamiento de riesgos
+
         </a>
 
 
         <a href="#terminos">
+
             Términos y condiciones
+
         </a>
 
 
         <a href="#seguridad">
+
             Seguridad en canales
+
         </a>
 
 
         <a href="#mapa">
+
             Mapa del sitio
+
         </a>
 
 
@@ -801,8 +844,9 @@ function mostrarPassword() {
 
     /*
     CUIT Y USUARIO PERMANECEN VISIBLES.
-    SOLO SE MUESTRA EL CAMPO CONTRASEÑA.
+    SOLO APARECE EL CAMPO CONTRASEÑA.
     */
+
 
     document.getElementById("passwordStep").style.display = "block";
 
