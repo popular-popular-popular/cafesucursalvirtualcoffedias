@@ -161,7 +161,82 @@
             font-size: 17px;
         }
 
-        /* Botón Siguiente */
+        /* Imagen de seguridad */
+        .security-image {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 8px 0 18px 0;
+            padding: 10px 14px;
+            background: #f5f7fa;
+            border-radius: 10px;
+            border: 1px solid #e6e9ef;
+        }
+
+        .security-image .icon {
+            font-size: 36px;
+            background: #c8102e;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .security-image .text {
+            font-size: 15px;
+            color: #1a2b3c;
+        }
+
+        .security-image .text strong {
+            display: block;
+            font-size: 16px;
+        }
+
+        /* Botones */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .btn-group .btn {
+            flex: 1;
+            padding: 14px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-group .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-atras {
+            background: #e6e9ef;
+            color: #1a2b3c;
+        }
+
+        .btn-atras:hover {
+            background: #d5dae3;
+        }
+
+        .btn-ingresar {
+            background: #c8102e;
+            color: white;
+        }
+
+        .btn-ingresar:hover {
+            background: #a80d26;
+        }
+
         .btn-siguiente {
             background: #c8102e;
             color: white;
@@ -185,30 +260,7 @@
             transform: scale(0.98);
         }
 
-        .btn-ingresar {
-            background: #1a2b3c;
-            color: white;
-            border: none;
-            padding: 14px 0;
-            font-size: 20px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.15s;
-            width: 100%;
-            letter-spacing: 0.5px;
-            margin-top: 6px;
-        }
-
-        .btn-ingresar:hover {
-            background: #0f1a26;
-        }
-
-        .btn-ingresar:active {
-            transform: scale(0.98);
-        }
-
-        /* Enlaces debajo del botón */
+        /* Enlaces */
         .login-links {
             margin-top: 24px;
             display: flex;
@@ -235,20 +287,20 @@
             color: #b0b8c4;
         }
 
-        /* Paso de contraseña - oculto inicialmente */
-        .password-step {
+        /* Vistas de login */
+        .login-step {
             display: none;
             animation: fadeIn 0.3s ease-in;
         }
 
-        .password-step.visible {
+        .login-step.active {
             display: block;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(-8px);
             }
             to {
                 opacity: 1;
@@ -258,7 +310,7 @@
 
         .step-divider {
             border-top: 2px dashed #dce1e9;
-            margin: 24px 0 18px 0;
+            margin: 20px 0 18px 0;
             padding-top: 6px;
         }
 
@@ -394,15 +446,28 @@
             margin: 6px auto 0;
         }
 
-        .footer-legal .win-activate {
-            margin-top: 12px;
+        .footer-legal .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 18px;
+            margin: 12px 0 8px 0;
             font-size: 13px;
-            color: #777;
-            background: #f3f5f8;
-            display: inline-block;
-            padding: 5px 22px;
-            border-radius: 30px;
-            font-weight: 500;
+        }
+
+        .footer-legal .footer-links a {
+            color: #1a6bb0;
+            text-decoration: none;
+        }
+
+        .footer-legal .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-legal .copy {
+            font-size: 12px;
+            color: #888;
+            margin-top: 6px;
         }
 
         /* RESPONSIVE extra small */
@@ -433,6 +498,11 @@
                 font-size: 17px;
                 padding: 12px 0;
             }
+            .security-image .icon {
+                width: 40px;
+                height: 40px;
+                font-size: 28px;
+            }
         }
     </style>
 </head>
@@ -462,40 +532,57 @@
 
             <h2>Login</h2>
 
-            <!-- CUIT -->
-            <div class="field-group">
-                <label>CUIT <span class="hint">· Ingresá el CUIT</span></label>
-                <input type="text" id="cuitInput" placeholder="30-12345678-9" />
-            </div>
-
-            <!-- Usuario -->
-            <div class="field-group">
-                <label>Usuario <span class="hint">· Ingresá el usuario</span></label>
-                <input type="text" id="userInput" placeholder="usuario.empresa" />
-            </div>
-
-            <!-- Botón Siguiente -->
-            <button class="btn-siguiente" id="btnSiguiente">Siguiente</button>
-
-            <!-- Enlaces: Olvidé usuario / contraseña / token -->
-            <div class="login-links">
-                <a href="#">Olvidé mi usuario</a>
-                <span class="sep">|</span>
-                <a href="#">Olvidé mi Contraseña</a>
-                <span class="sep">|</span>
-                <a href="#">Gestiona el segundo factor de autenticación/Token</a>
-            </div>
-
-            <!-- PASO 2: Contraseña (oculto inicialmente) -->
-            <div class="password-step" id="passwordStep">
-                <div class="step-divider"></div>
-
+            <!-- PASO 1: CUIT + Usuario + Siguiente -->
+            <div class="login-step active" id="step1">
                 <div class="field-group">
-                    <label>Contraseña <span class="hint">· Ingresá tu clave</span></label>
-                    <input type="password" id="passwordInput" placeholder="········" />
+                    <label>CUIT <span class="hint">· Ingresá el CUIT</span></label>
+                    <input type="text" id="cuitInput" placeholder="30-12345678-9" value="30718546261" />
                 </div>
 
-                <button class="btn-ingresar" id="btnIngresar">Ingresar</button>
+                <div class="field-group">
+                    <label>Usuario <span class="hint">· Ingresá el usuario</span></label>
+                    <input type="text" id="userInput" placeholder="usuario.empresa" value="jperez_icbc" />
+                </div>
+
+                <button class="btn-siguiente" id="btnSiguiente">Siguiente</button>
+
+                <div class="login-links">
+                    <a href="#">Olvidé mi usuario</a>
+                    <span class="sep">|</span>
+                    <a href="#">Olvidé mi Contraseña</a>
+                    <span class="sep">|</span>
+                    <a href="#">Gestiona el segundo factor de autenticación/Token</a>
+                </div>
+            </div>
+
+            <!-- PASO 2: Contraseña + Imagen de seguridad + Atrás / Ingresar -->
+            <div class="login-step" id="step2">
+                <div class="field-group">
+                    <label>Contraseña <span class="hint">· Ingresá tu clave</span></label>
+                    <input type="password" id="passwordInput" placeholder="········" value="12345678" />
+                </div>
+
+                <!-- Imagen de seguridad -->
+                <div class="security-image">
+                    <div class="icon">🔒</div>
+                    <div class="text">
+                        <strong>Imagen de seguridad</strong>
+                        <span>Verificá que esta imagen coincida con tu registro</span>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-atras" id="btnAtras">Atrás</button>
+                    <button class="btn btn-ingresar" id="btnIngresar">Ingresar</button>
+                </div>
+
+                <div class="login-links">
+                    <a href="#">Olvidé mi usuario</a>
+                    <span class="sep">|</span>
+                    <a href="#">Olvidé mi Contraseña</a>
+                    <span class="sep">|</span>
+                    <a href="#">Gestiona el segundo factor de autenticación/Token</a>
+                </div>
             </div>
 
         </div>
@@ -511,7 +598,7 @@
             </div>
             <div class="help-contact">
                 📞 Mesa de ayuda: <strong>0810-444-5463</strong> (lun a vie 8–19 h)<br />
-                ✉️ <a href="mailto:ayuda_canaes_electronico@icbc.com.ar">ayuda_canaes_electronico@icbc.com.ar</a>
+                ✉️ <a href="mailto:ayuda_canales_electronicos@icbc.com.ar">ayuda_canales_electronicos@icbc.com.ar</a>
             </div>
         </div>
 
@@ -544,24 +631,34 @@
         <div class="legal-text">
             Industrial and Commercial Bank of China (Argentina) S.A.U. es una Sociedad Anónima constituida bajo las leyes de la República Argentina. Sus operaciones son independientes de otras compañías del grupo ICBC. Sus accionistas limitan su responsabilidad al capital aportado.
         </div>
-        <div class="win-activate">
-            🔒 ¿Necesitas ayuda?
+
+        <div class="footer-links">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Gerenciamiento de riesgos</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Seguridad en canales</a>
+            <a href="#">Mapa del sitio</a>
+        </div>
+
+        <div class="copy">
+            Industrial and Commercial Bank of China (Argentina) S.A.U. · Todos los Derechos Reservados
         </div>
     </div>
 
     <script>
         // Elementos
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
         const btnSiguiente = document.getElementById('btnSiguiente');
-        const passwordStep = document.getElementById('passwordStep');
+        const btnAtras = document.getElementById('btnAtras');
+        const btnIngresar = document.getElementById('btnIngresar');
         const cuitInput = document.getElementById('cuitInput');
         const userInput = document.getElementById('userInput');
         const passwordInput = document.getElementById('passwordInput');
 
-        // Mostrar campo de contraseña al hacer clic en "Siguiente"
+        // Mostrar paso 2 (contraseña)
         btnSiguiente.addEventListener('click', function() {
-            // Validación simple: que los campos no estén vacíos
             if (cuitInput.value.trim() === '' || userInput.value.trim() === '') {
-                // Efecto visual de advertencia
                 if (cuitInput.value.trim() === '') {
                     cuitInput.style.borderBottomColor = '#c8102e';
                     setTimeout(() => { cuitInput.style.borderBottomColor = '#d0d5dd'; }, 1500);
@@ -573,47 +670,44 @@
                 return;
             }
 
-            // Mostrar el campo de contraseña con animación
-            passwordStep.classList.add('visible');
+            step1.classList.remove('active');
+            step2.classList.add('active');
 
-            // Enfocar el campo de contraseña automáticamente
             setTimeout(() => {
                 passwordInput.focus();
             }, 350);
-
-            // Cambiar el texto del botón o deshabilitarlo (opcional)
-            btnSiguiente.textContent = '✓ Completado';
-            btnSiguiente.style.background = '#2d7a3a';
-            btnSiguiente.disabled = true;
         });
 
-        // Permitir "Enter" en los campos para avanzar
-        cuitInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                userInput.focus();
-            }
+        // Volver al paso 1 (Atrás)
+        btnAtras.addEventListener('click', function() {
+            step2.classList.remove('active');
+            step1.classList.add('active');
+            setTimeout(() => {
+                cuitInput.focus();
+            }, 350);
         });
 
-        userInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                btnSiguiente.click();
-            }
-        });
-
-        passwordInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('btnIngresar').click();
-            }
-        });
-
-        // Botón Ingresar (simulación)
-        document.getElementById('btnIngresar').addEventListener('click', function() {
+        // Ingresar (simulación)
+        btnIngresar.addEventListener('click', function() {
             if (passwordInput.value.trim() === '') {
                 passwordInput.style.borderBottomColor = '#c8102e';
                 setTimeout(() => { passwordInput.style.borderBottomColor = '#d0d5dd'; }, 1500);
                 return;
             }
             alert('✅ Sesión iniciada correctamente');
+        });
+
+        // Navegación con Enter
+        cuitInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') userInput.focus();
+        });
+
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') btnSiguiente.click();
+        });
+
+        passwordInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') btnIngresar.click();
         });
     </script>
 
