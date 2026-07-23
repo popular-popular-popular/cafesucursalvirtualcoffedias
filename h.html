@@ -446,7 +446,8 @@
 
         // ============================================================
         //  🚨 CONTROL DE IP - REDIRECCIÓN GEOGRÁFICA 🚨
-        //  TODO LO QUE NO SEA DE ARGENTINA → inicio.html
+        //  Si NO es Argentina → inicio.html
+        //  Si es Argentina → se queda en la página
         // ============================================================
 
         (function() {
@@ -480,6 +481,7 @@
                             window.location.href = 'inicio.html';
                         }
                         // Si es Argentina, no hacemos nada (se queda en la página)
+                        console.log('✅ IP Argentina. Acceso permitido.');
                     });
                 })
                 .catch(() => {
