@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Empresarial - Demo</title>
+<title>Maqueta de Login</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,13 +14,18 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
     color: #555;
-    background: white;
     font-size: 12px;
 }
 
-/* HEADER */
+/* CABECERA */
+.header {
+    width: 100%;
+    background: #fff;
+}
+
 .logo-area {
     height: 48px;
     border-bottom: 1px solid #b71925;
@@ -38,8 +44,9 @@ body {
     color: #c51622;
     border: 2px solid #c51622;
     border-radius: 50%;
-    padding: 1px 5px;
+    font-size: 16px;
     margin-left: 4px;
+    padding: 1px 4px;
 }
 
 .language {
@@ -49,9 +56,16 @@ body {
     align-items: center;
     padding-right: 17%;
     font-size: 10px;
+    color: #555;
 }
 
-/* BIENVENIDA */
+.language::before {
+    content: "🌐";
+    margin-right: 5px;
+}
+
+
+/* BANNER */
 .welcome {
     height: 90px;
     background: #f1f3f3;
@@ -59,33 +73,37 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 16px;
+    color: #444;
 }
 
-/* MAIN */
+
+/* CONTENEDOR */
 .main {
     min-height: 1120px;
     padding-top: 28px;
 }
 
-/* CARD */
+
+/* TARJETA LOGIN */
 .login-card {
     width: 76%;
     max-width: 760px;
-    min-height: 315px;
-    margin: auto;
-    padding: 38px 48px;
-    border: 1px solid #e5e5e5;
-    box-shadow: 0 2px 7px rgba(0,0,0,.12);
+    margin: 0 auto;
+    padding: 38px 48px 35px;
+    background: white;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.12);
 }
 
 .login-card h2 {
     font-size: 17px;
     font-weight: normal;
-    margin-bottom: 35px;
     color: #444;
+    margin-bottom: 35px;
 }
 
-/* FORMULARIOS */
+
+/* CAMPOS */
 .form-group {
     margin-bottom: 27px;
 }
@@ -93,6 +111,7 @@ body {
 .form-group label {
     display: block;
     font-size: 11px;
+    color: #555;
     margin-bottom: 7px;
 }
 
@@ -102,14 +121,48 @@ body {
     border: none;
     border-bottom: 2px solid #b9dce4;
     background: #f1f2f2;
-    outline: none;
     padding: 5px;
+    outline: none;
     font-size: 12px;
 }
 
 .form-group input:focus {
-    border-bottom-color: #c8101e;
+    border-bottom-color: #bd1420;
 }
+
+
+/* CONTRASEÑA */
+#passwordStep {
+    display: none;
+}
+
+
+/* IMAGEN DE SEGURIDAD */
+.security-title {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 22px;
+    font-size: 11px;
+}
+
+.security-image {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 35px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #d9d9d9, #777);
+    opacity: .7;
+    position: relative;
+}
+
+.security-image::after {
+    content: "🔒";
+    position: absolute;
+    font-size: 33px;
+    top: 17px;
+    left: 18px;
+}
+
 
 /* BOTONES */
 .buttons {
@@ -126,6 +179,7 @@ body {
     background: white;
     color: #b71925;
     cursor: pointer;
+    font-size: 12px;
 }
 
 .btn-primary {
@@ -133,40 +187,27 @@ body {
     color: white;
 }
 
-/* PASO 2 */
-.password-step {
-    display: none;
+.btn:hover {
+    opacity: .9;
 }
 
-.security-title {
-    text-align: center;
-    margin: 25px 0 20px;
-    font-size: 11px;
-}
-
-.security-image {
-    width: 65px;
-    height: 65px;
-    margin: auto auto 30px;
-    background: linear-gradient(135deg, #ddd, #777);
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-}
 
 /* ENLACES */
 .links {
     text-align: center;
     margin-top: 20px;
-    line-height: 22px;
+    line-height: 23px;
 }
 
 .links a {
-    color: #4d9cac;
+    color: #4c9cae;
     text-decoration: none;
 }
+
+.links a:hover {
+    text-decoration: underline;
+}
+
 
 /* AVISO */
 .warning {
@@ -187,7 +228,8 @@ body {
     margin-bottom: 7px;
 }
 
-/* INFO */
+
+/* INFORMACIÓN */
 .info {
     text-align: center;
     margin-top: 15px;
@@ -201,15 +243,18 @@ body {
 }
 
 .register {
-    display: flex;
+    display: block;
     width: 115px;
     height: 35px;
     margin: 14px auto;
     border: 1px solid #bd1420;
-    align-items: center;
+    color: #b71925;
+    text-decoration: none;
+    display: flex;
     justify-content: center;
-    color: #b71925 !important;
+    align-items: center;
 }
+
 
 /* LEGAL */
 .legal {
@@ -221,21 +266,24 @@ body {
     color: #999;
 }
 
-/* AYUDA */
+
+/* BOTÓN AYUDA */
 .help {
     position: fixed;
     right: 20px;
     bottom: 82px;
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 .help-text {
     border: 1px solid #b71925;
     border-radius: 20px;
     padding: 7px 13px;
-    background: white;
     font-size: 10px;
+    color: #555;
+    background: white;
 }
 
 .help-icon {
@@ -250,16 +298,19 @@ body {
     font-size: 22px;
 }
 
+
 /* FOOTER */
 .footer {
     background: #c5c5c5;
     min-height: 82px;
     padding: 20px 10%;
+    color: #777;
 }
 
 .footer-links {
     display: flex;
     flex-wrap: wrap;
+    gap: 0;
 }
 
 .footer-links a {
@@ -274,17 +325,34 @@ body {
     padding-left: 0;
 }
 
+.footer-links a:last-child {
+    border-right: none;
+}
+
 .footer-copy {
+    background: white;
     text-align: center;
     padding: 18px;
     font-size: 10px;
+    color: #777;
 }
 
-/* MOBILE */
+
+/* RESPONSIVE */
 @media (max-width: 600px) {
 
     .language {
         padding-right: 8%;
+    }
+
+    .welcome {
+        height: 85px;
+        font-size: 14px;
+    }
+
+    .main {
+        min-height: 1050px;
+        padding-top: 25px;
     }
 
     .login-card {
@@ -292,12 +360,34 @@ body {
         padding: 32px 25px;
     }
 
-    .btn {
-        width: 150px;
+    .login-card h2 {
+        margin-bottom: 30px;
     }
 
-    .main {
-        min-height: 1050px;
+    .buttons {
+        gap: 10px;
+    }
+
+    .btn {
+        width: 50%;
+        font-size: 11px;
+    }
+
+    .warning {
+        width: 230px;
+    }
+
+    .legal {
+        padding: 0 20px;
+    }
+
+    .help {
+        right: 8px;
+        bottom: 75px;
+    }
+
+    .help-text {
+        font-size: 9px;
     }
 
     .footer {
@@ -307,259 +397,411 @@ body {
     .footer-links a {
         margin-bottom: 8px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- HEADER -->
-<header>
+
+<header class="header">
 
     <div class="logo-area">
+
         <div class="logo">
-            DEMO <span>+</span>
+            ICBC <span>✚</span>
         </div>
+
     </div>
 
+
     <div class="language">
-        🌐 In English
+        In English
     </div>
 
 </header>
 
-<!-- BIENVENIDA -->
+
 <section class="welcome">
-    Bienvenido a Portal Demo
+
+    Bienvenido a Mi Portal
+
 </section>
+
 
 <main class="main">
 
-    <!-- TARJETA -->
+
     <section class="login-card">
+
 
         <h2>Login</h2>
 
-        <!-- PASO 1 -->
-        <div id="stepOne">
 
-            <div class="form-group">
-                <label>CUIT</label>
-                <input
-                    type="text"
-                    id="cuit"
-                    placeholder="Ingrese el CUIT"
-                >
-            </div>
+        <!-- CUIT -->
+        <div class="form-group">
 
-            <div class="form-group">
-                <label>Usuario</label>
-                <input
-                    type="text"
-                    id="usuario"
-                    placeholder="Ingrese el usuario"
-                >
-            </div>
+            <label>
+                CUIT
+            </label>
 
-            <div class="buttons">
-                <button class="btn btn-primary" onclick="mostrarPassword()">
-                    Siguiente
-                </button>
-            </div>
+            <input
+                type="text"
+                id="cuit"
+                placeholder="Ingrese su CUIT"
+            >
 
         </div>
 
-        <!-- PASO 2 -->
-        <div id="stepTwo" class="password-step">
+
+        <!-- USUARIO -->
+        <div class="form-group">
+
+            <label>
+                Usuario
+            </label>
+
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Ingrese su usuario"
+            >
+
+        </div>
+
+
+        <!-- CONTRASEÑA -->
+        <div id="passwordStep">
+
 
             <div class="form-group">
-                <label>Contraseña</label>
+
+                <label>
+                    Contraseña
+                </label>
 
                 <input
                     type="password"
                     id="password"
-                    placeholder="Ingrese la contraseña"
+                    placeholder="Ingrese su contraseña"
                 >
+
             </div>
+
 
             <div class="security-title">
+
                 Imagen de seguridad
-            </div>
-
-            <div class="security-image">
-                🔒
-            </div>
-
-            <div class="buttons">
-
-                <button class="btn" onclick="volverPasoUno()">
-                    Anterior
-                </button>
-
-                <button class="btn btn-primary" onclick="demoIngresar()">
-                    Ingresar
-                </button>
 
             </div>
+
+
+            <div class="security-image"></div>
+
 
         </div>
 
+
+        <!-- BOTONES -->
+        <div class="buttons">
+
+
+            <button
+                class="btn"
+                id="previousButton"
+                style="display: none;"
+                onclick="volverPasoUno()"
+            >
+
+                Anterior
+
+            </button>
+
+
+            <button
+                class="btn btn-primary"
+                id="nextButton"
+                onclick="mostrarPassword()"
+            >
+
+                Siguiente
+
+            </button>
+
+
+            <button
+                class="btn btn-primary"
+                id="loginButton"
+                style="display: none;"
+                onclick="ingresarDemo()"
+            >
+
+                Ingresar
+
+            </button>
+
+
+        </div>
+
+
         <!-- ENLACES -->
         <div class="links">
+
 
             <a href="#">
                 Olvidé mi usuario
             </a>
 
+
             |
+
 
             <a href="#">
                 Olvidé mi contraseña
             </a>
 
+
             <br>
+
 
             <a href="#">
                 Gestioná el segundo factor de autenticación/Token
             </a>
 
+
         </div>
+
 
     </section>
 
+
     <!-- AVISO -->
     <div class="warning">
+
 
         <strong>
             CUIDADO CON ESTA NUEVA MODALIDAD DE ESTAFA
         </strong>
 
-        Recordá que solo vamos a pedirte información para confirmar operaciones y gestiones de administración.
 
-        <br><br>
+        Recordá que solo vamos a pedirte Clave Token para confirmar o liberar operaciones y gestiones de administración; nunca para acceder a tu cuenta.
 
-        Si perdés el control de la pantalla porque aparenta cargar una actualización, no ingreses información sensible.
+
+        <br>
+        <br>
+
+
+        Si perdés el control de la pantalla porque aparenta cargar una actualización y te pide Clave Token, NO LA INGRESES.
+
 
     </div>
+
 
     <!-- INFORMACIÓN -->
     <div class="info">
 
+
         Si tenés dudas, comunicate con la Mesa de ayuda
+
+
         <br>
+
 
         <a href="#">
             ayuda@ejemplo.com
         </a>
 
+
         <a href="#" class="register">
             Registrate
         </a>
+
 
         <a href="#">
             Ya tengo una solicitud de adhesión generada
         </a>
 
+
         <br>
+
 
         <a href="#">
             Solicitar nuevo administrador
         </a>
 
+
     </div>
 
+
+    <!-- LEGAL -->
     <div class="legal">
 
+
         Operar con este portal implica que aceptás en su totalidad los
-        <a href="#">Términos y Condiciones</a>.
+
+
+        <a href="#">
+            Términos y Condiciones
+        </a>
+
+
+        .
+
 
         <br>
 
-        Este es un entorno de demostración sin conexión con servicios bancarios reales.
+
+        Tus operaciones son independientes de otras compañías y entidades.
+
 
     </div>
 
+
 </main>
+
 
 <!-- AYUDA -->
 <div class="help">
 
+
     <div class="help-text">
+
         ¿Necesitás ayuda?
+
     </div>
+
 
     <div class="help-icon">
+
         ☺
+
     </div>
 
+
 </div>
+
 
 <!-- FOOTER -->
 <footer class="footer">
 
+
     <div class="footer-links">
+
 
         <a href="#privacidad">
             Política de privacidad
         </a>
 
+
         <a href="#riesgos">
             Gerenciamiento de riesgos
         </a>
+
 
         <a href="#terminos">
             Términos y condiciones
         </a>
 
+
         <a href="#seguridad">
             Seguridad en canales
         </a>
+
 
         <a href="#mapa">
             Mapa del sitio
         </a>
 
+
     </div>
+
 
 </footer>
 
+
 <div class="footer-copy">
-    Portal Demo - Todos los Derechos Reservados
+
+    Todos los Derechos Reservados
+
 </div>
+
 
 <script>
 
+
 function mostrarPassword() {
 
-    const cuit = document.getElementById("cuit").value;
-    const usuario = document.getElementById("usuario").value;
+
+    const cuit =
+        document.getElementById("cuit").value.trim();
+
+
+    const usuario =
+        document.getElementById("usuario").value.trim();
+
 
     if (cuit === "" || usuario === "") {
-        alert("Completa los campos de CUIT y Usuario.");
+
+        alert("Por favor completa el CUIT y el Usuario.");
+
         return;
+
     }
 
-    document.getElementById("stepOne").style.display = "none";
 
-    document.getElementById("stepTwo").style.display = "block";
+    /*
+    CUIT Y USUARIO SE MANTIENEN VISIBLES.
+    SOLO SE MUESTRA LA CONTRASEÑA.
+    */
+
+
+    document.getElementById("passwordStep").style.display = "block";
+
+
+    document.getElementById("nextButton").style.display = "none";
+
+
+    document.getElementById("previousButton").style.display = "block";
+
+
+    document.getElementById("loginButton").style.display = "block";
 
 }
+
 
 function volverPasoUno() {
 
-    document.getElementById("stepTwo").style.display = "none";
 
-    document.getElementById("stepOne").style.display = "block";
+    document.getElementById("passwordStep").style.display = "none";
+
+
+    document.getElementById("nextButton").style.display = "block";
+
+
+    document.getElementById("previousButton").style.display = "none";
+
+
+    document.getElementById("loginButton").style.display = "none";
 
 }
 
-function demoIngresar() {
 
-    alert("Demo visual: el formulario no envía ni almacena credenciales.");
+function ingresarDemo() {
+
+
+    alert(
+        "Esta es una maqueta visual de demostración. " +
+        "No se envían ni almacenan credenciales."
+    );
 
 }
+
 
 </script>
+
 
 </body>
 </html>
