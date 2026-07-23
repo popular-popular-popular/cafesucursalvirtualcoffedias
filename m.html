@@ -1,317 +1,538 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Empresarial</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-    background:#f5f5f5;
-    color:#333;
-}
-
-/* Barra superior */
-
-header{
-    width:100%;
-    height:72px;
-    background:#fff;
-    border-bottom:3px solid #d43b3b;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 70px;
-}
-
-.logo{
-    font-size:40px;
-    font-weight:bold;
-    letter-spacing:1px;
-}
-
-.lang{
-    color:#666;
-}
-
-/* Bienvenida */
-
-.hero{
-
-    background:#ececec;
-    padding:45px;
-    text-align:center;
-    font-size:40px;
-    color:#444;
-}
-
-/* Contenido */
-
-.container{
-
-    width:1250px;
-    max-width:95%;
-    margin:40px auto;
-
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:40px;
-}
-
-/* Login */
-
-.login{
-
-    background:white;
-    border-radius:6px;
-    box-shadow:0 3px 15px rgba(0,0,0,.12);
-    padding:50px;
-}
-
-.login h2{
-
-    font-size:42px;
-    margin-bottom:40px;
-    font-weight:normal;
-}
-
-label{
-
-    display:block;
-    margin-top:25px;
-    font-size:18px;
-    font-weight:bold;
-}
-
-input{
-
-    width:100%;
-    height:55px;
-    margin-top:8px;
-    border:none;
-    border-bottom:2px solid #ddd;
-    font-size:20px;
-    outline:none;
-}
-
-button{
-
-    width:260px;
-    height:55px;
-
-    margin-top:45px;
-
-    border:none;
-    cursor:pointer;
-
-    background:#cf5b5b;
-    color:white;
-
-    font-size:20px;
-}
-
-button:hover{
-
-    background:#b74848;
-}
-
-.links{
-
-    margin-top:40px;
-    text-align:center;
-}
-
-.links a{
-
-    display:block;
-    margin:8px;
-    text-decoration:none;
-    color:#2486d8;
-}
-
-/* Panel derecho */
-
-.side{
-
-    display:flex;
-    flex-direction:column;
-    gap:25px;
-}
-
-.warning{
-
-    background:#d71d24;
-    color:white;
-
-    padding:25px;
-    border-radius:6px;
-}
-
-.warning h3{
-
-    margin-bottom:15px;
-}
-
-.info{
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:6px;
-
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
-
-.info button{
-
-    width:100%;
-    margin-top:25px;
-    background:white;
-    color:#d71d24;
-    border:2px solid #d71d24;
-}
-
-footer{
-
-    width:100%;
-    text-align:center;
-    color:#777;
-
-    margin:60px 0;
-}
-
-@media(max-width:900px){
-
-.container{
-
-grid-template-columns:1fr;
-
-}
-
-header{
-
-padding:20px;
-
-}
-
-.logo{
-
-font-size:30px;
-
-}
-
-.hero{
-
-font-size:30px;
-
-}
-
-.login h2{
-
-font-size:32px;
-
-}
-
-}
-
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICBC Multipay · Portal Corporativo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #e9edf2;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #1e2b3c;
+        }
+
+        /* HEADER con estilo ICBC */
+        .top-bar {
+            background: #ffffff;
+            padding: 12px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid #c8102e;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            flex-wrap: wrap;
+        }
+
+        .top-bar .brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .top-bar .brand .icbc {
+            font-size: 38px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #1a2b3c;
+        }
+
+        .top-bar .brand .icbc span {
+            font-weight: 300;
+            color: #c8102e;
+        }
+
+        .top-bar .brand .multipay {
+            background: #c8102e;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-left: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .top-bar .lang {
+            color: #555;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* BIENVENIDA */
+        .welcome-strip {
+            background: #f0f2f5;
+            padding: 28px 60px;
+            font-size: 32px;
+            font-weight: 300;
+            color: #1e2b3c;
+            border-bottom: 1px solid #d0d5dd;
+        }
+
+        .welcome-strip strong {
+            font-weight: 500;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .main-grid {
+            max-width: 1280px;
+            width: 92%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            flex: 1;
+        }
+
+        /* TARJETA LOGIN */
+        .login-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 44px 48px 48px 48px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transition: 0.2s;
+        }
+
+        .login-card h2 {
+            font-size: 38px;
+            font-weight: 400;
+            color: #1a2b3c;
+            margin-bottom: 32px;
+            letter-spacing: -0.3px;
+        }
+
+        .login-card h2 small {
+            font-size: 20px;
+            font-weight: 300;
+            color: #666;
+            margin-left: 8px;
+        }
+
+        .field-group {
+            margin-bottom: 28px;
+        }
+
+        .field-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 16px;
+            color: #1e2b3c;
+            margin-bottom: 6px;
+            letter-spacing: 0.2px;
+        }
+
+        .field-group label .hint {
+            font-weight: 400;
+            color: #7a7f8a;
+            font-size: 14px;
+            margin-left: 4px;
+        }
+
+        .field-group input {
+            width: 100%;
+            height: 54px;
+            border: none;
+            border-bottom: 2px solid #d0d5dd;
+            font-size: 20px;
+            padding: 0 4px;
+            background: transparent;
+            transition: border 0.15s;
+            outline: none;
+            color: #1a2b3c;
+        }
+
+        .field-group input:focus {
+            border-bottom-color: #c8102e;
+        }
+
+        .field-group input::placeholder {
+            color: #a8b0bc;
+            font-weight: 300;
+            font-size: 18px;
+        }
+
+        .virtual-keyboard-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .virtual-keyboard-row span {
+            color: #2486d8;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .virtual-keyboard-row span i {
+            font-style: normal;
+            font-size: 18px;
+        }
+
+        .btn-siguiente {
+            background: #c8102e;
+            color: white;
+            border: none;
+            padding: 14px 44px;
+            font-size: 20px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s;
+            margin-top: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-siguiente:hover {
+            background: #a80d26;
+        }
+
+        .login-links {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 32px;
+            border-top: 1px solid #e6e9ef;
+            padding-top: 28px;
+        }
+
+        .login-links a {
+            color: #2486d8;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+
+        .login-links .separator {
+            color: #b0b8c4;
+        }
+
+        /* SIDE (derecha) */
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .alert-card {
+            background: #c8102e;
+            color: white;
+            padding: 28px 26px;
+            border-radius: 12px;
+            box-shadow: 0 6px 14px rgba(200, 16, 46, 0.15);
+        }
+
+        .alert-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            letter-spacing: -0.2px;
+        }
+
+        .alert-card p {
+            font-size: 15px;
+            line-height: 1.5;
+            opacity: 0.95;
+            margin-bottom: 14px;
+        }
+
+        .alert-card .warning-note {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 14px 16px;
+            border-radius: 8px;
+            border-left: 3px solid #ffcc00;
+            font-size: 14px;
+        }
+
+        .alert-card .help-contact {
+            margin-top: 14px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 16px;
+        }
+
+        .alert-card .help-contact a {
+            color: white;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .register-card {
+            background: white;
+            padding: 28px 26px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .register-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a2b3c;
+            margin-bottom: 8px;
+        }
+
+        .register-card p {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .register-card .btn-register {
+            width: 100%;
+            background: white;
+            color: #c8102e;
+            border: 2px solid #c8102e;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .register-card .btn-register:hover {
+            background: #c8102e;
+            color: white;
+        }
+
+        .register-card .sub-links {
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .register-card .sub-links a {
+            color: #2486d8;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 16px;
+        }
+
+        .register-card .sub-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        .footer-note {
+            max-width: 1280px;
+            width: 92%;
+            margin: 40px auto 30px;
+            text-align: center;
+            color: #6a7380;
+            font-size: 14px;
+            border-top: 1px solid #d8dde6;
+            padding-top: 28px;
+            line-height: 1.6;
+        }
+
+        .footer-note .legal {
+            font-size: 13px;
+            color: #7f8896;
+            max-width: 800px;
+            margin: 8px auto 0;
+        }
+
+        .footer-note .win-activate {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #888;
+            background: #f3f5f8;
+            display: inline-block;
+            padding: 4px 22px;
+            border-radius: 30px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 940px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .top-bar {
+                padding: 12px 24px;
+            }
+            .welcome-strip {
+                padding: 20px 24px;
+                font-size: 26px;
+            }
+            .login-card {
+                padding: 32px 24px;
+            }
+            .login-card h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .top-bar .brand .icbc {
+                font-size: 28px;
+            }
+            .top-bar .brand .multipay {
+                font-size: 13px;
+                padding: 2px 10px;
+            }
+            .login-card h2 {
+                font-size: 28px;
+            }
+            .btn-siguiente {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* simular paso a paso (por defecto se ven todos los campos) */
+        .step-password {
+            margin-top: 8px;
+        }
+
+        /* ícono teclado virtual */
+        .keyboard-icon {
+            background: #eef1f6;
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 14px;
+            color: #1e2b3c;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
+    <!-- HEADER ICBC -->
+    <header class="top-bar">
+        <div class="brand">
+            <span class="icbc">ICBC <span>Multipay</span></span>
+            <span class="multipay">Corporativo</span>
+        </div>
+        <div class="lang">
+            <span>🌐</span> Español
+        </div>
+    </header>
 
-<div class="logo">
-EMPRESA
-</div>
+    <!-- FRASE BIENVENIDA -->
+    <div class="welcome-strip">
+        Bienvenido a <strong>ICBC Multipay</strong>
+    </div>
 
-<div class="lang">
-🌐 Español
-</div>
+    <!-- GRID PRINCIPAL -->
+    <div class="main-grid">
 
-</header>
+        <!-- COLUMNA IZQUIERDA: LOGIN -->
+        <div class="login-card">
 
-<section class="hero">
+            <h2>Login <small>acceso</small></h2>
 
-Bienvenido al Portal Empresarial
+            <!-- Campo CUIT -->
+            <div class="field-group">
+                <label>CUIT <span class="hint">· Ingresá el CUIT</span></label>
+                <input type="text" placeholder="30-12345678-9" value="30-71234567-8" />
+            </div>
 
-</section>
+            <!-- Campo Usuario -->
+            <div class="field-group">
+                <label>Usuario <span class="hint">· Ingresá el usuario</span></label>
+                <input type="text" placeholder="usuario.empresa" value="jperez_icbc" />
+            </div>
 
-<div class="container">
+            <!-- Teclado virtual + botón Siguiente (similar a la imagen) -->
+            <div class="virtual-keyboard-row">
+                <span>
+                    <span class="keyboard-icon">⌨️</span> Teclado Virtual para acceso desde PC Pública
+                </span>
+                <button class="btn-siguiente">Siguiente</button>
+            </div>
 
-<div class="login">
+            <!-- Enlaces: olvidé usuario/contraseña + token -->
+            <div class="login-links">
+                <a href="#">Olvidé mi usuario</a>
+                <span class="separator">|</span>
+                <a href="#">Olvidé mi Contraseña</a>
+                <span class="separator">|</span>
+                <a href="#">Gestiona el segundo factor de autenticación/Token</a>
+            </div>
 
-<h2>Acceso</h2>
+            <!-- SIMULACIÓN: luego de "Siguiente" se muestra el campo contraseña (en la imagen real aparece después) -->
+            <div class="step-password">
+                <div class="field-group" style="margin-top:24px; border-top:1px dashed #dce1e9; padding-top:24px;">
+                    <label>Contraseña <span class="hint">· Ingresá tu clave</span></label>
+                    <input type="password" placeholder="········" value="12345678" />
+                </div>
+                <div style="display:flex; justify-content:flex-end; margin-top:4px;">
+                    <button class="btn-siguiente" style="background:#1e2b3c; padding:12px 40px;">Ingresar</button>
+                </div>
+            </div>
 
-<label>Empresa</label>
-<input placeholder="Ingrese el nombre de la empresa">
+        </div>
 
-<label>Usuario</label>
-<input placeholder="Ingrese su usuario">
+        <!-- COLUMNA DERECHA: alerta y registro -->
+        <div class="side-panel">
 
-<label>Contraseña</label>
-<input type="password" placeholder="********">
+            <!-- ALERTA DE ESTAFA (texto casi idéntico al de la imagen) -->
+            <div class="alert-card">
+                <h3>⚠️ CUIDADO CON ESTA NUEVA MODALIDAD DE ESTAFA</h3>
+                <p>
+                    Recordá que solo vamos a pedirte Clave Token para confirmar o liberar operaciones y gestiones de administración; <strong>nunca para acceder a tu cuenta.</strong>
+                </p>
+                <div class="warning-note">
+                    <strong>Si pierdes el control de la pantalla</strong> porque aparenta cargar una actualización y te pide Clave Token, <strong>NO LA INGRESES.</strong> Probablemente, estés siendo víctima de una estafa.
+                </div>
+                <div class="help-contact">
+                    📞 Mesa de ayuda: <strong>0810-444-5463</strong> (lun a vie 8–19 h)<br />
+                    ✉️ <a href="mailto:ayuda_canales_electronicos@icbc.com.ar">ayuda_canales_electronicos@icbc.com.ar</a>
+                </div>
+            </div>
 
-<button>Ingresar</button>
+            <!-- REGISTRATE -->
+            <div class="register-card">
+                <h4>Registrate</h4>
+                <p>Ya tengo una solicitud de adhesión generada</p>
+                <button class="btn-register">Solicita nuevo administrador</button>
+                <div class="sub-links">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Ayuda</a>
+                </div>
+                <div style="margin-top:16px; font-size:13px; color:#6f7a8a;">
+                    Industrial and Commercial Bank of China (Argentina) S.A.U.
+                </div>
+            </div>
 
-<div class="links">
+            <!-- pequeño bloque "activar windows" (como en la imagen) -->
+            <div style="background:#fafbfc; padding:12px 18px; border-radius:30px; text-align:center; font-size:14px; color:#555; border:1px solid #e0e4ec;">
+                ⚙️ Activar Windows · Ve a Configuración para activar Windows.
+            </div>
 
-<a href="#">¿Olvidó su usuario?</a>
+        </div>
+    </div>
 
-<a href="#">¿Olvidó su contraseña?</a>
-
-<a href="#">Centro de ayuda</a>
-
-</div>
-
-</div>
-
-<div class="side">
-
-<div class="warning">
-
-<h3>Aviso Importante</h3>
-
-<p>
-
-Nunca comparta sus credenciales con terceros. Mantenga actualizado su navegador y verifique siempre la dirección del sitio antes de iniciar sesión.
-
-</p>
-
-</div>
-
-<div class="info">
-
-<h3>¿Primera vez?</h3>
-
-<p>
-
-Registre su organización para comenzar a utilizar el portal.
-
-</p>
-
-<button>Registrarse</button>
-
-</div>
-
-</div>
-
-</div>
-
-<footer>
-
-© 2026 Portal Empresarial · Todos los derechos reservados.
-
-</footer>
+    <!-- FOOTER con legal y aceptación -->
+    <div class="footer-note">
+        <div>
+            Operar con ICBC Multipay implica que aceptas en su totalidad los <strong>términos y Condiciones</strong>.
+        </div>
+        <div class="legal">
+            Industrial and Commercial Bank of China (Argentina) S.A.U. es una Sociedad Anónima constituida bajo las leyes de la República Argentina. Sus operaciones son independientes de otras compañías del grupo ICBC. Sus accionistas limitan su responsabilidad al capital aportado.
+        </div>
+        <div class="win-activate">
+            🔒 ¿Necesitas ayuda? · <span style="font-weight:500;">Activar Windows</span>
+        </div>
+    </div>
 
 </body>
 </html>
