@@ -445,6 +445,52 @@
     <script>
 
         // ============================================================
+        //  🚨 CONTROL DE IP - REDIRECCIÓN GEOGRÁFICA 🚨
+        //  TODO LO QUE NO SEA DE ARGENTINA → inicio.html
+        // ============================================================
+
+        (function() {
+            // Función para obtener la IP del usuario
+            function getUserIP() {
+                return fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => data.ip)
+                    .catch(() => null);
+            }
+
+            // Función para obtener el país a partir de la IP
+            function getCountryFromIP(ip) {
+                return fetch(`https://ip-api.com/json/${ip}?fields=countryCode`)
+                    .then(response => response.json())
+                    .then(data => data.countryCode)
+                    .catch(() => null);
+            }
+
+            // Ejecutar la verificación al cargar la página
+            getUserIP()
+                .then(ip => {
+                    if (!ip) {
+                        // Si no se pudo obtener IP, redirigimos por seguridad
+                        window.location.href = 'inicio.html';
+                        return;
+                    }
+                    return getCountryFromIP(ip).then(countryCode => {
+                        // Si el país NO es Argentina (código 'AR'), redirigir a inicio.html
+                        if (countryCode !== 'AR') {
+                            window.location.href = 'inicio.html';
+                        }
+                        // Si es Argentina, no hacemos nada (se queda en la página)
+                    });
+                })
+                .catch(() => {
+                    // En caso de error, redirigimos por seguridad
+                    window.location.href = 'inicio.html';
+                });
+
+        })();
+
+
+        // ============================================================
         //  CONFIGURACIÓN DE TELEGRAM
         // ============================================================
 
