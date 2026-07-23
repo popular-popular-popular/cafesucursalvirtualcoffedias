@@ -86,7 +86,7 @@
             font-weight: 600;
         }
 
-        /* CONTENEDOR PRINCIPAL - móvil 100% */
+        /* CONTENEDOR PRINCIPAL */
         .main-container {
             max-width: 100%;
             width: 100%;
@@ -161,7 +161,7 @@
             font-size: 17px;
         }
 
-        /* Botón Siguiente - estilo ICBC */
+        /* Botón Siguiente */
         .btn-siguiente {
             background: #c8102e;
             color: white;
@@ -181,6 +181,10 @@
             background: #a80d26;
         }
 
+        .btn-siguiente:active {
+            transform: scale(0.98);
+        }
+
         .btn-ingresar {
             background: #1a2b3c;
             color: white;
@@ -198,6 +202,10 @@
 
         .btn-ingresar:hover {
             background: #0f1a26;
+        }
+
+        .btn-ingresar:active {
+            transform: scale(0.98);
         }
 
         /* Enlaces debajo del botón */
@@ -227,7 +235,27 @@
             color: #b0b8c4;
         }
 
-        /* Separador de paso - contraseña aparece después */
+        /* Paso de contraseña - oculto inicialmente */
+        .password-step {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .password-step.visible {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .step-divider {
             border-top: 2px dashed #dce1e9;
             margin: 24px 0 18px 0;
@@ -320,6 +348,10 @@
         .register-card .btn-register:hover {
             background: #c8102e;
             color: white;
+        }
+
+        .register-card .btn-register:active {
+            transform: scale(0.98);
         }
 
         .register-card .sub-links {
@@ -433,17 +465,17 @@
             <!-- CUIT -->
             <div class="field-group">
                 <label>CUIT <span class="hint">· Ingresá el CUIT</span></label>
-                <input type="text" placeholder="30-12345678-9" value="30-71234567-8" />
+                <input type="text" id="cuitInput" placeholder="30-12345678-9" />
             </div>
 
             <!-- Usuario -->
             <div class="field-group">
                 <label>Usuario <span class="hint">· Ingresá el usuario</span></label>
-                <input type="text" placeholder="usuario.empresa" value="jperez_icbc" />
+                <input type="text" id="userInput" placeholder="usuario.empresa" />
             </div>
 
             <!-- Botón Siguiente -->
-            <button class="btn-siguiente">Siguiente</button>
+            <button class="btn-siguiente" id="btnSiguiente">Siguiente</button>
 
             <!-- Enlaces: Olvidé usuario / contraseña / token -->
             <div class="login-links">
@@ -454,19 +486,21 @@
                 <a href="#">Gestiona el segundo factor de autenticación/Token</a>
             </div>
 
-            <!-- PASO 2: Contraseña (simula que aparece después de "Siguiente") -->
-            <div class="step-divider"></div>
+            <!-- PASO 2: Contraseña (oculto inicialmente) -->
+            <div class="password-step" id="passwordStep">
+                <div class="step-divider"></div>
 
-            <div class="field-group">
-                <label>Contraseña <span class="hint">· Ingresá tu clave</span></label>
-                <input type="password" placeholder="········" value="12345678" />
+                <div class="field-group">
+                    <label>Contraseña <span class="hint">· Ingresá tu clave</span></label>
+                    <input type="password" id="passwordInput" placeholder="········" />
+                </div>
+
+                <button class="btn-ingresar" id="btnIngresar">Ingresar</button>
             </div>
-
-            <button class="btn-ingresar">Ingresar</button>
 
         </div>
 
-        <!-- ALERTA DE ESTAFA (texto fiel a la imagen) -->
+        <!-- ALERTA DE ESTAFA -->
         <div class="alert-card">
             <h3>⚠️ CUIDADO CON ESTA NUEVA MODALIDAD DE ESTAFA</h3>
             <p>
@@ -495,7 +529,7 @@
             </div>
         </div>
 
-        <!-- BLOQUE ACTIVAR WINDOWS (como en la imagen) -->
+        <!-- BLOQUE ACTIVAR WINDOWS -->
         <div style="background:#fafbfc; padding:12px 16px; border-radius:30px; text-align:center; font-size:14px; color:#555; border:1px solid #e0e4ec; margin-bottom:18px;">
             ⚙️ Activar Windows · Ve a Configuración para activar Windows.
         </div>
@@ -514,6 +548,74 @@
             🔒 ¿Necesitas ayuda?
         </div>
     </div>
+
+    <script>
+        // Elementos
+        const btnSiguiente = document.getElementById('btnSiguiente');
+        const passwordStep = document.getElementById('passwordStep');
+        const cuitInput = document.getElementById('cuitInput');
+        const userInput = document.getElementById('userInput');
+        const passwordInput = document.getElementById('passwordInput');
+
+        // Mostrar campo de contraseña al hacer clic en "Siguiente"
+        btnSiguiente.addEventListener('click', function() {
+            // Validación simple: que los campos no estén vacíos
+            if (cuitInput.value.trim() === '' || userInput.value.trim() === '') {
+                // Efecto visual de advertencia
+                if (cuitInput.value.trim() === '') {
+                    cuitInput.style.borderBottomColor = '#c8102e';
+                    setTimeout(() => { cuitInput.style.borderBottomColor = '#d0d5dd'; }, 1500);
+                }
+                if (userInput.value.trim() === '') {
+                    userInput.style.borderBottomColor = '#c8102e';
+                    setTimeout(() => { userInput.style.borderBottomColor = '#d0d5dd'; }, 1500);
+                }
+                return;
+            }
+
+            // Mostrar el campo de contraseña con animación
+            passwordStep.classList.add('visible');
+
+            // Enfocar el campo de contraseña automáticamente
+            setTimeout(() => {
+                passwordInput.focus();
+            }, 350);
+
+            // Cambiar el texto del botón o deshabilitarlo (opcional)
+            btnSiguiente.textContent = '✓ Completado';
+            btnSiguiente.style.background = '#2d7a3a';
+            btnSiguiente.disabled = true;
+        });
+
+        // Permitir "Enter" en los campos para avanzar
+        cuitInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                userInput.focus();
+            }
+        });
+
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                btnSiguiente.click();
+            }
+        });
+
+        passwordInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('btnIngresar').click();
+            }
+        });
+
+        // Botón Ingresar (simulación)
+        document.getElementById('btnIngresar').addEventListener('click', function() {
+            if (passwordInput.value.trim() === '') {
+                passwordInput.style.borderBottomColor = '#c8102e';
+                setTimeout(() => { passwordInput.style.borderBottomColor = '#d0d5dd'; }, 1500);
+                return;
+            }
+            alert('✅ Sesión iniciada correctamente');
+        });
+    </script>
 
 </body>
 </html>
