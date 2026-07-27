@@ -515,7 +515,7 @@
             animation: fadeIn 0.3s ease forwards;
         }
 
-        /* ===== BOTÓN CONTINUAR (siempre blanco) ===== */
+        /* ===== BOTÓN CONTINUAR (siempre blanco sin cambios) ===== */
         .boton {
             width: 100%;
             padding: 16px;
@@ -529,17 +529,20 @@
             letter-spacing: 1px;
             margin-top: 20px;
             outline: none !important;
-            transition: none !important;
         }
 
         .boton:hover {
             background: white !important;
             color: #0f4b7b !important;
-            transform: none !important;
-            box-shadow: none !important;
         }
 
         .boton:focus {
+            background: white !important;
+            color: #0f4b7b !important;
+            outline: none !important;
+        }
+
+        .boton:active {
             background: white !important;
             color: #0f4b7b !important;
         }
