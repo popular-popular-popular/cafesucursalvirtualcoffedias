@@ -71,11 +71,28 @@
             align-items: center;
         }
 
-        .top-info span {
+        .top-info a {
+            color: white;
+            text-decoration: none;
             font-size: 14px;
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: opacity 0.3s;
+        }
+
+        .top-info a:hover {
+            opacity: 0.8;
+        }
+
+        .top-info a img {
+            height: 20px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .top-info .icon-tel {
+            height: 18px;
         }
 
         /* ===== HERO ===== */
@@ -127,15 +144,27 @@
             font-size: 16px;
         }
 
+        .info-contacto .item img {
+            height: 24px;
+            width: auto;
+        }
+
         .info-contacto .item strong {
             font-weight: bold;
         }
 
         .badge-app {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-top: 5px;
             font-size: 14px;
             opacity: 0.8;
+        }
+
+        .badge-app img {
+            height: 30px;
+            width: auto;
         }
 
         /* ===== LOGIN CARD ===== */
@@ -322,6 +351,10 @@
                 align-items: center;
             }
 
+            .badge-app {
+                justify-content: center;
+            }
+
             .login {
                 width: 100%;
                 max-width: 420px;
@@ -387,10 +420,23 @@
             </div>
 
             <div class="top-info">
-                <span>📞 0800 777 2262</span>
-                <span>📱 App</span>
-                <span>Facebook</span>
-                <span>Instagram</span>
+                <a href="#">
+                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-tel.png" alt="Teléfono" class="icon-tel">
+                    0800 777 2262
+                </a>
+                <a href="#">
+                    <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png" alt="Apple">
+                    <img src="https://hb.bancoformosa.com.ar/assets/img/android.png" alt="Android">
+                    App
+                </a>
+                <a href="#">
+                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png" alt="Facebook">
+                    Facebook
+                </a>
+                <a href="#">
+                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png" alt="Instagram">
+                    Instagram
+                </a>
             </div>
         </header>
 
@@ -406,14 +452,18 @@
 
                         <div class="info-contacto">
                             <div class="item">
-                                <span>📞</span>
+                                <img src="https://hb.bancoformosa.com.ar/assets/img/icon-tel.png" alt="Teléfono">
                                 <span><strong>0800 777 2262</strong> · Lunes a Viernes 7 a 19 Hs.</span>
                             </div>
                             <div class="item">
-                                <span>📱</span>
+                                <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png" alt="Apple">
                                 <span><strong>Descarga nuestra App</strong> · Disponible para iOS y Android</span>
                             </div>
-                            <div class="badge-app">⭐ App Store · Google Play</div>
+                            <div class="badge-app">
+                                <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png" alt="App Store">
+                                <img src="https://hb.bancoformosa.com.ar/assets/img/android.png" alt="Google Play">
+                                <span>App Store · Google Play</span>
+                            </div>
                         </div>
                     </div>
 
