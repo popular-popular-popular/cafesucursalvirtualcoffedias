@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Banking</title>
+    <title>Maqueta Home Banking</title>
     <style>
         /* ===== RESET Y ESTILOS BASE ===== */
         * {
@@ -83,7 +83,7 @@
         }
 
         .logo-img {
-            height: 50px;
+            height: 60px;
             width: auto;
             object-fit: contain;
             margin-right: 15px;
@@ -179,18 +179,106 @@
         }
 
         .texto h1 {
-            font-size: 32px;
+            font-size: 42px;
             margin-bottom: 20px;
             line-height: 1.2;
             font-weight: 700;
         }
 
         .texto p {
-            font-size: 15px;
+            font-size: 18px;
             line-height: 1.6;
             margin-bottom: 30px;
             opacity: 0.9;
             font-weight: 400;
+        }
+
+        /* ===== TECLADO VIRTUAL ===== */
+        .banner-keyboard {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 12px;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 100%;
+        }
+
+        .banner-keyboard.active {
+            display: block;
+        }
+
+        .hg-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hg-row {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .hg-button {
+            flex: 1;
+            min-width: 28px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            background: rgba(200, 200, 200, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: background 0.15s;
+            font-family: "Open Sans", Arial, sans-serif;
+        }
+
+        .hg-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .hg-button:active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .hg-functionBtn {
+            background: rgba(200, 200, 200, 0.15) !important;
+            font-size: 11px !important;
+            flex: 1.3 !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 400 !important;
+            text-transform: lowercase !important;
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        }
+
+        .hg-functionBtn:hover {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #333 !important;
+        }
+
+        .hg-functionBtn:active {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #333 !important;
+        }
+
+        .hg-button-bksp {
+            flex: 1.5 !important;
+        }
+
+        .hg-button-enter {
+            flex: 1.5 !important;
+        }
+
+        .hg-button-shift {
+            flex: 1.3 !important;
         }
 
         /* ===== LOGIN BOX ===== */
@@ -291,7 +379,7 @@
             margin-bottom: 16px;
         }
 
-        /* ===== TECLADO VIRTUAL (checkbox personalizado en línea) ===== */
+        /* ===== CHECKBOX TECLADO VIRTUAL ===== */
         .position-relative {
             position: relative !important;
         }
@@ -427,12 +515,12 @@
             animation: fadeIn 0.3s ease forwards;
         }
 
-        /* ===== BOTONES ===== */
+        /* ===== BOTÓN CONTINUAR (siempre blanco sin cambios) ===== */
         .boton {
             width: 100%;
             padding: 16px;
-            background: white;
-            color: #0f4b7b;
+            background: white !important;
+            color: #0f4b7b !important;
             font-weight: bold;
             font-size: 17px;
             border: none;
@@ -441,19 +529,29 @@
             letter-spacing: 1px;
             margin-top: 20px;
             outline: none !important;
-            transition: none;
         }
 
         .boton:hover {
-            background: white;
-            color: #0f4b7b;
-            transform: none;
-            box-shadow: none;
+            background: white !important;
+            color: #0f4b7b !important;
+        }
+
+        .boton:focus {
+            background: white !important;
+            color: #0f4b7b !important;
+            outline: none !important;
+        }
+
+        .boton:active {
+            background: white !important;
+            color: #0f4b7b !important;
         }
 
         .boton:disabled {
-            opacity: 0.5;
+            opacity: 1 !important;
             cursor: not-allowed;
+            background: white !important;
+            color: #0f4b7b !important;
         }
 
         /* ===== FORGOT TEXT ===== */
@@ -604,25 +702,35 @@
             .links .apps p {
                 font-size: 12px;
             }
+            .hg-button {
+                height: 32px;
+                font-size: 11px !important;
+            }
+            .hg-row {
+                gap: 4px;
+            }
+            .hg-functionBtn {
+                font-size: 10px !important;
+            }
         }
 
         @media only screen and (max-width: 810px) {
-            /* ===== OCULTAR TEXTO DEL BANNER EN MÓVIL ===== */
             .texto {
                 display: none !important;
             }
             
-            /* ===== OCULTAR LINKS DEL HEADER EN MÓVIL ===== */
+            .banner-keyboard {
+                display: none !important;
+            }
+            
             .header-info .links {
                 display: none !important;
             }
             
-            /* ===== OCULTAR TECLADO VIRTUAL EN MÓVIL ===== */
             .notmobile {
                 display: none !important;
             }
             
-            /* ===== CENTRAR LOGO EN MÓVIL ===== */
             .header-info {
                 justify-content: center !important;
             }
@@ -794,6 +902,10 @@
                 display: none !important;
             }
             
+            .banner-keyboard {
+                display: none !important;
+            }
+            
             .header-info .links {
                 display: none !important;
             }
@@ -940,6 +1052,66 @@
                             Estamos mejorando constantemente para vos, nuestro Homebanking es 
                             moderno y fácil de usar, con más funcionalidades y beneficios.
                         </p>
+
+                        <!-- ===== TECLADO VIRTUAL ===== -->
+                        <div class="banner-keyboard" id="virtualKeyboard">
+                            <div class="hg-rows">
+                                <div class="hg-row">
+                                    <div class="hg-button" onclick="escribirTecla('1')">1</div>
+                                    <div class="hg-button" onclick="escribirTecla('2')">2</div>
+                                    <div class="hg-button" onclick="escribirTecla('3')">3</div>
+                                    <div class="hg-button" onclick="escribirTecla('4')">4</div>
+                                    <div class="hg-button" onclick="escribirTecla('5')">5</div>
+                                    <div class="hg-button" onclick="escribirTecla('6')">6</div>
+                                    <div class="hg-button" onclick="escribirTecla('7')">7</div>
+                                    <div class="hg-button" onclick="escribirTecla('8')">8</div>
+                                    <div class="hg-button" onclick="escribirTecla('9')">9</div>
+                                    <div class="hg-button" onclick="escribirTecla('0')">0</div>
+                                    <div class="hg-button hg-functionBtn hg-button-bksp" onclick="escribirTecla('bksp')">backspace</div>
+                                </div>
+                                <div class="hg-row">
+                                    <div class="hg-button" onclick="escribirTecla('q')">q</div>
+                                    <div class="hg-button" onclick="escribirTecla('w')">w</div>
+                                    <div class="hg-button" onclick="escribirTecla('e')">e</div>
+                                    <div class="hg-button" onclick="escribirTecla('r')">r</div>
+                                    <div class="hg-button" onclick="escribirTecla('t')">t</div>
+                                    <div class="hg-button" onclick="escribirTecla('y')">y</div>
+                                    <div class="hg-button" onclick="escribirTecla('u')">u</div>
+                                    <div class="hg-button" onclick="escribirTecla('i')">i</div>
+                                    <div class="hg-button" onclick="escribirTecla('o')">o</div>
+                                    <div class="hg-button" onclick="escribirTecla('p')">p</div>
+                                    <div class="hg-button hg-functionBtn hg-button-enter" onclick="escribirTecla('enter')">enter</div>
+                                </div>
+                                <div class="hg-row">
+                                    <div class="hg-button hg-functionBtn hg-button-shift" onclick="escribirTecla('shift')">shift</div>
+                                    <div class="hg-button" onclick="escribirTecla('a')">a</div>
+                                    <div class="hg-button" onclick="escribirTecla('s')">s</div>
+                                    <div class="hg-button" onclick="escribirTecla('d')">d</div>
+                                    <div class="hg-button" onclick="escribirTecla('f')">f</div>
+                                    <div class="hg-button" onclick="escribirTecla('g')">g</div>
+                                    <div class="hg-button" onclick="escribirTecla('h')">h</div>
+                                    <div class="hg-button" onclick="escribirTecla('j')">j</div>
+                                    <div class="hg-button" onclick="escribirTecla('k')">k</div>
+                                    <div class="hg-button" onclick="escribirTecla('l')">l</div>
+                                    <div class="hg-button" onclick="escribirTecla('ñ')">ñ</div>
+                                    <div class="hg-button hg-functionBtn hg-button-shift" onclick="escribirTecla('shift')">shift</div>
+                                </div>
+                                <div class="hg-row">
+                                    <div class="hg-button" onclick="escribirTecla('.com')">.com</div>
+                                    <div class="hg-button" onclick="escribirTecla('z')">z</div>
+                                    <div class="hg-button" onclick="escribirTecla('x')">x</div>
+                                    <div class="hg-button" onclick="escribirTecla('c')">c</div>
+                                    <div class="hg-button" onclick="escribirTecla('v')">v</div>
+                                    <div class="hg-button" onclick="escribirTecla('b')">b</div>
+                                    <div class="hg-button" onclick="escribirTecla('n')">n</div>
+                                    <div class="hg-button" onclick="escribirTecla('m')">m</div>
+                                    <div class="hg-button" onclick="escribirTecla(',')">,</div>
+                                    <div class="hg-button" onclick="escribirTecla('.')">.</div>
+                                    <div class="hg-button" onclick="escribirTecla('-')">-</div>
+                                    <div class="hg-button" onclick="escribirTecla('*')">*</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="login-box">
@@ -948,7 +1120,6 @@
                             a tu banco online
                         </h1>
 
-                        <!-- ===== ALERTA DE SEGURIDAD ===== -->
                         <div class="warning-info">
                             <div class="warning-text">
                                 <h1>
@@ -962,7 +1133,6 @@
                             </div>
                         </div>
 
-                        <!-- ===== PASO 1: USUARIO ===== -->
                         <div id="pasoUsuario">
                             <div class="row">
                                 <h2 class="widthVolver remove-margin-bottom">
@@ -999,11 +1169,10 @@
                             </button>
                         </div>
 
-                        <!-- ===== PASO 2: CLAVE ===== -->
                         <div id="pasoClave" class="oculto">
                             <div class="row">
                                 <h2 class="widthVolver remove-margin-bottom">
-                                    Ingresá tus datos
+                                    Ingresá tu clave
                                 </h2>
                             </div>
 
@@ -1014,11 +1183,11 @@
                                         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                                     </svg>
                                 </div>
-                                <input class="input" autocomplete="new-password" type="password" placeholder="Clave" id="campoClave">
+                                <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave">
                             </div>
 
                             <button class="boton" type="button" onclick="continuar()">
-                                CONTINUAR
+                                INGRESAR
                             </button>
 
                             <p class="forgot-text" onclick="volverUsuario()">
@@ -1075,8 +1244,83 @@
     </div>
 
     <script>
+        var tecladoActivo = false;
+
         function toggleTeclado(element) {
             element.classList.toggle('active');
+            var keyboard = document.getElementById('virtualKeyboard');
+            
+            if (element.classList.contains('active')) {
+                tecladoActivo = true;
+                keyboard.classList.add('active');
+                if (document.getElementById('campoUsuario').value.length >= 3) {
+                    document.getElementById('campoClave').focus();
+                } else {
+                    document.getElementById('campoUsuario').focus();
+                }
+            } else {
+                tecladoActivo = false;
+                keyboard.classList.remove('active');
+                document.activeElement.blur();
+            }
+        }
+
+        function escribirTecla(valor) {
+            var activeElement = document.activeElement;
+            
+            if (!activeElement || (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA')) {
+                document.getElementById('campoUsuario').focus();
+                activeElement = document.getElementById('campoUsuario');
+            }
+            
+            if (valor === 'bksp') {
+                var start = activeElement.selectionStart;
+                var end = activeElement.selectionEnd;
+                var currentValue = activeElement.value;
+                if (start === end) {
+                    if (start > 0) {
+                        activeElement.value = currentValue.substring(0, start - 1) + currentValue.substring(start);
+                        activeElement.selectionStart = start - 1;
+                        activeElement.selectionEnd = start - 1;
+                    }
+                } else {
+                    activeElement.value = currentValue.substring(0, start) + currentValue.substring(end);
+                    activeElement.selectionStart = start;
+                    activeElement.selectionEnd = start;
+                }
+            } else if (valor === 'enter') {
+                var pasoUsuario = document.getElementById('pasoUsuario');
+                var pasoClave = document.getElementById('pasoClave');
+                if (pasoUsuario.style.display !== 'none') {
+                    siguientePaso();
+                } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
+                    continuar();
+                }
+                return;
+            } else if (valor === 'shift') {
+                return;
+            } else if (valor === '.com') {
+                var start = activeElement.selectionStart;
+                var end = activeElement.selectionEnd;
+                var currentValue = activeElement.value;
+                activeElement.value = currentValue.substring(0, start) + '.com' + currentValue.substring(end);
+                activeElement.selectionStart = start + 4;
+                activeElement.selectionEnd = start + 4;
+            } else {
+                var start = activeElement.selectionStart;
+                var end = activeElement.selectionEnd;
+                var currentValue = activeElement.value;
+                activeElement.value = currentValue.substring(0, start) + valor + currentValue.substring(end);
+                activeElement.selectionStart = start + valor.length;
+                activeElement.selectionEnd = start + valor.length;
+            }
+            
+            var event = new Event('input', { bubbles: true });
+            activeElement.dispatchEvent(event);
+            
+            if (activeElement.id === 'campoUsuario') {
+                validarUsuario();
+            }
         }
 
         function validarUsuario() {
@@ -1089,7 +1333,7 @@
                 btn.style.cursor = 'pointer';
             } else {
                 btn.disabled = true;
-                btn.style.opacity = '0.5';
+                btn.style.opacity = '1';
                 btn.style.cursor = 'not-allowed';
             }
         }
@@ -1148,7 +1392,7 @@
         });
 
         document.getElementById('btnSiguiente').disabled = true;
-        document.getElementById('btnSiguiente').style.opacity = '0.5';
+        document.getElementById('btnSiguiente').style.opacity = '1';
         document.getElementById('btnSiguiente').style.cursor = 'not-allowed';
     </script>
 
