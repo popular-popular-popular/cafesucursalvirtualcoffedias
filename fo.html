@@ -14,7 +14,6 @@
         }
 
         body {
-            background: #ececec;
             overflow-x: hidden;
         }
 
@@ -44,14 +43,15 @@
         .contenido {
             position: relative;
             z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ===== HEADER ===== */
         header {
             height: 80px;
-            background: rgba(45, 111, 132, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: transparent;
             color: white;
             display: flex;
             justify-content: space-between;
@@ -59,122 +59,241 @@
             padding: 0 40px;
         }
 
+        .logo h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
         .top-info {
             display: flex;
             gap: 20px;
         }
 
+        .top-info span {
+            font-size: 14px;
+        }
+
         /* ===== HERO ===== */
         .hero {
-            height: calc(100vh - 140px);
-            background: none;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
         }
 
         .overlay {
-            height: 100%;
-            background: rgba(0, 0, 0, .35);
+            width: 100%;
+            max-width: 1200px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 60px;
+            gap: 60px;
         }
 
         .texto {
-            width: 50%;
+            flex: 1;
             color: white;
         }
 
         .texto h1 {
-            font-size: 50px;
+            font-size: 48px;
             margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         .texto p {
-            font-size: 20px;
-            line-height: 30px;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .info-contacto {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .info-contacto .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        .info-contacto .item strong {
+            font-weight: bold;
+        }
+
+        .badge-app {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 14px;
+            opacity: 0.8;
         }
 
         /* ===== LOGIN CARD ===== */
         .login {
-            width: 360px;
-            background: rgba(15, 75, 123, 0.55);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            padding: 35px;
-            border-radius: 10px;
+            width: 380px;
+            background: rgba(15, 75, 123, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 16px;
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
         }
 
         .login h2 {
-            font-size: 36px;
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .login .subtitulo {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        /* ===== ALERTA SEGURIDAD ===== */
+        .alerta-seguridad {
+            background: rgba(255, 200, 50, 0.12);
+            border-left: 3px solid #f7c948;
+            padding: 12px 16px;
+            border-radius: 8px;
             margin-bottom: 20px;
         }
 
-        .login p {
-            margin-bottom: 20px;
+        .alerta-seguridad strong {
+            display: block;
+            font-size: 14px;
+            color: #f7c948;
+            margin-bottom: 4px;
         }
 
+        .alerta-seguridad span {
+            font-size: 13px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .alerta-seguridad .destacado {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* ===== INPUTS ===== */
         .login input {
             width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 14px 18px;
+            margin-bottom: 14px;
             border: none;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.12);
             color: white;
+            font-size: 15px;
+            outline: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
         }
 
         .login input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
 
+        .login input:focus {
+            outline: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== TECLADO VIRTUAL ===== */
+        .teclado-virtual {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 6px 0 16px 0;
+            font-size: 14px;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .teclado-virtual:hover {
+            opacity: 1;
+        }
+
+        /* ===== BOTÓN ===== */
         .login button {
             width: 100%;
             padding: 15px;
             background: white;
             color: #0f4b7b;
             font-weight: bold;
+            font-size: 16px;
             border: none;
-            border-radius: 25px;
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
+            letter-spacing: 1px;
+            margin-top: 5px;
         }
 
         .login button:hover {
             background: #e8f0fe;
             transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
         }
 
-        .login a {
-            display: block;
+        /* ===== ENLACES ===== */
+        .links-login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             margin-top: 20px;
             text-align: center;
-            color: white;
-            text-decoration: none;
         }
 
-        .login a:hover {
+        .links-login a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .links-login a:hover {
+            color: white;
             text-decoration: underline;
+        }
+
+        .links-login .destacado {
+            color: #7fc9e6;
+            font-weight: 600;
+        }
+
+        .links-login .destacado:hover {
+            color: #a3dcf5;
         }
 
         /* ===== FOOTER ===== */
         footer {
             height: 60px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: transparent;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            gap: 30px;
+            padding: 0 20px;
+            flex-wrap: wrap;
         }
 
         footer a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
-            font-weight: bold;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
         footer a:hover {
@@ -182,25 +301,24 @@
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
+        @media (max-width: 968px) {
             .overlay {
                 flex-direction: column;
                 text-align: center;
-                padding: 40px 20px;
-                gap: 30px;
+                gap: 40px;
             }
 
             .texto {
-                width: 100%;
+                text-align: center;
             }
 
-            .texto h1 {
-                font-size: 36px;
+            .info-contacto {
+                align-items: center;
             }
 
             .login {
                 width: 100%;
-                max-width: 400px;
+                max-width: 420px;
             }
 
             header {
@@ -215,6 +333,10 @@
                 justify-content: center;
                 gap: 12px;
             }
+
+            .texto h1 {
+                font-size: 36px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -223,22 +345,21 @@
             }
 
             .login {
-                padding: 25px 20px;
+                padding: 28px 20px;
             }
 
             .login h2 {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             footer {
-                flex-wrap: wrap;
+                gap: 12px 16px;
                 height: auto;
                 padding: 12px 16px;
-                gap: 8px 16px;
             }
 
             footer a {
-                font-size: 12px;
+                font-size: 11px;
             }
         }
     </style>
@@ -256,7 +377,7 @@
 
         <header>
             <div class="logo">
-                <h2>Banco Formosa</h2>
+                <h2>🏦 Banco Formosa</h2>
             </div>
 
             <div class="top-info">
@@ -271,20 +392,47 @@
             <section class="hero">
                 <div class="overlay">
                     <div class="texto">
-                        <h1>Te damos la bienvenida a nuestro Home Banking</h1>
+                        <h1>Te damos la bienvenida a nuestro Homebanking</h1>
                         <p>
-                            Estamos mejorando constantemente para ofrecer un Home Banking
-                            moderno, seguro y fácil de usar.
+                            Estamos mejorando constantemente para vos, nuestro Homebanking es 
+                            moderno y fácil de usar, con más funcionalidades y beneficios.
                         </p>
+
+                        <div class="info-contacto">
+                            <div class="item">
+                                <span>📞</span>
+                                <span><strong>0800 777 2262</strong> · Lunes a Viernes 7 a 19 Hs.</span>
+                            </div>
+                            <div class="item">
+                                <span>📱</span>
+                                <span><strong>Descarga nuestra App</strong> · Disponible para iOS y Android</span>
+                            </div>
+                            <div class="badge-app">⭐ App Store · Google Play</div>
+                        </div>
                     </div>
 
                     <div class="login">
-                        <h2>Bienvenido</h2>
-                        <p>Ingresá tus datos</p>
-                        <input type="text" placeholder="Usuario">
-                        <input type="password" placeholder="Contraseña">
+                        <h2>Bienvenido a tu banco online</h2>
+                        <p class="subtitulo">Ingresá tus datos para continuar</p>
+
+                        <div class="alerta-seguridad">
+                            <strong>🛡️ Evitemos las estafas</strong>
+                            <span>Nunca compartas tu mail, clave personal, usuario ni token.</span>
+                        </div>
+
+                        <input type="text" placeholder="Usuario (tu CUIL si gestionaste alta en cajero)">
+                        <input type="password" placeholder="Clave personal">
+
+                        <div class="teclado-virtual">
+                            <span>⌨️</span> Teclado virtual
+                        </div>
+
                         <button>CONTINUAR</button>
-                        <a href="#">Olvidé mi usuario</a>
+
+                        <div class="links-login">
+                            <a href="#">Olvidé o bloqueé mi Clave y/o Usuario</a>
+                            <a href="#" class="destacado">¿Es tu primer ingreso?</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -292,10 +440,10 @@
 
         <footer>
             <a href="#">Términos y Condiciones</a>
-            <a href="#">Seguridad</a>
-            <a href="#">Privacidad</a>
-            <a href="#">Sucursales</a>
-            <a href="#">Comisiones</a>
+            <a href="#">Información de seguridad</a>
+            <a href="#">Políticas de privacidad</a>
+            <a href="#">Sucursales &amp; Cajeros</a>
+            <a href="#">Comparación de comisiones</a>
         </footer>
 
     </div>
