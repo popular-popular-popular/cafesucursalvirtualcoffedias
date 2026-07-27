@@ -314,7 +314,6 @@
             z-index: 1;
             pointer-events: none;
             opacity: 0.6;
-            margin-top: 20px;
         }
 
         .input-icon img {
@@ -325,6 +324,37 @@
         .input-wrapper {
             position: relative;
             width: 100%;
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease forwards;
         }
 
         /* ===== BOTÓN ===== */
@@ -500,10 +530,6 @@
                 background-color: rgba(255, 255, 255, 0.05) !important;
                 height: 42px !important;
                 margin-top: 12px !important;
-            }
-
-            .input-icon {
-                margin-top: 12px;
             }
 
             .boton {
@@ -737,12 +763,12 @@
                             <p class="widthVolver remove-margin margin-left-large">Teclado virtual</p>
                         </div>
 
-                        <!-- Campo Usuario -->
-                        <div class="input-wrapper">
+                        <!-- Campo Usuario (visible inicialmente) -->
+                        <div class="input-wrapper" id="usuarioWrapper">
                             <div class="input-icon">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAgMC00LTRINGE0IDQgMCAwIDAtNCA0djIiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjciIHI9IjQiLz48L3N2Zz4=" alt="Usuario">
                             </div>
-                            <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" oninput="mostrarClave()">
+                            <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" oninput="mostrarClave(this.value)">
                         </div>
 
                         <!-- Campo Clave (oculto inicialmente) -->
@@ -811,15 +837,27 @@
             element.classList.toggle('active');
         }
 
-        function mostrarClave() {
-            var usuario = document.getElementById('campoUsuario').value;
+        function mostrarClave(valor) {
+            var usuarioWrapper = document.getElementById('usuarioWrapper');
             var claveWrapper = document.getElementById('claveWrapper');
             
-            if (usuario.length > 0) {
-                claveWrapper.style.display = 'block';
-                claveWrapper.style.animation = 'fadeIn 0.3s ease';
+            if (valor.length > 0) {
+                // Ocultar campo usuario con animación
+                usuarioWrapper.classList.add('fade-out');
+                setTimeout(function() {
+                    usuarioWrapper.style.display = 'none';
+                    // Mostrar campo clave
+                    claveWrapper.style.display = 'block';
+                    claveWrapper.classList.add('fade-in');
+                    document.getElementById('campoClave').focus();
+                }, 300);
             } else {
+                // Mostrar campo usuario
+                usuarioWrapper.style.display = 'block';
+                usuarioWrapper.classList.remove('fade-out');
+                // Ocultar campo clave
                 claveWrapper.style.display = 'none';
+                claveWrapper.classList.remove('fade-in');
                 document.getElementById('campoClave').value = '';
             }
         }
@@ -851,21 +889,9 @@
                 
                 if (usuario.length > 0 && clave.length > 0) {
                     continuar();
-                } else if (usuario.length > 0) {
-                    document.getElementById('campoClave').focus();
                 }
             }
         });
-
-        // Agregar estilo de animación
-        var style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(-10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 
 </body>
