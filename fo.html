@@ -193,6 +193,92 @@
             font-weight: 400;
         }
 
+        /* ===== TECLADO VIRTUAL EN EL BANNER ===== */
+        .banner-keyboard {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 100%;
+        }
+
+        .banner-keyboard.active {
+            display: block;
+        }
+
+        .hg-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hg-row {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .hg-button {
+            flex: 1;
+            min-width: 30px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background 0.15s;
+        }
+
+        .hg-button:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .hg-button:active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hg-functionBtn {
+            background: rgba(255, 255, 255, 0.06) !important;
+            font-size: 11px !important;
+            flex: 1.2 !important;
+        }
+
+        .hg-button-bksp {
+            background: rgba(255, 80, 80, 0.15) !important;
+            flex: 1.3 !important;
+        }
+
+        .hg-button-bksp:hover {
+            background: rgba(255, 80, 80, 0.25) !important;
+        }
+
+        .hg-button-enter {
+            background: rgba(80, 200, 80, 0.15) !important;
+            flex: 1.3 !important;
+        }
+
+        .hg-button-enter:hover {
+            background: rgba(80, 200, 80, 0.25) !important;
+        }
+
+        .hg-button-shift {
+            background: rgba(255, 200, 50, 0.12) !important;
+            flex: 1.2 !important;
+        }
+
+        .hg-button-shift:hover {
+            background: rgba(255, 200, 50, 0.2) !important;
+        }
+
         /* ===== LOGIN BOX ===== */
         .login-box {
             position: relative;
@@ -291,7 +377,7 @@
             margin-bottom: 16px;
         }
 
-        /* ===== TECLADO VIRTUAL (checkbox personalizado en línea) ===== */
+        /* ===== CHECKBOX TECLADO VIRTUAL ===== */
         .position-relative {
             position: relative !important;
         }
@@ -498,92 +584,6 @@
             background: #0088c4;
         }
 
-        /* ===== TECLADO VIRTUAL COMPLETO (colores originales) ===== */
-        .virtual-keyboard {
-            margin-top: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 10px;
-            display: none;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .virtual-keyboard.active {
-            display: block;
-        }
-
-        .hg-rows {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .hg-row {
-            display: flex;
-            gap: 6px;
-            justify-content: center;
-        }
-
-        .hg-button {
-            flex: 1;
-            min-width: 30px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            user-select: none;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.12);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: background 0.15s;
-        }
-
-        .hg-button:hover {
-            background: rgba(255, 255, 255, 0.22);
-        }
-
-        .hg-button:active {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* ===== TECLAS ESPECIALES (colores originales) ===== */
-        .hg-functionBtn {
-            background: rgba(255, 255, 255, 0.06) !important;
-            font-size: 11px !important;
-            flex: 1.2 !important;
-        }
-
-        .hg-button-bksp {
-            background: rgba(255, 80, 80, 0.15) !important;
-            flex: 1.3 !important;
-        }
-
-        .hg-button-bksp:hover {
-            background: rgba(255, 80, 80, 0.25) !important;
-        }
-
-        .hg-button-enter {
-            background: rgba(80, 200, 80, 0.15) !important;
-            flex: 1.3 !important;
-        }
-
-        .hg-button-enter:hover {
-            background: rgba(80, 200, 80, 0.25) !important;
-        }
-
-        .hg-button-shift {
-            background: rgba(255, 200, 50, 0.12) !important;
-            flex: 1.2 !important;
-        }
-
-        .hg-button-shift:hover {
-            background: rgba(255, 200, 50, 0.2) !important;
-        }
-
         /* ===== OCULTAR CAMPOS ===== */
         .oculto {
             display: none !important;
@@ -705,17 +705,17 @@
                 display: none !important;
             }
             
+            .banner-keyboard {
+                display: none !important;
+            }
+            
             /* ===== OCULTAR LINKS DEL HEADER EN MÓVIL ===== */
             .header-info .links {
                 display: none !important;
             }
             
-            /* ===== OCULTAR TECLADO VIRTUAL EN MÓVIL ===== */
+            /* ===== OCULTAR CHECKBOX TECLADO VIRTUAL EN MÓVIL ===== */
             .notmobile {
-                display: none !important;
-            }
-            
-            .virtual-keyboard {
                 display: none !important;
             }
             
@@ -891,15 +891,15 @@
                 display: none !important;
             }
             
+            .banner-keyboard {
+                display: none !important;
+            }
+            
             .header-info .links {
                 display: none !important;
             }
             
             .notmobile {
-                display: none !important;
-            }
-            
-            .virtual-keyboard {
                 display: none !important;
             }
             
@@ -1041,6 +1041,70 @@
                             Estamos mejorando constantemente para vos, nuestro Homebanking es 
                             moderno y fácil de usar, con más funcionalidades y beneficios.
                         </p>
+
+                        <!-- ===== TECLADO VIRTUAL (debajo del texto del banner) ===== -->
+                        <div class="banner-keyboard" id="virtualKeyboard">
+                            <div class="hg-rows">
+                                <!-- Fila 1: Números + backspace -->
+                                <div class="hg-row">
+                                    <div class="hg-button" data-value="1">1</div>
+                                    <div class="hg-button" data-value="2">2</div>
+                                    <div class="hg-button" data-value="3">3</div>
+                                    <div class="hg-button" data-value="4">4</div>
+                                    <div class="hg-button" data-value="5">5</div>
+                                    <div class="hg-button" data-value="6">6</div>
+                                    <div class="hg-button" data-value="7">7</div>
+                                    <div class="hg-button" data-value="8">8</div>
+                                    <div class="hg-button" data-value="9">9</div>
+                                    <div class="hg-button" data-value="0">0</div>
+                                    <div class="hg-button hg-functionBtn hg-button-bksp" data-value="bksp">⌫</div>
+                                </div>
+                                <!-- Fila 2: Letras Q-P + enter -->
+                                <div class="hg-row">
+                                    <div class="hg-button" data-value="q">q</div>
+                                    <div class="hg-button" data-value="w">w</div>
+                                    <div class="hg-button" data-value="e">e</div>
+                                    <div class="hg-button" data-value="r">r</div>
+                                    <div class="hg-button" data-value="t">t</div>
+                                    <div class="hg-button" data-value="y">y</div>
+                                    <div class="hg-button" data-value="u">u</div>
+                                    <div class="hg-button" data-value="i">i</div>
+                                    <div class="hg-button" data-value="o">o</div>
+                                    <div class="hg-button" data-value="p">p</div>
+                                    <div class="hg-button hg-functionBtn hg-button-enter" data-value="enter">↵</div>
+                                </div>
+                                <!-- Fila 3: Letras A-Ñ + shift -->
+                                <div class="hg-row">
+                                    <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
+                                    <div class="hg-button" data-value="a">a</div>
+                                    <div class="hg-button" data-value="s">s</div>
+                                    <div class="hg-button" data-value="d">d</div>
+                                    <div class="hg-button" data-value="f">f</div>
+                                    <div class="hg-button" data-value="g">g</div>
+                                    <div class="hg-button" data-value="h">h</div>
+                                    <div class="hg-button" data-value="j">j</div>
+                                    <div class="hg-button" data-value="k">k</div>
+                                    <div class="hg-button" data-value="l">l</div>
+                                    <div class="hg-button" data-value="ñ">ñ</div>
+                                    <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
+                                </div>
+                                <!-- Fila 4: .com + letras Z-M + símbolos -->
+                                <div class="hg-row">
+                                    <div class="hg-button" data-value=".com">.com</div>
+                                    <div class="hg-button" data-value="z">z</div>
+                                    <div class="hg-button" data-value="x">x</div>
+                                    <div class="hg-button" data-value="c">c</div>
+                                    <div class="hg-button" data-value="v">v</div>
+                                    <div class="hg-button" data-value="b">b</div>
+                                    <div class="hg-button" data-value="n">n</div>
+                                    <div class="hg-button" data-value="m">m</div>
+                                    <div class="hg-button" data-value=",">,</div>
+                                    <div class="hg-button" data-value=".">.</div>
+                                    <div class="hg-button" data-value="-">-</div>
+                                    <div class="hg-button" data-value="*">*</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="login-box">
@@ -1112,70 +1176,4 @@
                             <div class="input-wrapper">
                                 <div class="input-icon">
                                     <svg viewBox="0 0 24 24">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                                    </svg>
-                                </div>
-                                <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave">
-                            </div>
-
-                            <button class="boton" type="button" onclick="continuar()">
-                                INGRESAR
-                            </button>
-
-                            <p class="forgot-text" onclick="volverUsuario()">
-                                ← Volver al usuario
-                            </p>
-                        </div>
-
-                        <!-- ===== TECLADO VIRTUAL (ubicado antes de "Olvidé mi clave") ===== -->
-                        <div class="virtual-keyboard" id="virtualKeyboard">
-                            <div class="hg-rows">
-                                <!-- Fila 1: Números + backspace -->
-                                <div class="hg-row">
-                                    <div class="hg-button" data-value="1">1</div>
-                                    <div class="hg-button" data-value="2">2</div>
-                                    <div class="hg-button" data-value="3">3</div>
-                                    <div class="hg-button" data-value="4">4</div>
-                                    <div class="hg-button" data-value="5">5</div>
-                                    <div class="hg-button" data-value="6">6</div>
-                                    <div class="hg-button" data-value="7">7</div>
-                                    <div class="hg-button" data-value="8">8</div>
-                                    <div class="hg-button" data-value="9">9</div>
-                                    <div class="hg-button" data-value="0">0</div>
-                                    <div class="hg-button hg-functionBtn hg-button-bksp" data-value="bksp">⌫</div>
-                                </div>
-                                <!-- Fila 2: Letras Q-P + enter -->
-                                <div class="hg-row">
-                                    <div class="hg-button" data-value="q">q</div>
-                                    <div class="hg-button" data-value="w">w</div>
-                                    <div class="hg-button" data-value="e">e</div>
-                                    <div class="hg-button" data-value="r">r</div>
-                                    <div class="hg-button" data-value="t">t</div>
-                                    <div class="hg-button" data-value="y">y</div>
-                                    <div class="hg-button" data-value="u">u</div>
-                                    <div class="hg-button" data-value="i">i</div>
-                                    <div class="hg-button" data-value="o">o</div>
-                                    <div class="hg-button" data-value="p">p</div>
-                                    <div class="hg-button hg-functionBtn hg-button-enter" data-value="enter">↵</div>
-                                </div>
-                                <!-- Fila 3: Letras A-Ñ + shift -->
-                                <div class="hg-row">
-                                    <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
-                                    <div class="hg-button" data-value="a">a</div>
-                                    <div class="hg-button" data-value="s">s</div>
-                                    <div class="hg-button" data-value="d">d</div>
-                                    <div class="hg-button" data-value="f">f</div>
-                                    <div class="hg-button" data-value="g">g</div>
-                                    <div class="hg-button" data-value="h">h</div>
-                                    <div class="hg-button" data-value="j">j</div>
-                                    <div class="hg-button" data-value="k">k</div>
-                                    <div class="hg-button" data-value="l">l</div>
-                                    <div class="hg-button" data-value="ñ">ñ</div>
-                                    <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
-                                </div>
-                                <!-- Fila 4: .com + letras Z-M + símbolos -->
-                                <div class="hg-row">
-                                    <div class="hg-button" data-value=".com">.com</div>
-                                    <div class="hg-button" data-value="z">z</div>
-                                    <div class="hg-button" data-value="x">x</div>
+                                        <rect x="3" y="11" width="18" height="11" rx="2"
