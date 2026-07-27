@@ -16,6 +16,7 @@
 
         body {
             overflow-x: hidden;
+            background-color: #fff;
         }
 
         /* ===== VIDEO DE FONDO ===== */
@@ -61,6 +62,22 @@
             border-bottom: 2px solid rgba(255, 255, 255, 0.3);
         }
 
+        .header-info {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+            padding-bottom: 2vh;
+            border-bottom: 1px solid white;
+            color: white;
+            z-index: 1;
+            margin-left: 4vw;
+            margin-right: 4vw;
+            width: 100%;
+            max-width: 1200px;
+        }
+
         /* ===== LOGO ===== */
         .logo {
             display: flex;
@@ -72,6 +89,7 @@
             height: 45px;
             width: auto;
             object-fit: contain;
+            margin-right: 15px;
         }
 
         .logo h2 {
@@ -81,34 +99,63 @@
             letter-spacing: 1px;
         }
 
-        .top-info {
+        /* ===== LINKS DEL HEADER ===== */
+        .links {
             display: flex;
-            gap: 30px;
             align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .top-info a {
+        .links a {
             color: white;
             text-decoration: none;
-            font-size: 15px;
             display: flex;
             align-items: center;
             gap: 8px;
             transition: opacity 0.3s;
         }
 
-        .top-info a:hover {
+        .links a:hover {
             opacity: 0.8;
         }
 
-        .top-info a img {
+        .links a img {
             height: 28px;
             width: auto;
             vertical-align: middle;
         }
 
-        .top-info .icon-tel {
+        .links .icon-tel {
             height: 24px;
+        }
+
+        .links .tels h3 {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .links .tels p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        .links .apps h3 {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .links .apps p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        .remove-margin {
+            margin: 0 !important;
         }
 
         /* ===== HERO ===== */
@@ -533,19 +580,16 @@
                 width: calc(100% - 120px);
                 margin-left: calc(-50% + 60px);
             }
-            header {
-                flex-direction: column;
-                height: auto;
-                padding: 15px 20px;
-                gap: 10px;
-            }
-            .top-info {
-                flex-wrap: wrap;
+            .links {
+                gap: 12px;
                 justify-content: center;
-                gap: 15px;
             }
             footer a {
                 font-size: 18px;
+            }
+            .header-info {
+                margin-left: 2vw;
+                margin-right: 2vw;
             }
         }
 
@@ -622,12 +666,6 @@
             .texto p {
                 font-size: 16px;
             }
-            .top-info a img {
-                height: 22px;
-            }
-            .top-info .icon-tel {
-                height: 20px;
-            }
             footer {
                 gap: 12px 16px;
                 height: auto;
@@ -698,6 +736,35 @@
             .checkRCont .checkmark {
                 stroke: #f2994a;
             }
+            .links .tels h3 {
+                font-size: 12px;
+            }
+            .links .tels p {
+                font-size: 10px;
+            }
+            .links .apps h3 {
+                font-size: 12px;
+            }
+            .links .apps p {
+                font-size: 10px;
+            }
+            .links a img {
+                height: 22px;
+            }
+            .links .icon-tel {
+                height: 20px;
+            }
+            header {
+                padding: 0 20px;
+                height: auto;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .header-info {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -713,13 +780,13 @@
             .login-box h1 {
                 font-size: 22px;
             }
-            .top-info a {
+            .links a {
                 font-size: 13px;
             }
-            .top-info a img {
+            .links a img {
                 height: 20px;
             }
-            .top-info .icon-tel {
+            .links .icon-tel {
                 height: 18px;
             }
             .mobileInfo .nets a img {
@@ -768,6 +835,18 @@
                 border-bottom-width: 2px;
                 padding-bottom: 0px;
             }
+            .links .tels h3 {
+                font-size: 11px;
+            }
+            .links .tels p {
+                font-size: 9px;
+            }
+            .links .apps h3 {
+                font-size: 11px;
+            }
+            .links .apps p {
+                font-size: 9px;
+            }
         }
     </style>
 </head>
@@ -783,31 +862,50 @@
     <div class="contenido">
 
         <header>
-            <div class="logo">
-                <img src="https://hb.bancoformosa.com.ar/assets/img/LogoHeaderLogin.svg" 
-                     alt="Banco Formosa" 
-                     class="logo-img"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <h2 style="display: none;">🏦 Banco Formosa</h2>
-            </div>
-            <div class="top-info">
-                <a href="#">
+            <!-- ===== HEADER INFO ===== -->
+            <div class="header-info">
+                <div class="logo">
+                    <img src="https://hb.bancoformosa.com.ar/assets/img/LogoHeaderLogin.svg" 
+                         alt="Banco Formosa" 
+                         class="logo-img"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <h2 style="display: none;">🏦 Banco Formosa</h2>
+                </div>
+
+                <div class="links">
+                    <!-- Teléfono -->
                     <img src="https://hb.bancoformosa.com.ar/assets/img/icon-tel.png" alt="Teléfono" class="icon-tel">
-                    0800 777 2262
-                </a>
-                <a href="#">
-                    <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png" alt="Apple">
-                    <img src="https://hb.bancoformosa.com.ar/assets/img/android.png" alt="Android">
-                    App
-                </a>
-                <a href="#">
-                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png" alt="Facebook">
-                    Facebook
-                </a>
-                <a href="#">
-                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png" alt="Instagram">
-                    Instagram
-                </a>
+                    <div class="tels">
+                        <h3>0800 777 2262</h3>
+                        <p>Lunes a Viernes 7 a 19 Hs.</p>
+                    </div>
+
+                    <!-- App Store -->
+                    <a target="_blank" href="#">
+                        <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png" alt="Apple">
+                    </a>
+
+                    <!-- Google Play -->
+                    <a target="_blank" href="#">
+                        <img src="https://hb.bancoformosa.com.ar/assets/img/android.png" alt="Android">
+                    </a>
+
+                    <!-- Descarga App -->
+                    <div class="apps">
+                        <h3>Descarga nuestra App</h3>
+                        <p>Disponible para iOS y Android</p>
+                    </div>
+
+                    <!-- Facebook -->
+                    <a target="_blank" href="#">
+                        <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png" alt="Facebook">
+                    </a>
+
+                    <!-- Instagram -->
+                    <a target="_blank" href="#">
+                        <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png" alt="Instagram" class="remove-margin">
+                    </a>
+                </div>
             </div>
         </header>
 
