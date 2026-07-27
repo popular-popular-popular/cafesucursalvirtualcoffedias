@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: "Open Sans", Arial, Helvetica, sans-serif;
         }
 
         body {
@@ -133,15 +133,20 @@
 
         /* ===== LOGIN BOX ===== */
         .login-box {
-            width: 420px;
-            background: rgba(15, 75, 123, 0.55);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: 16px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            justify-items: flex-start;
+            background-color: rgba(0, 61, 121, 0.7);
+            padding: 3vh 50px;
+            padding-top: 60px;
+            border-radius: 10px;
+            max-width: 430px;
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .login-box h1 {
@@ -155,14 +160,14 @@
             display: none;
         }
 
-        /* ===== WARNING INFO (transparente) ===== */
+        /* ===== WARNING INFO (transparente, sin fondo blanco) ===== */
         .warning-info {
             display: flex;
             gap: 12px;
-            background: rgba(255, 200, 50, 0.08);
+            background: transparent !important;
             border-left: 3px solid #f7c948;
-            padding: 14px 16px;
-            border-radius: 8px;
+            padding: 14px 0 14px 16px;
+            border-radius: 0;
             margin: 20px 0;
         }
 
@@ -170,6 +175,7 @@
             width: 24px;
             height: 24px;
             filter: brightness(0) invert(1);
+            margin-top: 2px;
         }
 
         .warning-text h1 {
@@ -384,6 +390,8 @@
             .login-box {
                 width: 100%;
                 max-width: 440px;
+                padding: 3vh 30px;
+                padding-top: 40px;
             }
 
             header {
@@ -410,13 +418,14 @@
                 background: transparent !important;
                 backdrop-filter: none !important;
                 -webkit-backdrop-filter: none !important;
+                padding: 20px 16px 0 16px;
                 padding-top: 20px;
-                padding-bottom: 0;
                 margin-bottom: 50px;
                 border: none !important;
                 box-shadow: none !important;
                 width: 100%;
                 max-width: 100%;
+                border-radius: 0;
             }
 
             .login-box h1 {
@@ -517,6 +526,10 @@
 
             .warning-text p br {
                 display: inline;
+            }
+
+            .warning-info {
+                padding: 14px 0 14px 12px;
             }
         }
 
