@@ -193,14 +193,14 @@
             font-weight: 400;
         }
 
-        /* ===== TECLADO VIRTUAL EN EL BANNER ===== */
+        /* ===== TECLADO VIRTUAL EN EL BANNER (colores de la imagen) ===== */
         .banner-keyboard {
             margin-top: 20px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 10px;
-            padding: 10px;
+            padding: 12px;
             display: none;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             max-width: 100%;
         }
 
@@ -211,72 +211,80 @@
         .hg-rows {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
         }
 
         .hg-row {
             display: flex;
-            gap: 6px;
+            gap: 5px;
             justify-content: center;
         }
 
         .hg-button {
             flex: 1;
-            min-width: 30px;
-            height: 38px;
+            min-width: 28px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             user-select: none;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.10);
             color: white;
             font-size: 13px;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: background 0.15s;
+            font-family: "Open Sans", Arial, sans-serif;
         }
 
         .hg-button:hover {
-            background: rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.20);
         }
 
         .hg-button:active {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.30);
         }
 
+        /* ===== TECLAS ESPECIALES (colores de la imagen) ===== */
         .hg-functionBtn {
             background: rgba(255, 255, 255, 0.06) !important;
             font-size: 11px !important;
-            flex: 1.2 !important;
+            flex: 1.3 !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-weight: 400 !important;
         }
 
         .hg-button-bksp {
-            background: rgba(255, 80, 80, 0.15) !important;
-            flex: 1.3 !important;
+            background: rgba(200, 60, 60, 0.20) !important;
+            flex: 1.5 !important;
+            color: rgba(255, 255, 255, 0.8) !important;
         }
 
         .hg-button-bksp:hover {
-            background: rgba(255, 80, 80, 0.25) !important;
+            background: rgba(200, 60, 60, 0.30) !important;
         }
 
         .hg-button-enter {
-            background: rgba(80, 200, 80, 0.15) !important;
-            flex: 1.3 !important;
+            background: rgba(60, 180, 60, 0.20) !important;
+            flex: 1.5 !important;
+            color: rgba(255, 255, 255, 0.8) !important;
         }
 
         .hg-button-enter:hover {
-            background: rgba(80, 200, 80, 0.25) !important;
+            background: rgba(60, 180, 60, 0.30) !important;
         }
 
         .hg-button-shift {
-            background: rgba(255, 200, 50, 0.12) !important;
-            flex: 1.2 !important;
+            background: rgba(200, 180, 60, 0.15) !important;
+            flex: 1.3 !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-weight: 400 !important;
         }
 
         .hg-button-shift:hover {
-            background: rgba(255, 200, 50, 0.2) !important;
+            background: rgba(200, 180, 60, 0.25) !important;
         }
 
         /* ===== LOGIN BOX ===== */
@@ -700,7 +708,6 @@
         }
 
         @media only screen and (max-width: 810px) {
-            /* ===== OCULTAR TEXTO DEL BANNER EN MÓVIL ===== */
             .texto {
                 display: none !important;
             }
@@ -709,17 +716,14 @@
                 display: none !important;
             }
             
-            /* ===== OCULTAR LINKS DEL HEADER EN MÓVIL ===== */
             .header-info .links {
                 display: none !important;
             }
             
-            /* ===== OCULTAR CHECKBOX TECLADO VIRTUAL EN MÓVIL ===== */
             .notmobile {
                 display: none !important;
             }
             
-            /* ===== CENTRAR LOGO EN MÓVIL ===== */
             .header-info {
                 justify-content: center !important;
             }
@@ -1042,7 +1046,7 @@
                             moderno y fácil de usar, con más funcionalidades y beneficios.
                         </p>
 
-                        <!-- ===== TECLADO VIRTUAL (debajo del texto del banner) ===== -->
+                        <!-- ===== TECLADO VIRTUAL ===== -->
                         <div class="banner-keyboard" id="virtualKeyboard">
                             <div class="hg-rows">
                                 <!-- Fila 1: Números + backspace -->
@@ -1247,7 +1251,6 @@
             
             if (element.classList.contains('active')) {
                 keyboard.classList.add('active');
-                // Enfocar el input para que el teclado virtual funcione
                 if (document.getElementById('campoUsuario').value.length >= 3) {
                     document.getElementById('campoClave').focus();
                 } else {
@@ -1259,7 +1262,6 @@
             }
         }
 
-        // Funcionalidad del teclado virtual
         document.querySelectorAll('.hg-button').forEach(function(button) {
             button.addEventListener('click', function(e) {
                 var value = this.getAttribute('data-value');
