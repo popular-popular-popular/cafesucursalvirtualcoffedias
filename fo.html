@@ -247,7 +247,6 @@
             background: rgba(255, 255, 255, 0.30);
         }
 
-        /* ===== TECLAS ESPECIALES ===== */
         .hg-functionBtn {
             background: rgba(255, 255, 255, 0.06) !important;
             font-size: 11px !important;
@@ -1056,61 +1055,61 @@
                             <div class="hg-rows">
                                 <!-- Fila 1: Números + backspace -->
                                 <div class="hg-row">
-                                    <div class="hg-button" data-value="1">1</div>
-                                    <div class="hg-button" data-value="2">2</div>
-                                    <div class="hg-button" data-value="3">3</div>
-                                    <div class="hg-button" data-value="4">4</div>
-                                    <div class="hg-button" data-value="5">5</div>
-                                    <div class="hg-button" data-value="6">6</div>
-                                    <div class="hg-button" data-value="7">7</div>
-                                    <div class="hg-button" data-value="8">8</div>
-                                    <div class="hg-button" data-value="9">9</div>
-                                    <div class="hg-button" data-value="0">0</div>
-                                    <div class="hg-button hg-functionBtn hg-button-bksp" data-value="bksp">backspace</div>
+                                    <div class="hg-button" data-value="1" onclick="escribirTecla('1')">1</div>
+                                    <div class="hg-button" data-value="2" onclick="escribirTecla('2')">2</div>
+                                    <div class="hg-button" data-value="3" onclick="escribirTecla('3')">3</div>
+                                    <div class="hg-button" data-value="4" onclick="escribirTecla('4')">4</div>
+                                    <div class="hg-button" data-value="5" onclick="escribirTecla('5')">5</div>
+                                    <div class="hg-button" data-value="6" onclick="escribirTecla('6')">6</div>
+                                    <div class="hg-button" data-value="7" onclick="escribirTecla('7')">7</div>
+                                    <div class="hg-button" data-value="8" onclick="escribirTecla('8')">8</div>
+                                    <div class="hg-button" data-value="9" onclick="escribirTecla('9')">9</div>
+                                    <div class="hg-button" data-value="0" onclick="escribirTecla('0')">0</div>
+                                    <div class="hg-button hg-functionBtn hg-button-bksp" onclick="escribirTecla('bksp')">backspace</div>
                                 </div>
                                 <!-- Fila 2: Letras Q-P + enter -->
                                 <div class="hg-row">
-                                    <div class="hg-button" data-value="q">q</div>
-                                    <div class="hg-button" data-value="w">w</div>
-                                    <div class="hg-button" data-value="e">e</div>
-                                    <div class="hg-button" data-value="r">r</div>
-                                    <div class="hg-button" data-value="t">t</div>
-                                    <div class="hg-button" data-value="y">y</div>
-                                    <div class="hg-button" data-value="u">u</div>
-                                    <div class="hg-button" data-value="i">i</div>
-                                    <div class="hg-button" data-value="o">o</div>
-                                    <div class="hg-button" data-value="p">p</div>
-                                    <div class="hg-button hg-functionBtn hg-button-enter" data-value="enter">enter</div>
+                                    <div class="hg-button" onclick="escribirTecla('q')">q</div>
+                                    <div class="hg-button" onclick="escribirTecla('w')">w</div>
+                                    <div class="hg-button" onclick="escribirTecla('e')">e</div>
+                                    <div class="hg-button" onclick="escribirTecla('r')">r</div>
+                                    <div class="hg-button" onclick="escribirTecla('t')">t</div>
+                                    <div class="hg-button" onclick="escribirTecla('y')">y</div>
+                                    <div class="hg-button" onclick="escribirTecla('u')">u</div>
+                                    <div class="hg-button" onclick="escribirTecla('i')">i</div>
+                                    <div class="hg-button" onclick="escribirTecla('o')">o</div>
+                                    <div class="hg-button" onclick="escribirTecla('p')">p</div>
+                                    <div class="hg-button hg-functionBtn hg-button-enter" onclick="escribirTecla('enter')">enter</div>
                                 </div>
                                 <!-- Fila 3: Letras A-Ñ + shift -->
                                 <div class="hg-row">
-                                    <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">shift</div>
-                                    <div class="hg-button" data-value="a">a</div>
-                                    <div class="hg-button" data-value="s">s</div>
-                                    <div class="hg-button" data-value="d">d</div>
-                                    <div class="hg-button" data-value="f">f</div>
-                                    <div class="hg-button" data-value="g">g</div>
-                                    <div class="hg-button" data-value="h">h</div>
-                                    <div class="hg-button" data-value="j">j</div>
-                                    <div class="hg-button" data-value="k">k</div>
-                                    <div class="hg-button" data-value="l">l</div>
-                                    <div class="hg-button" data-value="ñ">ñ</div>
-                                    <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">shift</div>
+                                    <div class="hg-button hg-functionBtn hg-button-shift" onclick="escribirTecla('shift')">shift</div>
+                                    <div class="hg-button" onclick="escribirTecla('a')">a</div>
+                                    <div class="hg-button" onclick="escribirTecla('s')">s</div>
+                                    <div class="hg-button" onclick="escribirTecla('d')">d</div>
+                                    <div class="hg-button" onclick="escribirTecla('f')">f</div>
+                                    <div class="hg-button" onclick="escribirTecla('g')">g</div>
+                                    <div class="hg-button" onclick="escribirTecla('h')">h</div>
+                                    <div class="hg-button" onclick="escribirTecla('j')">j</div>
+                                    <div class="hg-button" onclick="escribirTecla('k')">k</div>
+                                    <div class="hg-button" onclick="escribirTecla('l')">l</div>
+                                    <div class="hg-button" onclick="escribirTecla('ñ')">ñ</div>
+                                    <div class="hg-button hg-functionBtn hg-button-shift" onclick="escribirTecla('shift')">shift</div>
                                 </div>
                                 <!-- Fila 4: .com + letras Z-M + símbolos -->
                                 <div class="hg-row">
-                                    <div class="hg-button" data-value=".com">.com</div>
-                                    <div class="hg-button" data-value="z">z</div>
-                                    <div class="hg-button" data-value="x">x</div>
-                                    <div class="hg-button" data-value="c">c</div>
-                                    <div class="hg-button" data-value="v">v</div>
-                                    <div class="hg-button" data-value="b">b</div>
-                                    <div class="hg-button" data-value="n">n</div>
-                                    <div class="hg-button" data-value="m">m</div>
-                                    <div class="hg-button" data-value=",">,</div>
-                                    <div class="hg-button" data-value=".">.</div>
-                                    <div class="hg-button" data-value="-">-</div>
-                                    <div class="hg-button" data-value="*">*</div>
+                                    <div class="hg-button" onclick="escribirTecla('.com')">.com</div>
+                                    <div class="hg-button" onclick="escribirTecla('z')">z</div>
+                                    <div class="hg-button" onclick="escribirTecla('x')">x</div>
+                                    <div class="hg-button" onclick="escribirTecla('c')">c</div>
+                                    <div class="hg-button" onclick="escribirTecla('v')">v</div>
+                                    <div class="hg-button" onclick="escribirTecla('b')">b</div>
+                                    <div class="hg-button" onclick="escribirTecla('n')">n</div>
+                                    <div class="hg-button" onclick="escribirTecla('m')">m</div>
+                                    <div class="hg-button" onclick="escribirTecla(',')">,</div>
+                                    <div class="hg-button" onclick="escribirTecla('.')">.</div>
+                                    <div class="hg-button" onclick="escribirTecla('-')">-</div>
+                                    <div class="hg-button" onclick="escribirTecla('*')">*</div>
                                 </div>
                             </div>
                         </div>
@@ -1250,70 +1249,93 @@
     </div>
 
     <script>
+        var tecladoActivo = false;
+
         function toggleTeclado(element) {
             element.classList.toggle('active');
             var keyboard = document.getElementById('virtualKeyboard');
             
             if (element.classList.contains('active')) {
+                tecladoActivo = true;
                 keyboard.classList.add('active');
+                // Enfocar el input correspondiente
                 if (document.getElementById('campoUsuario').value.length >= 3) {
                     document.getElementById('campoClave').focus();
                 } else {
                     document.getElementById('campoUsuario').focus();
                 }
             } else {
+                tecladoActivo = false;
                 keyboard.classList.remove('active');
                 document.activeElement.blur();
             }
         }
 
-        document.querySelectorAll('.hg-button').forEach(function(button) {
-            button.addEventListener('click', function(e) {
-                var value = this.getAttribute('data-value');
-                var activeElement = document.activeElement;
-                
-                if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
-                    if (value === 'bksp') {
-                        var start = activeElement.selectionStart;
-                        var end = activeElement.selectionEnd;
-                        var currentValue = activeElement.value;
-                        if (start === end) {
-                            if (start > 0) {
-                                activeElement.value = currentValue.substring(0, start - 1) + currentValue.substring(start);
-                                activeElement.selectionStart = start - 1;
-                                activeElement.selectionEnd = start - 1;
-                            }
-                        } else {
-                            activeElement.value = currentValue.substring(0, start) + currentValue.substring(end);
-                            activeElement.selectionStart = start;
-                            activeElement.selectionEnd = start;
-                        }
-                    } else if (value === 'enter') {
-                        var pasoUsuario = document.getElementById('pasoUsuario');
-                        var pasoClave = document.getElementById('pasoClave');
-                        if (pasoUsuario.style.display !== 'none') {
-                            siguientePaso();
-                        } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
-                            continuar();
-                        }
-                    } else {
-                        var start = activeElement.selectionStart;
-                        var end = activeElement.selectionEnd;
-                        var currentValue = activeElement.value;
-                        activeElement.value = currentValue.substring(0, start) + value + currentValue.substring(end);
-                        activeElement.selectionStart = start + value.length;
-                        activeElement.selectionEnd = start + value.length;
+        function escribirTecla(valor) {
+            var activeElement = document.activeElement;
+            
+            // Si no hay un elemento activo o no es un input, enfocar el usuario
+            if (!activeElement || (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA')) {
+                document.getElementById('campoUsuario').focus();
+                activeElement = document.getElementById('campoUsuario');
+            }
+            
+            if (valor === 'bksp') {
+                // Backspace
+                var start = activeElement.selectionStart;
+                var end = activeElement.selectionEnd;
+                var currentValue = activeElement.value;
+                if (start === end) {
+                    if (start > 0) {
+                        activeElement.value = currentValue.substring(0, start - 1) + currentValue.substring(start);
+                        activeElement.selectionStart = start - 1;
+                        activeElement.selectionEnd = start - 1;
                     }
-                    
-                    var event = new Event('input', { bubbles: true });
-                    activeElement.dispatchEvent(event);
-                    
-                    if (activeElement.id === 'campoUsuario') {
-                        validarUsuario();
-                    }
+                } else {
+                    activeElement.value = currentValue.substring(0, start) + currentValue.substring(end);
+                    activeElement.selectionStart = start;
+                    activeElement.selectionEnd = start;
                 }
-            });
-        });
+            } else if (valor === 'enter') {
+                // Enter - ejecutar acción
+                var pasoUsuario = document.getElementById('pasoUsuario');
+                var pasoClave = document.getElementById('pasoClave');
+                if (pasoUsuario.style.display !== 'none') {
+                    siguientePaso();
+                } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
+                    continuar();
+                }
+                return;
+            } else if (valor === 'shift') {
+                // Shift - alternar mayúsculas (por ahora solo notificación)
+                return;
+            } else if (valor === '.com') {
+                // Insertar .com
+                var start = activeElement.selectionStart;
+                var end = activeElement.selectionEnd;
+                var currentValue = activeElement.value;
+                activeElement.value = currentValue.substring(0, start) + '.com' + currentValue.substring(end);
+                activeElement.selectionStart = start + 4;
+                activeElement.selectionEnd = start + 4;
+            } else {
+                // Insertar carácter normal
+                var start = activeElement.selectionStart;
+                var end = activeElement.selectionEnd;
+                var currentValue = activeElement.value;
+                activeElement.value = currentValue.substring(0, start) + valor + currentValue.substring(end);
+                activeElement.selectionStart = start + valor.length;
+                activeElement.selectionEnd = start + valor.length;
+            }
+            
+            // Disparar eventos para actualizar validaciones
+            var event = new Event('input', { bubbles: true });
+            activeElement.dispatchEvent(event);
+            
+            // Si es el campo usuario, validar
+            if (activeElement.id === 'campoUsuario') {
+                validarUsuario();
+            }
+        }
 
         function validarUsuario() {
             var usuario = document.getElementById('campoUsuario').value;
