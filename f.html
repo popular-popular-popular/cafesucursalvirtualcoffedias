@@ -141,13 +141,14 @@
             background-color: rgba(0, 61, 121, 0.7);
             padding: 3vh 50px;
             padding-top: 60px;
+            padding-bottom: 70px;
             border-radius: 10px;
             max-width: 430px;
             color: white;
             margin-bottom: 20px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            overflow: visible;
         }
 
         .login-box h1 {
@@ -314,6 +315,7 @@
             z-index: 1;
             pointer-events: none;
             opacity: 0.6;
+            margin-top: 20px;
         }
 
         .input-icon img {
@@ -394,19 +396,29 @@
             text-decoration: underline;
         }
 
+        /* ===== LOGIN HELP (estilo exacto del banco) ===== */
         .login-help {
+            background: #00a5df;
+            align-self: center;
+            padding: 8px;
+            width: calc(100% - 180px);
+            border-radius: 20px;
+            position: absolute;
+            bottom: 0;
+            -webkit-transform: translateY(40%);
+            transform: translateY(40%);
             text-align: center;
-            margin-top: 8px;
-            font-size: 14px;
-            color: #7fc9e6;
-            font-weight: 600;
             cursor: pointer;
-            transition: color 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            transition: background 0.3s;
+            left: 50%;
+            margin-left: calc(-50% + 90px);
         }
 
         .login-help:hover {
-            color: #a3dcf5;
-            text-decoration: underline;
+            background: #0088c4;
         }
 
         /* ===== MOBILE INFO (oculto en PC) ===== */
@@ -456,6 +468,7 @@
                 max-width: 440px;
                 padding: 3vh 30px;
                 padding-top: 40px;
+                padding-bottom: 60px;
             }
 
             .warning-info {
@@ -463,6 +476,11 @@
                 margin-right: -30px;
                 padding: 0 30px;
                 height: 70px;
+            }
+
+            .login-help {
+                width: calc(100% - 120px);
+                margin-left: calc(-50% + 60px);
             }
 
             header {
@@ -491,12 +509,14 @@
                 -webkit-backdrop-filter: none !important;
                 padding: 20px 16px 0 16px;
                 padding-top: 20px;
+                padding-bottom: 0;
                 margin-bottom: 50px;
                 border: none !important;
                 box-shadow: none !important;
                 width: 100%;
                 max-width: 100%;
                 border-radius: 0;
+                overflow: visible;
             }
 
             .login-box h1 {
@@ -532,9 +552,28 @@
                 margin-top: 12px !important;
             }
 
+            .input-icon {
+                margin-top: 12px;
+            }
+
             .boton {
                 background: rgba(255, 255, 255, 0.9);
                 margin-top: 12px;
+            }
+
+            .login-help {
+                background: #00a5df;
+                align-self: center;
+                padding: 8px 16px;
+                width: auto;
+                border-radius: 20px;
+                position: relative;
+                bottom: auto;
+                transform: none;
+                margin-top: 16px;
+                margin-left: 0;
+                font-size: 13px;
+                display: inline-block;
             }
 
             .texto h1 {
@@ -672,6 +711,12 @@
 
             .input-icon img {
                 height: 16px;
+            }
+
+            .login-help {
+                font-size: 12px;
+                padding: 6px 14px;
+                width: auto;
             }
         }
     </style>
