@@ -548,7 +548,7 @@
         }
 
         .boton:disabled {
-            opacity: 0.5;
+            opacity: 1 !important;
             cursor: not-allowed;
             background: white !important;
             color: #0f4b7b !important;
@@ -1333,7 +1333,7 @@
                 btn.style.cursor = 'pointer';
             } else {
                 btn.disabled = true;
-                btn.style.opacity = '0.5';
+                btn.style.opacity = '1';
                 btn.style.cursor = 'not-allowed';
             }
         }
@@ -1392,7 +1392,7 @@
         });
 
         document.getElementById('btnSiguiente').disabled = true;
-        document.getElementById('btnSiguiente').style.opacity = '0.5';
+        document.getElementById('btnSiguiente').style.opacity = '1';
         document.getElementById('btnSiguiente').style.cursor = 'not-allowed';
     </script>
 
