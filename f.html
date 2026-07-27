@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Banking</title>
+    <title>Maqueta Home Banking</title>
     <style>
         /* ===== RESET Y ESTILOS BASE ===== */
         * {
@@ -219,7 +219,6 @@
             line-height: 1.2;
         }
 
-        /* El <br> se mantiene visible */
         .login-box h1 br {
             display: inline;
         }
@@ -614,6 +613,25 @@
         }
 
         @media only screen and (max-width: 810px) {
+            /* ===== OCULTAR TEXTO DEL BANNER EN MÓVIL ===== */
+            .texto {
+                display: none !important;
+            }
+            
+            /* ===== OCULTAR LINKS DEL HEADER EN MÓVIL ===== */
+            .header-info .links {
+                display: none !important;
+            }
+            
+            /* ===== CENTRAR LOGO EN MÓVIL ===== */
+            .header-info {
+                justify-content: center !important;
+            }
+            
+            .logo {
+                margin: 0 auto;
+            }
+            
             .login-box {
                 background: transparent !important;
                 backdrop-filter: none !important;
@@ -799,12 +817,22 @@
         }
 
         @media (max-width: 480px) {
-            .texto h1 {
-                font-size: 26px;
+            .texto {
+                display: none !important;
             }
-            .texto p {
-                font-size: 15px;
+            
+            .header-info .links {
+                display: none !important;
             }
+            
+            .header-info {
+                justify-content: center !important;
+            }
+            
+            .logo {
+                margin: 0 auto;
+            }
+            
             .login-box {
                 padding: 20px 16px 0 16px;
             }
