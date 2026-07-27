@@ -230,71 +230,55 @@
             cursor: pointer;
             user-select: none;
             border-radius: 4px;
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
+            background: rgba(200, 200, 200, 0.15);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 13px;
             font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             transition: background 0.15s;
             font-family: "Open Sans", Arial, sans-serif;
         }
 
         .hg-button:hover {
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
         }
 
         .hg-button:active {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
         }
 
-        /* ===== TECLAS ESPECIALES (mismo color) ===== */
         .hg-functionBtn {
-            background: rgba(255, 255, 255, 0.08) !important;
+            background: rgba(200, 200, 200, 0.15) !important;
             font-size: 11px !important;
             flex: 1.3 !important;
-            color: rgba(255, 255, 255, 0.8) !important;
+            color: rgba(255, 255, 255, 0.9) !important;
             font-weight: 400 !important;
             text-transform: lowercase !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
         }
 
         .hg-functionBtn:hover {
-            background: rgba(255, 255, 255, 0.18) !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #333 !important;
+        }
+
+        .hg-functionBtn:active {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #333 !important;
         }
 
         .hg-button-bksp {
-            background: rgba(255, 255, 255, 0.08) !important;
             flex: 1.5 !important;
-            color: rgba(255, 255, 255, 0.8) !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        }
-
-        .hg-button-bksp:hover {
-            background: rgba(255, 255, 255, 0.18) !important;
         }
 
         .hg-button-enter {
-            background: rgba(255, 255, 255, 0.08) !important;
             flex: 1.5 !important;
-            color: rgba(255, 255, 255, 0.8) !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        }
-
-        .hg-button-enter:hover {
-            background: rgba(255, 255, 255, 0.18) !important;
         }
 
         .hg-button-shift {
-            background: rgba(255, 255, 255, 0.08) !important;
             flex: 1.3 !important;
-            color: rgba(255, 255, 255, 0.8) !important;
-            font-weight: 400 !important;
-            text-transform: lowercase !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        }
-
-        .hg-button-shift:hover {
-            background: rgba(255, 255, 255, 0.18) !important;
         }
 
         /* ===== LOGIN BOX ===== */
@@ -531,12 +515,12 @@
             animation: fadeIn 0.3s ease forwards;
         }
 
-        /* ===== BOTONES ===== */
+        /* ===== BOTÓN CONTINUAR (siempre blanco) ===== */
         .boton {
             width: 100%;
             padding: 16px;
-            background: white;
-            color: #0f4b7b;
+            background: white !important;
+            color: #0f4b7b !important;
             font-weight: bold;
             font-size: 17px;
             border: none;
@@ -545,19 +529,26 @@
             letter-spacing: 1px;
             margin-top: 20px;
             outline: none !important;
-            transition: none;
+            transition: none !important;
         }
 
         .boton:hover {
-            background: white;
-            color: #0f4b7b;
-            transform: none;
-            box-shadow: none;
+            background: white !important;
+            color: #0f4b7b !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .boton:focus {
+            background: white !important;
+            color: #0f4b7b !important;
         }
 
         .boton:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            background: white !important;
+            color: #0f4b7b !important;
         }
 
         /* ===== FORGOT TEXT ===== */
@@ -1062,7 +1053,6 @@
                         <!-- ===== TECLADO VIRTUAL ===== -->
                         <div class="banner-keyboard" id="virtualKeyboard">
                             <div class="hg-rows">
-                                <!-- Fila 1: Números + backspace -->
                                 <div class="hg-row">
                                     <div class="hg-button" onclick="escribirTecla('1')">1</div>
                                     <div class="hg-button" onclick="escribirTecla('2')">2</div>
@@ -1076,7 +1066,6 @@
                                     <div class="hg-button" onclick="escribirTecla('0')">0</div>
                                     <div class="hg-button hg-functionBtn hg-button-bksp" onclick="escribirTecla('bksp')">backspace</div>
                                 </div>
-                                <!-- Fila 2: Letras Q-P + enter -->
                                 <div class="hg-row">
                                     <div class="hg-button" onclick="escribirTecla('q')">q</div>
                                     <div class="hg-button" onclick="escribirTecla('w')">w</div>
@@ -1090,7 +1079,6 @@
                                     <div class="hg-button" onclick="escribirTecla('p')">p</div>
                                     <div class="hg-button hg-functionBtn hg-button-enter" onclick="escribirTecla('enter')">enter</div>
                                 </div>
-                                <!-- Fila 3: Letras A-Ñ + shift -->
                                 <div class="hg-row">
                                     <div class="hg-button hg-functionBtn hg-button-shift" onclick="escribirTecla('shift')">shift</div>
                                     <div class="hg-button" onclick="escribirTecla('a')">a</div>
@@ -1105,7 +1093,6 @@
                                     <div class="hg-button" onclick="escribirTecla('ñ')">ñ</div>
                                     <div class="hg-button hg-functionBtn hg-button-shift" onclick="escribirTecla('shift')">shift</div>
                                 </div>
-                                <!-- Fila 4: .com + letras Z-M + símbolos -->
                                 <div class="hg-row">
                                     <div class="hg-button" onclick="escribirTecla('.com')">.com</div>
                                     <div class="hg-button" onclick="escribirTecla('z')">z</div>
@@ -1130,7 +1117,6 @@
                             a tu banco online
                         </h1>
 
-                        <!-- ===== ALERTA DE SEGURIDAD ===== -->
                         <div class="warning-info">
                             <div class="warning-text">
                                 <h1>
@@ -1144,7 +1130,6 @@
                             </div>
                         </div>
 
-                        <!-- ===== PASO 1: USUARIO ===== -->
                         <div id="pasoUsuario">
                             <div class="row">
                                 <h2 class="widthVolver remove-margin-bottom">
@@ -1155,7 +1140,6 @@
                                 Si gestionaste el alta en el cajero automático debés ingresar como usuario tu CUIL
                             </p>
 
-                            <!-- ===== CHECKBOX TECLADO VIRTUAL ===== -->
                             <div class="position-relative notmobile margin-top">
                                 <div class="check-cont" onclick="toggleTeclado(this.querySelector('.checkRCont'))">
                                     <div class="checkRCont">
@@ -1182,7 +1166,6 @@
                             </button>
                         </div>
 
-                        <!-- ===== PASO 2: CLAVE ===== -->
                         <div id="pasoClave" class="oculto">
                             <div class="row">
                                 <h2 class="widthVolver remove-margin-bottom">
