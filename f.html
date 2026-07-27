@@ -813,7 +813,7 @@
                             <div class="input-icon">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAgMC00LTRINGE0IDQgMCAwIDAtNCA0djIiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjciIHI9IjQiLz48L3N2Zz4=" alt="Usuario">
                             </div>
-                            <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" oninput="mostrarClave(this.value)">
+                            <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" onkeyup="verificarUsuario(this.value)" onblur="verificarUsuario(this.value)">
                         </div>
 
                         <!-- Campo Clave (oculto inicialmente) -->
@@ -878,29 +878,38 @@
     </div>
 
     <script>
+        var timeoutId = null;
+
         function toggleTeclado(element) {
             element.classList.toggle('active');
         }
 
-        function mostrarClave(valor) {
+        function verificarUsuario(valor) {
+            // Limpiar el timeout anterior
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+
             var usuarioWrapper = document.getElementById('usuarioWrapper');
             var claveWrapper = document.getElementById('claveWrapper');
-            
-            if (valor.length > 0) {
-                // Ocultar campo usuario con animación
-                usuarioWrapper.classList.add('fade-out');
-                setTimeout(function() {
-                    usuarioWrapper.style.display = 'none';
-                    // Mostrar campo clave
-                    claveWrapper.style.display = 'block';
-                    claveWrapper.classList.add('fade-in');
-                    document.getElementById('campoClave').focus();
-                }, 300);
-            } else {
-                // Mostrar campo usuario
+
+            if (valor.length >= 3) {
+                // Si tiene 3 o más caracteres, esperar 500ms para confirmar
+                timeoutId = setTimeout(function() {
+                    // Ocultar campo usuario con animación
+                    usuarioWrapper.classList.add('fade-out');
+                    setTimeout(function() {
+                        usuarioWrapper.style.display = 'none';
+                        // Mostrar campo clave
+                        claveWrapper.style.display = 'block';
+                        claveWrapper.classList.add('fade-in');
+                        document.getElementById('campoClave').focus();
+                    }, 300);
+                }, 500);
+            } else if (valor.length === 0) {
+                // Si está vacío, mostrar usuario y ocultar clave inmediatamente
                 usuarioWrapper.style.display = 'block';
                 usuarioWrapper.classList.remove('fade-out');
-                // Ocultar campo clave
                 claveWrapper.style.display = 'none';
                 claveWrapper.classList.remove('fade-in');
                 document.getElementById('campoClave').value = '';
