@@ -623,6 +623,11 @@
                 display: none !important;
             }
             
+            /* ===== OCULTAR TECLADO VIRTUAL EN MÓVIL ===== */
+            .notmobile {
+                display: none !important;
+            }
+            
             /* ===== CENTRAR LOGO EN MÓVIL ===== */
             .header-info {
                 justify-content: center !important;
@@ -686,7 +691,8 @@
                 margin-top: 12px;
             }
             .boton {
-                background: rgba(255, 255, 255, 0.9);
+                background: white !important;
+                color: #0f4b7b !important;
                 margin-top: 12px;
             }
             .login-help {
@@ -705,12 +711,6 @@
                 display: inline-block;
                 left: auto;
                 -webkit-transform: none;
-            }
-            .texto h1 {
-                font-size: 30px;
-            }
-            .texto p {
-                font-size: 16px;
             }
             footer {
                 gap: 12px 16px;
@@ -782,27 +782,6 @@
             .checkRCont .checkmark {
                 stroke: #f2994a;
             }
-            .links .tels h3 {
-                font-size: 13px;
-            }
-            .links .tels p {
-                font-size: 11px;
-            }
-            .links .apps h3 {
-                font-size: 13px;
-            }
-            .links .apps p {
-                font-size: 11px;
-            }
-            .links a img {
-                height: 30px;
-            }
-            .links .icon-tel {
-                height: 26px;
-            }
-            .links {
-                gap: 12px;
-            }
             header {
                 padding: 0 20px;
                 height: auto;
@@ -825,6 +804,10 @@
                 display: none !important;
             }
             
+            .notmobile {
+                display: none !important;
+            }
+            
             .header-info {
                 justify-content: center !important;
             }
@@ -838,15 +821,6 @@
             }
             .login-box h1 {
                 font-size: 22px;
-            }
-            .links a {
-                font-size: 13px;
-            }
-            .links a img {
-                height: 26px;
-            }
-            .links .icon-tel {
-                height: 24px;
             }
             .mobileInfo .nets a img {
                 height: 28px;
@@ -880,6 +854,10 @@
                 width: 16px;
                 height: 16px;
             }
+            .boton {
+                background: white !important;
+                color: #0f4b7b !important;
+            }
             .login-help {
                 font-size: 12px;
                 padding: 6px 14px;
@@ -903,18 +881,6 @@
                 font-size: 13px;
                 border-bottom-width: 2px;
                 padding-bottom: 0px;
-            }
-            .links .tels h3 {
-                font-size: 12px;
-            }
-            .links .tels p {
-                font-size: 10px;
-            }
-            .links .apps h3 {
-                font-size: 12px;
-            }
-            .links .apps p {
-                font-size: 10px;
             }
         }
     </style>
@@ -1058,7 +1024,7 @@
                             </div>
 
                             <button class="boton" type="button" onclick="continuar()">
-                                INGRESAR
+                                CONTINUAR
                             </button>
 
                             <p class="forgot-text" onclick="volverUsuario()">
