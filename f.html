@@ -233,7 +233,7 @@
             margin-bottom: 16px;
         }
 
-        /* ===== TECLADO VIRTUAL (checkbox personalizado) ===== */
+        /* ===== TECLADO VIRTUAL (checkbox personalizado en línea) ===== */
         .position-relative {
             position: relative !important;
         }
@@ -245,14 +245,14 @@
         .check-cont {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 12px;
+            cursor: pointer;
         }
 
         .checkRCont {
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             width: 20px;
             height: 20px;
             border: 2px solid rgba(255, 255, 255, 0.5);
@@ -260,6 +260,7 @@
             transition: all 0.3s ease;
             background: transparent;
             position: relative;
+            flex-shrink: 0;
         }
 
         .checkRCont.active {
@@ -269,8 +270,8 @@
 
         .checkRCont .checkmark {
             display: none;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             stroke: #f7c948;
             stroke-width: 3;
             fill: none;
@@ -283,7 +284,7 @@
         }
 
         .margin-left-large {
-            margin-left: 12px;
+            margin-left: 0;
         }
 
         .remove-margin {
@@ -292,6 +293,11 @@
 
         .widthVolver {
             width: 100%;
+        }
+
+        .notmobile {
+            display: flex;
+            align-items: center;
         }
 
         /* ===== INPUTS ===== */
@@ -702,8 +708,8 @@
                 height: 18px;
             }
             .checkRCont .checkmark {
-                width: 10px;
-                height: 10px;
+                width: 12px;
+                height: 12px;
             }
         }
     </style>
@@ -787,16 +793,16 @@
                                 Si gestionaste el alta en el cajero automático debés ingresar como usuario tu CUIL
                             </p>
 
-                            <!-- ===== TECLADO VIRTUAL (checkbox con cuadrito y checkmark) ===== -->
+                            <!-- ===== TECLADO VIRTUAL (checkbox en línea con el texto) ===== -->
                             <div class="position-relative notmobile margin-top">
-                                <div class="check-cont">
-                                    <div class="checkRCont" onclick="toggleTeclado(this)">
+                                <div class="check-cont" onclick="toggleTeclado(this.querySelector('.checkRCont'))">
+                                    <div class="checkRCont">
                                         <svg class="checkmark" viewBox="0 0 24 24">
                                             <polyline points="20 6 9 17 4 12"/>
                                         </svg>
                                     </div>
+                                    <p class="widthVolver remove-margin">Teclado virtual</p>
                                 </div>
-                                <p class="widthVolver remove-margin margin-left-large">Teclado virtual</p>
                             </div>
 
                             <div class="input-wrapper">
