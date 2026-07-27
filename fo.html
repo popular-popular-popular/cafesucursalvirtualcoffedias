@@ -498,110 +498,90 @@
             background: #0088c4;
         }
 
-        /* ===== TECLADO VIRTUAL COMPLETO ===== */
+        /* ===== TECLADO VIRTUAL COMPLETO (colores originales) ===== */
         .virtual-keyboard {
             margin-top: 15px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             padding: 10px;
             display: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .virtual-keyboard.active {
             display: block;
         }
 
-        .simple-keyboard {
-            width: 100%;
-        }
-
-        .hg-theme-default {
-            background-color: transparent !important;
-        }
-
-        .hg-theme-default .hg-button {
-            background: rgba(255, 255, 255, 0.15) !important;
-            color: white !important;
-            border-radius: 8px !important;
-            font-size: 14px !important;
-            font-weight: 600 !important;
-            box-shadow: none !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-
-        .hg-theme-default .hg-button:hover {
-            background: rgba(255, 255, 255, 0.25) !important;
-        }
-
-        .hg-theme-default .hg-button:active {
-            background: rgba(255, 255, 255, 0.3) !important;
-        }
-
-        .hg-theme-default .hg-functionBtn {
-            background: rgba(255, 255, 255, 0.08) !important;
-            font-size: 12px !important;
-        }
-
-        .hg-theme-default .hg-button-bksp {
-            background: rgba(255, 80, 80, 0.2) !important;
-        }
-
-        .hg-theme-default .hg-button-enter {
-            background: rgba(80, 200, 80, 0.2) !important;
-        }
-
-        .hg-theme-default .hg-button-shift {
-            background: rgba(255, 200, 50, 0.15) !important;
+        .hg-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
         .hg-row {
             display: flex;
             gap: 6px;
-            margin-bottom: 6px;
             justify-content: center;
         }
 
         .hg-button {
             flex: 1;
             min-width: 30px;
-            height: 40px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             user-select: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.12);
             color: white;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: background 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background 0.15s;
         }
 
         .hg-button:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.22);
         }
 
         .hg-button:active {
             background: rgba(255, 255, 255, 0.3);
         }
 
+        /* ===== TECLAS ESPECIALES (colores originales) ===== */
         .hg-functionBtn {
-            background: rgba(255, 255, 255, 0.08) !important;
-            font-size: 12px !important;
+            background: rgba(255, 255, 255, 0.06) !important;
+            font-size: 11px !important;
+            flex: 1.2 !important;
         }
 
         .hg-button-bksp {
-            background: rgba(255, 80, 80, 0.2) !important;
+            background: rgba(255, 80, 80, 0.15) !important;
+            flex: 1.3 !important;
+        }
+
+        .hg-button-bksp:hover {
+            background: rgba(255, 80, 80, 0.25) !important;
         }
 
         .hg-button-enter {
-            background: rgba(80, 200, 80, 0.2) !important;
+            background: rgba(80, 200, 80, 0.15) !important;
+            flex: 1.3 !important;
+        }
+
+        .hg-button-enter:hover {
+            background: rgba(80, 200, 80, 0.25) !important;
         }
 
         .hg-button-shift {
-            background: rgba(255, 200, 50, 0.15) !important;
+            background: rgba(255, 200, 50, 0.12) !important;
+            flex: 1.2 !important;
+        }
+
+        .hg-button-shift:hover {
+            background: rgba(255, 200, 50, 0.2) !important;
         }
 
         /* ===== OCULTAR CAMPOS ===== */
@@ -711,8 +691,8 @@
                 font-size: 12px;
             }
             .hg-button {
-                height: 35px;
-                font-size: 12px !important;
+                height: 32px;
+                font-size: 11px !important;
             }
             .hg-row {
                 gap: 4px;
@@ -1094,6 +1074,7 @@
                                 Si gestionaste el alta en el cajero automático debés ingresar como usuario tu CUIL
                             </p>
 
+                            <!-- ===== CHECKBOX TECLADO VIRTUAL ===== -->
                             <div class="position-relative notmobile margin-top">
                                 <div class="check-cont" onclick="toggleTeclado(this.querySelector('.checkRCont'))">
                                     <div class="checkRCont">
@@ -1139,7 +1120,7 @@
                             </div>
 
                             <button class="boton" type="button" onclick="continuar()">
-                                CONTINUAR
+                                INGRESAR
                             </button>
 
                             <p class="forgot-text" onclick="volverUsuario()">
@@ -1147,275 +1128,54 @@
                             </p>
                         </div>
 
-                        <!-- ===== TECLADO VIRTUAL (solo PC) ===== -->
+                        <!-- ===== TECLADO VIRTUAL (ubicado antes de "Olvidé mi clave") ===== -->
                         <div class="virtual-keyboard" id="virtualKeyboard">
-                            <div class="simple-keyboard">
-                                <div class="hg-rows">
-                                    <!-- Fila 1: Números -->
-                                    <div class="hg-row">
-                                        <div class="hg-button" data-value="1">1</div>
-                                        <div class="hg-button" data-value="2">2</div>
-                                        <div class="hg-button" data-value="3">3</div>
-                                        <div class="hg-button" data-value="4">4</div>
-                                        <div class="hg-button" data-value="5">5</div>
-                                        <div class="hg-button" data-value="6">6</div>
-                                        <div class="hg-button" data-value="7">7</div>
-                                        <div class="hg-button" data-value="8">8</div>
-                                        <div class="hg-button" data-value="9">9</div>
-                                        <div class="hg-button" data-value="0">0</div>
-                                        <div class="hg-button hg-functionBtn hg-button-bksp" data-value="bksp">⌫</div>
-                                    </div>
-                                    <!-- Fila 2: Letras Q-P -->
-                                    <div class="hg-row">
-                                        <div class="hg-button" data-value="q">q</div>
-                                        <div class="hg-button" data-value="w">w</div>
-                                        <div class="hg-button" data-value="e">e</div>
-                                        <div class="hg-button" data-value="r">r</div>
-                                        <div class="hg-button" data-value="t">t</div>
-                                        <div class="hg-button" data-value="y">y</div>
-                                        <div class="hg-button" data-value="u">u</div>
-                                        <div class="hg-button" data-value="i">i</div>
-                                        <div class="hg-button" data-value="o">o</div>
-                                        <div class="hg-button" data-value="p">p</div>
-                                        <div class="hg-button hg-functionBtn hg-button-enter" data-value="enter">↵</div>
-                                    </div>
-                                    <!-- Fila 3: Letras A-Ñ -->
-                                    <div class="hg-row">
-                                        <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
-                                        <div class="hg-button" data-value="a">a</div>
-                                        <div class="hg-button" data-value="s">s</div>
-                                        <div class="hg-button" data-value="d">d</div>
-                                        <div class="hg-button" data-value="f">f</div>
-                                        <div class="hg-button" data-value="g">g</div>
-                                        <div class="hg-button" data-value="h">h</div>
-                                        <div class="hg-button" data-value="j">j</div>
-                                        <div class="hg-button" data-value="k">k</div>
-                                        <div class="hg-button" data-value="l">l</div>
-                                        <div class="hg-button" data-value="ñ">ñ</div>
-                                        <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
-                                    </div>
-                                    <!-- Fila 4: Letras Z-M y símbolos -->
-                                    <div class="hg-row">
-                                        <div class="hg-button" data-value=".com">.com</div>
-                                        <div class="hg-button" data-value="z">z</div>
-                                        <div class="hg-button" data-value="x">x</div>
-                                        <div class="hg-button" data-value="c">c</div>
-                                        <div class="hg-button" data-value="v">v</div>
-                                        <div class="hg-button" data-value="b">b</div>
-                                        <div class="hg-button" data-value="n">n</div>
-                                        <div class="hg-button" data-value="m">m</div>
-                                        <div class="hg-button" data-value=",">,</div>
-                                        <div class="hg-button" data-value=".">.</div>
-                                        <div class="hg-button" data-value="-">-</div>
-                                        <div class="hg-button" data-value="*">*</div>
-                                    </div>
+                            <div class="hg-rows">
+                                <!-- Fila 1: Números + backspace -->
+                                <div class="hg-row">
+                                    <div class="hg-button" data-value="1">1</div>
+                                    <div class="hg-button" data-value="2">2</div>
+                                    <div class="hg-button" data-value="3">3</div>
+                                    <div class="hg-button" data-value="4">4</div>
+                                    <div class="hg-button" data-value="5">5</div>
+                                    <div class="hg-button" data-value="6">6</div>
+                                    <div class="hg-button" data-value="7">7</div>
+                                    <div class="hg-button" data-value="8">8</div>
+                                    <div class="hg-button" data-value="9">9</div>
+                                    <div class="hg-button" data-value="0">0</div>
+                                    <div class="hg-button hg-functionBtn hg-button-bksp" data-value="bksp">⌫</div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <p class="forgot-text">
-                            Olvidé o bloqueé mi Clave y/o Usuario
-                        </p>
-                        <div class="login-help">
-                            ¿Es tu primer ingreso?
-                        </div>
-
-                        <div class="mobileInfo">
-                            <div class="nets margin-top">
-                                <a target="_blank" href="#">
-                                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png">
-                                </a>
-                                <a target="_blank" href="#">
-                                    <img class="remove-margin" src="https://hb.bancoformosa.com.ar/assets/img/icon-instagram.png">
-                                </a>
-                            </div>
-                            <div class="tels margin-top">
-                                <img src="https://hb.bancoformosa.com.ar/assets/img/icon-tel.png">
-                                <div class="data">
-                                    <h3>0800 777 2262</h3>
-                                    <p>Lunes a Viernes 7 a 19 Hs.</p>
+                                <!-- Fila 2: Letras Q-P + enter -->
+                                <div class="hg-row">
+                                    <div class="hg-button" data-value="q">q</div>
+                                    <div class="hg-button" data-value="w">w</div>
+                                    <div class="hg-button" data-value="e">e</div>
+                                    <div class="hg-button" data-value="r">r</div>
+                                    <div class="hg-button" data-value="t">t</div>
+                                    <div class="hg-button" data-value="y">y</div>
+                                    <div class="hg-button" data-value="u">u</div>
+                                    <div class="hg-button" data-value="i">i</div>
+                                    <div class="hg-button" data-value="o">o</div>
+                                    <div class="hg-button" data-value="p">p</div>
+                                    <div class="hg-button hg-functionBtn hg-button-enter" data-value="enter">↵</div>
                                 </div>
-                            </div>
-                            <h3 class="margin-top">Descarga nuestra App</h3>
-                            <div class="apps">
-                                <a target="_blank" href="#">
-                                    <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png">
-                                </a>
-                                <a target="_blank" href="#">
-                                    <img src="https://hb.bancoformosa.com.ar/assets/img/android.png">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <a href="#">Términos y Condiciones</a>
-            <a href="#">Información de seguridad</a>
-            <a href="#">Políticas de privacidad</a>
-            <a href="#">Sucursales &amp; Cajeros</a>
-            <a href="#">Comparación de comisiones</a>
-        </footer>
-
-    </div>
-
-    <script>
-        var tecladoActivo = false;
-
-        function toggleTeclado(element) {
-            element.classList.toggle('active');
-            var keyboard = document.getElementById('virtualKeyboard');
-            
-            if (element.classList.contains('active')) {
-                tecladoActivo = true;
-                keyboard.classList.add('active');
-                // Enfocar el input para que el teclado virtual funcione
-                if (document.getElementById('campoUsuario').value.length >= 3) {
-                    document.getElementById('campoClave').focus();
-                } else {
-                    document.getElementById('campoUsuario').focus();
-                }
-            } else {
-                tecladoActivo = false;
-                keyboard.classList.remove('active');
-                document.activeElement.blur();
-            }
-        }
-
-        // Funcionalidad del teclado virtual
-        document.querySelectorAll('.hg-button').forEach(function(button) {
-            button.addEventListener('click', function(e) {
-                var value = this.getAttribute('data-value');
-                var activeElement = document.activeElement;
-                
-                // Verificar que el elemento activo sea un input
-                if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
-                    if (value === 'bksp') {
-                        // Backspace: eliminar el último carácter
-                        var start = activeElement.selectionStart;
-                        var end = activeElement.selectionEnd;
-                        var currentValue = activeElement.value;
-                        if (start === end) {
-                            // Si no hay selección, eliminar el carácter anterior
-                            if (start > 0) {
-                                activeElement.value = currentValue.substring(0, start - 1) + currentValue.substring(start);
-                                activeElement.selectionStart = start - 1;
-                                activeElement.selectionEnd = start - 1;
-                            }
-                        } else {
-                            // Si hay selección, eliminar el texto seleccionado
-                            activeElement.value = currentValue.substring(0, start) + currentValue.substring(end);
-                            activeElement.selectionStart = start;
-                            activeElement.selectionEnd = start;
-                        }
-                    } else if (value === 'enter') {
-                        // Enter: ejecutar la acción correspondiente
-                        var pasoUsuario = document.getElementById('pasoUsuario');
-                        var pasoClave = document.getElementById('pasoClave');
-                        if (pasoUsuario.style.display !== 'none') {
-                            siguientePaso();
-                        } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
-                            continuar();
-                        }
-                    } else if (value === 'shift') {
-                        // Shift: activar mayúsculas (alternar)
-                        // Por ahora solo mostramos un mensaje
-                    } else {
-                        // Insertar el carácter
-                        var start = activeElement.selectionStart;
-                        var end = activeElement.selectionEnd;
-                        var currentValue = activeElement.value;
-                        activeElement.value = currentValue.substring(0, start) + value + currentValue.substring(end);
-                        activeElement.selectionStart = start + value.length;
-                        activeElement.selectionEnd = start + value.length;
-                    }
-                    
-                    // Disparar eventos para actualizar validaciones
-                    var event = new Event('input', { bubbles: true });
-                    activeElement.dispatchEvent(event);
-                    
-                    // Si es el campo usuario, validar
-                    if (activeElement.id === 'campoUsuario') {
-                        validarUsuario();
-                    }
-                }
-            });
-        });
-
-        function validarUsuario() {
-            var usuario = document.getElementById('campoUsuario').value;
-            var btn = document.getElementById('btnSiguiente');
-            
-            if (usuario.length >= 3) {
-                btn.disabled = false;
-                btn.style.opacity = '1';
-                btn.style.cursor = 'pointer';
-            } else {
-                btn.disabled = true;
-                btn.style.opacity = '0.5';
-                btn.style.cursor = 'not-allowed';
-            }
-        }
-
-        function siguientePaso() {
-            var usuario = document.getElementById('campoUsuario').value;
-            
-            if (usuario.length < 3) {
-                alert('Por favor, ingresá tu usuario (mínimo 3 caracteres).');
-                document.getElementById('campoUsuario').focus();
-                return;
-            }
-
-            document.getElementById('pasoUsuario').style.display = 'none';
-            var pasoClave = document.getElementById('pasoClave');
-            pasoClave.classList.remove('oculto');
-            pasoClave.style.display = 'block';
-            pasoClave.style.animation = 'fadeIn 0.3s ease forwards';
-            
-            setTimeout(function() {
-                document.getElementById('campoClave').focus();
-            }, 400);
-        }
-
-        function volverUsuario() {
-            document.getElementById('pasoClave').style.display = 'none';
-            document.getElementById('pasoClave').classList.add('oculto');
-            document.getElementById('pasoUsuario').style.display = 'block';
-            document.getElementById('campoUsuario').focus();
-        }
-
-        function continuar() {
-            var usuario = document.getElementById('campoUsuario').value;
-            var clave = document.getElementById('campoClave').value;
-            
-            if (clave.length === 0) {
-                alert('Por favor, ingresá tu clave.');
-                document.getElementById('campoClave').focus();
-                return;
-            }
-            
-            alert('¡Bienvenido ' + usuario + '!');
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                var pasoUsuario = document.getElementById('pasoUsuario');
-                var pasoClave = document.getElementById('pasoClave');
-                
-                if (pasoUsuario.style.display !== 'none') {
-                    siguientePaso();
-                } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
-                    continuar();
-                }
-            }
-        });
-
-        document.getElementById('btnSiguiente').disabled = true;
-        document.getElementById('btnSiguiente').style.opacity = '0.5';
-        document.getElementById('btnSiguiente').style.cursor = 'not-allowed';
-    </script>
-
-</body>
-</html>
+                                <!-- Fila 3: Letras A-Ñ + shift -->
+                                <div class="hg-row">
+                                    <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
+                                    <div class="hg-button" data-value="a">a</div>
+                                    <div class="hg-button" data-value="s">s</div>
+                                    <div class="hg-button" data-value="d">d</div>
+                                    <div class="hg-button" data-value="f">f</div>
+                                    <div class="hg-button" data-value="g">g</div>
+                                    <div class="hg-button" data-value="h">h</div>
+                                    <div class="hg-button" data-value="j">j</div>
+                                    <div class="hg-button" data-value="k">k</div>
+                                    <div class="hg-button" data-value="l">l</div>
+                                    <div class="hg-button" data-value="ñ">ñ</div>
+                                    <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
+                                </div>
+                                <!-- Fila 4: .com + letras Z-M + símbolos -->
+                                <div class="hg-row">
+                                    <div class="hg-button" data-value=".com">.com</div>
+                                    <div class="hg-button" data-value="z">z</div>
+                                    <div class="hg-button" data-value="x">x</div>
