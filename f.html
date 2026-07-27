@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: "Open Sans", Arial, Helvetica, sans-serif;
+            outline: none;
         }
 
         body {
@@ -232,12 +233,13 @@
             margin-bottom: 16px;
         }
 
-        /* ===== TECLADO VIRTUAL ===== */
+        /* ===== TECLADO VIRTUAL (estilo exacto del banco) ===== */
         .position-relative {
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin: 10px 0 16px 0;
+            position: relative !important;
+        }
+
+        .margin-top {
+            margin-top: 20px !important;
         }
 
         .check-cont {
@@ -251,13 +253,14 @@
             align-items: center;
             gap: 3px;
             cursor: pointer;
+            padding: 4px 0;
         }
 
         .line {
             height: 2px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 2px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .line.short {
@@ -282,10 +285,6 @@
 
         .widthVolver {
             width: 100%;
-        }
-
-        .margin-top-small {
-            margin-top: 4px;
         }
 
         /* ===== INPUTS ===== */
@@ -371,6 +370,7 @@
             transition: all 0.3s ease;
             letter-spacing: 1px;
             margin-top: 20px;
+            outline: none !important;
         }
 
         .boton:hover {
@@ -399,6 +399,7 @@
             opacity: 0.8;
             cursor: pointer;
             transition: opacity 0.3s;
+            outline: none !important;
         }
 
         .forgot-text:hover {
@@ -425,6 +426,7 @@
             transition: background 0.3s;
             left: 50%;
             margin-left: calc(-50% + 90px);
+            outline: none !important;
         }
 
         .login-help:hover {
@@ -640,6 +642,9 @@
                 height: 36px;
                 width: auto;
             }
+            .checkRCont .line {
+                background: rgba(255, 255, 255, 0.3);
+            }
         }
 
         @media (max-width: 480px) {
@@ -770,7 +775,8 @@
                                 Si gestionaste el alta en el cajero automático debés ingresar como usuario tu CUIL
                             </p>
 
-                            <div class="position-relative notmobile">
+                            <!-- ===== TECLADO VIRTUAL (checkbox personalizado) ===== -->
+                            <div class="position-relative notmobile margin-top">
                                 <div class="check-cont">
                                     <div class="checkRCont" onclick="toggleTeclado(this)">
                                         <div class="line short"></div>
