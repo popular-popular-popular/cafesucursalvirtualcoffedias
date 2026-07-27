@@ -278,27 +278,53 @@
             margin-top: 4px;
         }
 
-        /* ===== INPUTS ===== */
+        /* ===== INPUTS (estilo exacto del banco) ===== */
         .input {
-            width: 100%;
-            padding: 16px 20px;
-            margin-bottom: 14px;
-            border: none;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.12);
-            color: white;
-            font-size: 15px;
-            outline: 1px solid rgba(255, 255, 255, 0.08);
+            border: 2px solid white !important;
+            background-color: transparent !important;
+            border-style: solid !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 38px !important;
+            border-radius: 20px !important;
+            padding-left: 60px !important;
+            color: white !important;
+            margin-top: 20px !important;
+            padding-right: 40px !important;
+            font-size: 14px !important;
+            outline: none !important;
             transition: all 0.3s ease;
         }
 
         .input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .input:focus {
-            outline: 1px solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.2);
+            border-color: #f7c948 !important;
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        /* Iconos de los inputs */
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+
+        .input-icon img {
+            height: 20px;
+            width: auto;
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
         }
 
         /* ===== BOTÓN ===== */
@@ -314,7 +340,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             letter-spacing: 1px;
-            margin-top: 5px;
+            margin-top: 20px;
         }
 
         .boton:hover {
@@ -470,11 +496,19 @@
             }
 
             .input {
-                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.3) !important;
+                background-color: rgba(255, 255, 255, 0.05) !important;
+                height: 42px !important;
+                margin-top: 12px !important;
+            }
+
+            .input-icon {
+                margin-top: 12px;
             }
 
             .boton {
                 background: rgba(255, 255, 255, 0.9);
+                margin-top: 12px;
             }
 
             .texto h1 {
@@ -599,6 +633,20 @@
                 padding: 10px 16px;
                 min-height: 50px;
             }
+
+            .input {
+                height: 38px !important;
+                padding-left: 50px !important;
+                font-size: 13px !important;
+            }
+
+            .input-icon {
+                left: 16px;
+            }
+
+            .input-icon img {
+                height: 16px;
+            }
         }
     </style>
 </head>
@@ -689,9 +737,21 @@
                             <p class="widthVolver remove-margin margin-left-large">Teclado virtual</p>
                         </div>
 
-                        <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" oninput="mostrarClave()">
+                        <!-- Campo Usuario -->
+                        <div class="input-wrapper">
+                            <div class="input-icon">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAgMC00LTRINGE0IDQgMCAwIDAtNCA0djIiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjciIHI9IjQiLz48L3N2Zz4=" alt="Usuario">
+                            </div>
+                            <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" oninput="mostrarClave()">
+                        </div>
 
-                        <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave" style="display: none;">
+                        <!-- Campo Clave (oculto inicialmente) -->
+                        <div class="input-wrapper" id="claveWrapper" style="display: none;">
+                            <div class="input-icon">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHJlY3QgeD0iMyIgeT0iMTEiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMSIgcng9IjIiIHJ5PSIyIi8+PHBhdGggZD0iTTcgMTFWN2E1IDUgMCAwIDEgMTAgMHY0Ii8+PC9zdmc+" alt="Clave">
+                            </div>
+                            <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave">
+                        </div>
 
                         <button class="boton" type="button" onclick="continuar()">
                             CONTINUAR
@@ -753,13 +813,14 @@
 
         function mostrarClave() {
             var usuario = document.getElementById('campoUsuario').value;
-            var campoClave = document.getElementById('campoClave');
+            var claveWrapper = document.getElementById('claveWrapper');
             
             if (usuario.length > 0) {
-                campoClave.style.display = 'block';
-                campoClave.style.animation = 'fadeIn 0.3s ease';
+                claveWrapper.style.display = 'block';
+                claveWrapper.style.animation = 'fadeIn 0.3s ease';
             } else {
-                campoClave.style.display = 'none';
+                claveWrapper.style.display = 'none';
+                document.getElementById('campoClave').value = '';
             }
         }
 
