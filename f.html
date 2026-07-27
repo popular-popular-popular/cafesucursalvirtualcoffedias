@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maqueta Home Banking</title>
+    <title>Home Banking</title>
     <style>
         /* ===== RESET Y ESTILOS BASE ===== */
         * {
@@ -438,28 +438,22 @@
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
             letter-spacing: 1px;
             margin-top: 20px;
             outline: none !important;
+            transition: none;
         }
 
         .boton:hover {
-            background: #e8f0fe;
-            transform: scale(1.02);
-            box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
+            background: white;
+            color: #0f4b7b;
+            transform: none;
+            box-shadow: none;
         }
 
         .boton:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
-        }
-
-        .boton:disabled:hover {
-            background: white;
-            transform: none;
-            box-shadow: none;
         }
 
         /* ===== FORGOT TEXT ===== */
@@ -1009,7 +1003,7 @@
                         <div id="pasoClave" class="oculto">
                             <div class="row">
                                 <h2 class="widthVolver remove-margin-bottom">
-                                    Ingresá tu clave
+                                    Ingresá tus datos
                                 </h2>
                             </div>
 
@@ -1020,7 +1014,7 @@
                                         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                                     </svg>
                                 </div>
-                                <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave">
+                                <input class="input" autocomplete="new-password" type="password" placeholder="Clave" id="campoClave">
                             </div>
 
                             <button class="boton" type="button" onclick="continuar()">
