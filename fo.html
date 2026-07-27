@@ -10,11 +10,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: "Open Sans", Arial, Helvetica, sans-serif;
+            outline: none;
         }
 
         body {
             overflow-x: hidden;
+            background-color: #fff;
         }
 
         /* ===== VIDEO DE FONDO ===== */
@@ -50,27 +52,107 @@
 
         /* ===== HEADER ===== */
         header {
-            height: 80px;
             background: transparent;
             color: white;
+            padding: 0 40px;
+            padding-top: 2vh;
+        }
+
+        .header-info {
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
+            padding-bottom: 2vh;
+            border-bottom: 1px solid white;
+            color: white;
+            z-index: 1;
+            margin-left: 4vw;
+            margin-right: 4vw;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* ===== LOGO ===== */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            margin-right: 15px;
         }
 
         .logo h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
         }
 
-        .top-info {
+        /* ===== LINKS DEL HEADER ===== */
+        .links {
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
-        .top-info span {
-            font-size: 14px;
+        .links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .links a:hover {
+            opacity: 0.8;
+        }
+
+        .links a img {
+            height: 40px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .links .icon-tel {
+            height: 35px;
+        }
+
+        .links .tels h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .links .tels p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        .links .apps h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .links .apps p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        .remove-margin {
+            margin: 0 !important;
         }
 
         /* ===== HERO ===== */
@@ -97,9 +179,10 @@
         }
 
         .texto h1 {
-            font-size: 48px;
+            font-size: 42px;
             margin-bottom: 20px;
             line-height: 1.2;
+            font-weight: 700;
         }
 
         .texto p {
@@ -107,173 +190,428 @@
             line-height: 1.6;
             margin-bottom: 30px;
             opacity: 0.9;
+            font-weight: 400;
         }
 
-        .info-contacto {
+        /* ===== LOGIN BOX ===== */
+        .login-box {
+            position: relative;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-        }
-
-        .info-contacto .item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-        }
-
-        .info-contacto .item strong {
-            font-weight: bold;
-        }
-
-        .badge-app {
-            display: inline-block;
-            margin-top: 5px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        /* ===== LOGIN CARD ===== */
-        .login {
-            width: 380px;
-            background: rgba(15, 75, 123, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: 16px;
+            flex-shrink: 0;
+            justify-items: flex-start;
+            background-color: rgba(0, 61, 121, 0.7);
+            padding: 3vh 50px;
+            padding-top: 60px;
+            border-radius: 10px;
+            max-width: 430px;
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-        }
-
-        .login h2 {
-            font-size: 28px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .login .subtitulo {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 25px;
-        }
-
-        /* ===== ALERTA SEGURIDAD ===== */
-        .alerta-seguridad {
-            background: rgba(255, 200, 50, 0.12);
-            border-left: 3px solid #f7c948;
-            padding: 12px 16px;
-            border-radius: 8px;
             margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: visible;
         }
 
-        .alerta-seguridad strong {
-            display: block;
-            font-size: 14px;
-            color: #f7c948;
-            margin-bottom: 4px;
-        }
-
-        .alerta-seguridad span {
-            font-size: 13px;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-
-        .alerta-seguridad .destacado {
-            color: #ffd700;
+        .login-box h1 {
+            font-size: 27px;
             font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.2;
         }
 
-        /* ===== INPUTS ===== */
-        .login input {
-            width: 100%;
-            padding: 14px 18px;
-            margin-bottom: 14px;
-            border: none;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.12);
-            color: white;
-            font-size: 15px;
-            outline: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
+        .login-box h1 br {
+            display: inline;
         }
 
-        .login input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+        /* ===== WARNING INFO ===== */
+        .warning-info {
+            background-color: white !important;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin-top: 20px;
+            height: auto;
+            min-height: 80px;
+            margin-left: -50px;
+            margin-right: -50px;
+            padding: 0 50px;
+            align-items: center;
+            gap: 12px;
+            color: #333;
         }
 
-        .login input:focus {
-            outline: 1px solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* ===== TECLADO VIRTUAL ===== */
-        .teclado-virtual {
+        .warning-text h1 {
+            font-size: 14px;
+            color: #f2994a !important;
+            margin-bottom: 0;
+            font-weight: bold;
             display: flex;
             align-items: center;
             gap: 8px;
-            margin: 6px 0 16px 0;
-            font-size: 14px;
-            opacity: 0.7;
-            cursor: pointer;
-            transition: opacity 0.3s;
         }
 
-        .teclado-virtual:hover {
-            opacity: 1;
-        }
-
-        /* ===== BOTÓN ===== */
-        .login button {
-            width: 100%;
-            padding: 15px;
-            background: white;
-            color: #0f4b7b;
+        .warning-text h1 b {
             font-weight: bold;
-            font-size: 16px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            margin-top: 5px;
+            color: #f2994a !important;
         }
 
-        .login button:hover {
-            background: #e8f0fe;
-            transform: scale(1.02);
-            box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
+        .warning-text h1 img {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
         }
 
-        /* ===== ENLACES ===== */
-        .links-login {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .links-login a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .links-login a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        .links-login .destacado {
-            color: #7fc9e6;
+        .warning-text p {
+            font-size: 13px;
+            color: #0f4b7b !important;
+            opacity: 1;
+            line-height: 1.4;
+            margin-top: 4px;
             font-weight: 600;
         }
 
-        .links-login .destacado:hover {
-            color: #a3dcf5;
+        .warning-text p br {
+            display: none;
+        }
+
+        /* ===== ROW ===== */
+        .row {
+            margin-bottom: 6px;
+            margin-top: 16px;
+        }
+
+        .row h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .info-text {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 16px;
+        }
+
+        /* ===== TECLADO VIRTUAL (checkbox personalizado en línea) ===== */
+        .position-relative {
+            position: relative !important;
+        }
+
+        .margin-top {
+            margin-top: 20px !important;
+        }
+
+        .check-cont {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .checkRCont {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: transparent;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .checkRCont.active {
+            border-color: #f2994a;
+            background: rgba(242, 153, 74, 0.15);
+        }
+
+        .checkRCont .checkmark {
+            display: none;
+            width: 14px;
+            height: 14px;
+            stroke: #f2994a;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .checkRCont.active .checkmark {
+            display: block;
+        }
+
+        .margin-left-large {
+            margin-left: 0;
+        }
+
+        .remove-margin {
+            margin: 0;
+        }
+
+        .widthVolver {
+            width: 100%;
+        }
+
+        .notmobile {
+            display: flex;
+            align-items: center;
+        }
+
+        /* ===== INPUTS ===== */
+        .input {
+            border: 2px solid white !important;
+            background-color: transparent !important;
+            border-style: solid !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 38px !important;
+            border-radius: 20px !important;
+            padding-left: 60px !important;
+            color: white !important;
+            margin-top: 20px !important;
+            padding-right: 40px !important;
+            font-size: 14px !important;
+            outline: none !important;
+            transition: all 0.3s ease;
+        }
+
+        .input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .input:focus {
+            border-color: #f2994a !important;
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+
+        .input-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        /* ===== BOTONES ===== */
+        .boton {
+            width: 100%;
+            padding: 16px;
+            background: white;
+            color: #0f4b7b;
+            font-weight: bold;
+            font-size: 17px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            outline: none !important;
+            transition: none;
+        }
+
+        .boton:hover {
+            background: white;
+            color: #0f4b7b;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .boton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ===== FORGOT TEXT ===== */
+        .forgot-text {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 14px;
+            opacity: 0.8;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            outline: none !important;
+        }
+
+        .forgot-text:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* ===== LOGIN HELP ===== */
+        .login-help {
+            background: #00a5df;
+            align-self: center;
+            padding: 8px;
+            width: calc(100% - 180px);
+            border-radius: 20px;
+            position: absolute;
+            bottom: 0;
+            -webkit-transform: translateY(40%);
+            transform: translateY(40%);
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            transition: background 0.3s;
+            left: 50%;
+            margin-left: calc(-50% + 90px);
+            outline: none !important;
+        }
+
+        .login-help:hover {
+            background: #0088c4;
+        }
+
+        /* ===== TECLADO VIRTUAL COMPLETO ===== */
+        .virtual-keyboard {
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+        }
+
+        .virtual-keyboard.active {
+            display: block;
+        }
+
+        .simple-keyboard {
+            width: 100%;
+        }
+
+        .hg-theme-default {
+            background-color: transparent !important;
+        }
+
+        .hg-theme-default .hg-button {
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: white !important;
+            border-radius: 8px !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            box-shadow: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .hg-theme-default .hg-button:hover {
+            background: rgba(255, 255, 255, 0.25) !important;
+        }
+
+        .hg-theme-default .hg-button:active {
+            background: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .hg-theme-default .hg-functionBtn {
+            background: rgba(255, 255, 255, 0.08) !important;
+            font-size: 12px !important;
+        }
+
+        .hg-theme-default .hg-button-bksp {
+            background: rgba(255, 80, 80, 0.2) !important;
+        }
+
+        .hg-theme-default .hg-button-enter {
+            background: rgba(80, 200, 80, 0.2) !important;
+        }
+
+        .hg-theme-default .hg-button-shift {
+            background: rgba(255, 200, 50, 0.15) !important;
+        }
+
+        .hg-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 6px;
+            justify-content: center;
+        }
+
+        .hg-button {
+            flex: 1;
+            min-width: 30px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.2s;
+        }
+
+        .hg-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .hg-button:active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hg-functionBtn {
+            background: rgba(255, 255, 255, 0.08) !important;
+            font-size: 12px !important;
+        }
+
+        .hg-button-bksp {
+            background: rgba(255, 80, 80, 0.2) !important;
+        }
+
+        .hg-button-enter {
+            background: rgba(80, 200, 80, 0.2) !important;
+        }
+
+        .hg-button-shift {
+            background: rgba(255, 200, 50, 0.15) !important;
+        }
+
+        /* ===== OCULTAR CAMPOS ===== */
+        .oculto {
+            display: none !important;
+        }
+
+        /* ===== MOBILE INFO ===== */
+        .mobileInfo {
+            display: none;
         }
 
         /* ===== FOOTER ===== */
@@ -289,15 +627,19 @@
         }
 
         footer a {
-            color: rgba(255, 255, 255, 0.6);
+            color: white !important;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-size: 22px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-bottom: 2px solid white;
+            padding-bottom: 0px;
+            line-height: 1;
         }
 
         footer a:hover {
-            color: white;
+            border-bottom-color: white;
+            opacity: 0.8;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -307,59 +649,353 @@
                 text-align: center;
                 gap: 40px;
             }
-
             .texto {
                 text-align: center;
             }
-
-            .info-contacto {
-                align-items: center;
-            }
-
-            .login {
-                width: 100%;
-                max-width: 420px;
-            }
-
-            header {
-                flex-direction: column;
-                height: auto;
-                padding: 15px 20px;
-                gap: 10px;
-            }
-
-            .top-info {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-            }
-
             .texto h1 {
                 font-size: 36px;
             }
-        }
-
-        @media (max-width: 480px) {
-            .texto h1 {
+            .texto p {
+                font-size: 16px;
+            }
+            .login-box {
+                width: 100%;
+                max-width: 440px;
+                padding: 3vh 30px;
+                padding-top: 40px;
+            }
+            .warning-info {
+                margin-left: -30px;
+                margin-right: -30px;
+                padding: 0 30px;
+                min-height: 70px;
+            }
+            .login-help {
+                width: calc(100% - 120px);
+                margin-left: calc(-50% + 60px);
+            }
+            .links {
+                gap: 15px;
+                justify-content: center;
+            }
+            footer a {
+                font-size: 18px;
+            }
+            .header-info {
+                margin-left: 2vw;
+                margin-right: 2vw;
+                justify-content: center;
+            }
+            .logo-img {
+                height: 50px;
+            }
+            .logo h2 {
                 font-size: 28px;
             }
-
-            .login {
-                padding: 28px 20px;
+            .links a img {
+                height: 34px;
             }
+            .links .icon-tel {
+                height: 30px;
+            }
+            .links .tels h3 {
+                font-size: 14px;
+            }
+            .links .tels p {
+                font-size: 12px;
+            }
+            .links .apps h3 {
+                font-size: 14px;
+            }
+            .links .apps p {
+                font-size: 12px;
+            }
+            .hg-button {
+                height: 35px;
+                font-size: 12px !important;
+            }
+            .hg-row {
+                gap: 4px;
+            }
+        }
 
-            .login h2 {
+        @media only screen and (max-width: 810px) {
+            /* ===== OCULTAR TEXTO DEL BANNER EN MÓVIL ===== */
+            .texto {
+                display: none !important;
+            }
+            
+            /* ===== OCULTAR LINKS DEL HEADER EN MÓVIL ===== */
+            .header-info .links {
+                display: none !important;
+            }
+            
+            /* ===== OCULTAR TECLADO VIRTUAL EN MÓVIL ===== */
+            .notmobile {
+                display: none !important;
+            }
+            
+            .virtual-keyboard {
+                display: none !important;
+            }
+            
+            /* ===== CENTRAR LOGO EN MÓVIL ===== */
+            .header-info {
+                justify-content: center !important;
+            }
+            
+            .logo {
+                margin: 0 auto;
+            }
+            
+            .login-box {
+                background: transparent !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                padding: 20px 16px 0 16px;
+                padding-top: 20px;
+                padding-bottom: 0;
+                margin-bottom: 50px;
+                border: none !important;
+                box-shadow: none !important;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0;
+                overflow: visible;
+            }
+            .login-box h1 {
                 font-size: 24px;
             }
-
+            .warning-info {
+                background-color: rgba(255, 255, 255, 0.9) !important;
+                margin-left: -16px;
+                margin-right: -16px;
+                padding: 0 16px;
+                height: auto;
+                min-height: 60px;
+                border-radius: 0;
+            }
+            .warning-text p {
+                color: #0f4b7b !important;
+                font-weight: 600;
+            }
+            .warning-text h1 {
+                font-size: 13px;
+            }
+            .warning-text h1 b {
+                color: #f2994a !important;
+            }
+            .warning-text p br {
+                display: inline;
+            }
+            .warning-text h1 img {
+                width: 18px;
+                height: 18px;
+            }
+            .input {
+                border-color: rgba(255, 255, 255, 0.3) !important;
+                background-color: rgba(255, 255, 255, 0.05) !important;
+                height: 42px !important;
+                margin-top: 12px !important;
+            }
+            .input-icon {
+                margin-top: 12px;
+            }
+            .boton {
+                background: white !important;
+                color: #0f4b7b !important;
+                margin-top: 12px;
+            }
+            .login-help {
+                background: #00a5df;
+                align-self: center;
+                padding: 8px 16px;
+                width: auto;
+                border-radius: 20px;
+                position: relative;
+                bottom: auto;
+                transform: none;
+                margin-top: 16px;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 13px;
+                display: inline-block;
+                left: auto;
+                -webkit-transform: none;
+            }
             footer {
                 gap: 12px 16px;
                 height: auto;
                 padding: 12px 16px;
             }
-
             footer a {
-                font-size: 11px;
+                font-size: 16px;
+                border-bottom-width: 2px;
+                padding-bottom: 0px;
+            }
+            .mobileInfo {
+                display: block;
+                margin-top: 30px;
+            }
+            .mobileInfo .nets {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+            .mobileInfo .nets a img {
+                height: 32px;
+                width: auto;
+            }
+            .mobileInfo .tels {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 16px;
+            }
+            .mobileInfo .tels img {
+                height: 28px;
+                width: auto;
+            }
+            .mobileInfo .tels .data h3 {
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .mobileInfo .tels .data p {
+                font-size: 13px;
+                opacity: 0.8;
+            }
+            .mobileInfo h3 {
+                text-align: center;
+                margin-top: 16px;
+                font-size: 16px;
+            }
+            .mobileInfo .apps {
+                display: flex;
+                justify-content: center;
+                gap: 16px;
+                margin-top: 8px;
+            }
+            .mobileInfo .apps a img {
+                height: 36px;
+                width: auto;
+            }
+            .logo-img {
+                height: 45px;
+            }
+            .logo h2 {
+                font-size: 24px;
+            }
+            .checkRCont.active {
+                border-color: #f2994a;
+                background: rgba(242, 153, 74, 0.15);
+            }
+            .checkRCont .checkmark {
+                stroke: #f2994a;
+            }
+            header {
+                padding: 0 20px;
+                height: auto;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .header-info {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .texto {
+                display: none !important;
+            }
+            
+            .header-info .links {
+                display: none !important;
+            }
+            
+            .notmobile {
+                display: none !important;
+            }
+            
+            .virtual-keyboard {
+                display: none !important;
+            }
+            
+            .header-info {
+                justify-content: center !important;
+            }
+            
+            .logo {
+                margin: 0 auto;
+            }
+            
+            .login-box {
+                padding: 20px 16px 0 16px;
+            }
+            .login-box h1 {
+                font-size: 22px;
+            }
+            .mobileInfo .nets a img {
+                height: 28px;
+            }
+            .mobileInfo .apps a img {
+                height: 30px;
+            }
+            .warning-info {
+                padding: 10px 16px;
+                min-height: 50px;
+            }
+            .warning-text h1 {
+                font-size: 12px;
+            }
+            .warning-text h1 img {
+                width: 16px;
+                height: 16px;
+            }
+            .warning-text p {
+                font-weight: 600;
+            }
+            .input {
+                height: 38px !important;
+                padding-left: 50px !important;
+                font-size: 13px !important;
+            }
+            .input-icon {
+                left: 16px;
+            }
+            .input-icon svg {
+                width: 16px;
+                height: 16px;
+            }
+            .boton {
+                background: white !important;
+                color: #0f4b7b !important;
+            }
+            .login-help {
+                font-size: 12px;
+                padding: 6px 14px;
+                width: auto;
+            }
+            .checkRCont {
+                width: 18px;
+                height: 18px;
+            }
+            .checkRCont .checkmark {
+                width: 12px;
+                height: 12px;
+            }
+            .logo-img {
+                height: 40px;
+            }
+            .logo h2 {
+                font-size: 20px;
+            }
+            footer a {
+                font-size: 13px;
+                border-bottom-width: 2px;
+                padding-bottom: 0px;
             }
         }
     </style>
@@ -376,15 +1012,43 @@
     <div class="contenido">
 
         <header>
-            <div class="logo">
-                <h2>🏦 Banco Formosa</h2>
-            </div>
+            <div class="header-info">
+                <div class="logo">
+                    <img src="https://hb.bancoformosa.com.ar/assets/img/LogoHeaderLogin.svg" 
+                         alt="Banco Formosa" 
+                         class="logo-img"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <h2 style="display: none;">🏦 Banco Formosa</h2>
+                </div>
 
-            <div class="top-info">
-                <span>📞 0800 777 2262</span>
-                <span>📱 App</span>
-                <span>Facebook</span>
-                <span>Instagram</span>
+                <div class="links">
+                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-tel.png" alt="Teléfono" class="icon-tel">
+                    <div class="tels">
+                        <h3>0800 777 2262</h3>
+                        <p>Lunes a Viernes 7 a 19 Hs.</p>
+                    </div>
+
+                    <a target="_blank" href="#">
+                        <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png" alt="Apple">
+                    </a>
+
+                    <a target="_blank" href="#">
+                        <img src="https://hb.bancoformosa.com.ar/assets/img/android.png" alt="Android">
+                    </a>
+
+                    <div class="apps">
+                        <h3>Descarga nuestra App</h3>
+                        <p>Disponible para iOS y Android</p>
+                    </div>
+
+                    <a target="_blank" href="#">
+                        <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png" alt="Facebook">
+                    </a>
+
+                    <a target="_blank" href="#">
+                        <img src="https://hb.bancoformosa.com.ar/assets/img/icon-instagram.png" alt="Instagram" class="remove-margin">
+                    </a>
+                </div>
             </div>
         </header>
 
@@ -397,41 +1061,190 @@
                             Estamos mejorando constantemente para vos, nuestro Homebanking es 
                             moderno y fácil de usar, con más funcionalidades y beneficios.
                         </p>
-
-                        <div class="info-contacto">
-                            <div class="item">
-                                <span>📞</span>
-                                <span><strong>0800 777 2262</strong> · Lunes a Viernes 7 a 19 Hs.</span>
-                            </div>
-                            <div class="item">
-                                <span>📱</span>
-                                <span><strong>Descarga nuestra App</strong> · Disponible para iOS y Android</span>
-                            </div>
-                            <div class="badge-app">⭐ App Store · Google Play</div>
-                        </div>
                     </div>
 
-                    <div class="login">
-                        <h2>Bienvenido a tu banco online</h2>
-                        <p class="subtitulo">Ingresá tus datos para continuar</p>
+                    <div class="login-box">
+                        <h1>
+                            Bienvenido <br>
+                            a tu banco online
+                        </h1>
 
-                        <div class="alerta-seguridad">
-                            <strong>🛡️ Evitemos las estafas</strong>
-                            <span>Nunca compartas tu mail, clave personal, usuario ni token.</span>
+                        <!-- ===== ALERTA DE SEGURIDAD ===== -->
+                        <div class="warning-info">
+                            <div class="warning-text">
+                                <h1>
+                                    <img src="https://hb.bancoformosa.com.ar/assets/img/alertIcon.svg" alt="Alerta">
+                                    <b>Evitemos las estafas</b>
+                                </h1>
+                                <p>
+                                    Nunca compartas tu mail, clave personal, <br>
+                                    usuario ni token.
+                                </p>
+                            </div>
                         </div>
 
-                        <input type="text" placeholder="Usuario (tu CUIL si gestionaste alta en cajero)">
-                        <input type="password" placeholder="Clave personal">
+                        <!-- ===== PASO 1: USUARIO ===== -->
+                        <div id="pasoUsuario">
+                            <div class="row">
+                                <h2 class="widthVolver remove-margin-bottom">
+                                    Ingresá tus datos
+                                </h2>
+                            </div>
+                            <p class="info-text remove-margin margin-top-small">
+                                Si gestionaste el alta en el cajero automático debés ingresar como usuario tu CUIL
+                            </p>
 
-                        <div class="teclado-virtual">
-                            <span>⌨️</span> Teclado virtual
+                            <div class="position-relative notmobile margin-top">
+                                <div class="check-cont" onclick="toggleTeclado(this.querySelector('.checkRCont'))">
+                                    <div class="checkRCont">
+                                        <svg class="checkmark" viewBox="0 0 24 24">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                    </div>
+                                    <p class="widthVolver remove-margin">Teclado virtual</p>
+                                </div>
+                            </div>
+
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <input class="input" autocomplete="off" type="text" placeholder="Usuario" id="campoUsuario" oninput="validarUsuario()">
+                            </div>
+
+                            <button class="boton" type="button" onclick="siguientePaso()" id="btnSiguiente" disabled>
+                                CONTINUAR
+                            </button>
                         </div>
 
-                        <button>CONTINUAR</button>
+                        <!-- ===== PASO 2: CLAVE ===== -->
+                        <div id="pasoClave" class="oculto">
+                            <div class="row">
+                                <h2 class="widthVolver remove-margin-bottom">
+                                    Ingresá tu clave
+                                </h2>
+                            </div>
 
-                        <div class="links-login">
-                            <a href="#">Olvidé o bloqueé mi Clave y/o Usuario</a>
-                            <a href="#" class="destacado">¿Es tu primer ingreso?</a>
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                </div>
+                                <input class="input" autocomplete="new-password" type="password" placeholder="Clave personal" id="campoClave">
+                            </div>
+
+                            <button class="boton" type="button" onclick="continuar()">
+                                CONTINUAR
+                            </button>
+
+                            <p class="forgot-text" onclick="volverUsuario()">
+                                ← Volver al usuario
+                            </p>
+                        </div>
+
+                        <!-- ===== TECLADO VIRTUAL (solo PC) ===== -->
+                        <div class="virtual-keyboard" id="virtualKeyboard">
+                            <div class="simple-keyboard">
+                                <div class="hg-rows">
+                                    <!-- Fila 1: Números -->
+                                    <div class="hg-row">
+                                        <div class="hg-button" data-value="1">1</div>
+                                        <div class="hg-button" data-value="2">2</div>
+                                        <div class="hg-button" data-value="3">3</div>
+                                        <div class="hg-button" data-value="4">4</div>
+                                        <div class="hg-button" data-value="5">5</div>
+                                        <div class="hg-button" data-value="6">6</div>
+                                        <div class="hg-button" data-value="7">7</div>
+                                        <div class="hg-button" data-value="8">8</div>
+                                        <div class="hg-button" data-value="9">9</div>
+                                        <div class="hg-button" data-value="0">0</div>
+                                        <div class="hg-button hg-functionBtn hg-button-bksp" data-value="bksp">⌫</div>
+                                    </div>
+                                    <!-- Fila 2: Letras Q-P -->
+                                    <div class="hg-row">
+                                        <div class="hg-button" data-value="q">q</div>
+                                        <div class="hg-button" data-value="w">w</div>
+                                        <div class="hg-button" data-value="e">e</div>
+                                        <div class="hg-button" data-value="r">r</div>
+                                        <div class="hg-button" data-value="t">t</div>
+                                        <div class="hg-button" data-value="y">y</div>
+                                        <div class="hg-button" data-value="u">u</div>
+                                        <div class="hg-button" data-value="i">i</div>
+                                        <div class="hg-button" data-value="o">o</div>
+                                        <div class="hg-button" data-value="p">p</div>
+                                        <div class="hg-button hg-functionBtn hg-button-enter" data-value="enter">↵</div>
+                                    </div>
+                                    <!-- Fila 3: Letras A-Ñ -->
+                                    <div class="hg-row">
+                                        <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
+                                        <div class="hg-button" data-value="a">a</div>
+                                        <div class="hg-button" data-value="s">s</div>
+                                        <div class="hg-button" data-value="d">d</div>
+                                        <div class="hg-button" data-value="f">f</div>
+                                        <div class="hg-button" data-value="g">g</div>
+                                        <div class="hg-button" data-value="h">h</div>
+                                        <div class="hg-button" data-value="j">j</div>
+                                        <div class="hg-button" data-value="k">k</div>
+                                        <div class="hg-button" data-value="l">l</div>
+                                        <div class="hg-button" data-value="ñ">ñ</div>
+                                        <div class="hg-button hg-functionBtn hg-button-shift" data-value="shift">⇧</div>
+                                    </div>
+                                    <!-- Fila 4: Letras Z-M y símbolos -->
+                                    <div class="hg-row">
+                                        <div class="hg-button" data-value=".com">.com</div>
+                                        <div class="hg-button" data-value="z">z</div>
+                                        <div class="hg-button" data-value="x">x</div>
+                                        <div class="hg-button" data-value="c">c</div>
+                                        <div class="hg-button" data-value="v">v</div>
+                                        <div class="hg-button" data-value="b">b</div>
+                                        <div class="hg-button" data-value="n">n</div>
+                                        <div class="hg-button" data-value="m">m</div>
+                                        <div class="hg-button" data-value=",">,</div>
+                                        <div class="hg-button" data-value=".">.</div>
+                                        <div class="hg-button" data-value="-">-</div>
+                                        <div class="hg-button" data-value="*">*</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="forgot-text">
+                            Olvidé o bloqueé mi Clave y/o Usuario
+                        </p>
+                        <div class="login-help">
+                            ¿Es tu primer ingreso?
+                        </div>
+
+                        <div class="mobileInfo">
+                            <div class="nets margin-top">
+                                <a target="_blank" href="#">
+                                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png">
+                                </a>
+                                <a target="_blank" href="#">
+                                    <img class="remove-margin" src="https://hb.bancoformosa.com.ar/assets/img/icon-instagram.png">
+                                </a>
+                            </div>
+                            <div class="tels margin-top">
+                                <img src="https://hb.bancoformosa.com.ar/assets/img/icon-tel.png">
+                                <div class="data">
+                                    <h3>0800 777 2262</h3>
+                                    <p>Lunes a Viernes 7 a 19 Hs.</p>
+                                </div>
+                            </div>
+                            <h3 class="margin-top">Descarga nuestra App</h3>
+                            <div class="apps">
+                                <a target="_blank" href="#">
+                                    <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png">
+                                </a>
+                                <a target="_blank" href="#">
+                                    <img src="https://hb.bancoformosa.com.ar/assets/img/android.png">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -447,6 +1260,162 @@
         </footer>
 
     </div>
+
+    <script>
+        var tecladoActivo = false;
+
+        function toggleTeclado(element) {
+            element.classList.toggle('active');
+            var keyboard = document.getElementById('virtualKeyboard');
+            
+            if (element.classList.contains('active')) {
+                tecladoActivo = true;
+                keyboard.classList.add('active');
+                // Enfocar el input para que el teclado virtual funcione
+                if (document.getElementById('campoUsuario').value.length >= 3) {
+                    document.getElementById('campoClave').focus();
+                } else {
+                    document.getElementById('campoUsuario').focus();
+                }
+            } else {
+                tecladoActivo = false;
+                keyboard.classList.remove('active');
+                document.activeElement.blur();
+            }
+        }
+
+        // Funcionalidad del teclado virtual
+        document.querySelectorAll('.hg-button').forEach(function(button) {
+            button.addEventListener('click', function(e) {
+                var value = this.getAttribute('data-value');
+                var activeElement = document.activeElement;
+                
+                // Verificar que el elemento activo sea un input
+                if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+                    if (value === 'bksp') {
+                        // Backspace: eliminar el último carácter
+                        var start = activeElement.selectionStart;
+                        var end = activeElement.selectionEnd;
+                        var currentValue = activeElement.value;
+                        if (start === end) {
+                            // Si no hay selección, eliminar el carácter anterior
+                            if (start > 0) {
+                                activeElement.value = currentValue.substring(0, start - 1) + currentValue.substring(start);
+                                activeElement.selectionStart = start - 1;
+                                activeElement.selectionEnd = start - 1;
+                            }
+                        } else {
+                            // Si hay selección, eliminar el texto seleccionado
+                            activeElement.value = currentValue.substring(0, start) + currentValue.substring(end);
+                            activeElement.selectionStart = start;
+                            activeElement.selectionEnd = start;
+                        }
+                    } else if (value === 'enter') {
+                        // Enter: ejecutar la acción correspondiente
+                        var pasoUsuario = document.getElementById('pasoUsuario');
+                        var pasoClave = document.getElementById('pasoClave');
+                        if (pasoUsuario.style.display !== 'none') {
+                            siguientePaso();
+                        } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
+                            continuar();
+                        }
+                    } else if (value === 'shift') {
+                        // Shift: activar mayúsculas (alternar)
+                        // Por ahora solo mostramos un mensaje
+                    } else {
+                        // Insertar el carácter
+                        var start = activeElement.selectionStart;
+                        var end = activeElement.selectionEnd;
+                        var currentValue = activeElement.value;
+                        activeElement.value = currentValue.substring(0, start) + value + currentValue.substring(end);
+                        activeElement.selectionStart = start + value.length;
+                        activeElement.selectionEnd = start + value.length;
+                    }
+                    
+                    // Disparar eventos para actualizar validaciones
+                    var event = new Event('input', { bubbles: true });
+                    activeElement.dispatchEvent(event);
+                    
+                    // Si es el campo usuario, validar
+                    if (activeElement.id === 'campoUsuario') {
+                        validarUsuario();
+                    }
+                }
+            });
+        });
+
+        function validarUsuario() {
+            var usuario = document.getElementById('campoUsuario').value;
+            var btn = document.getElementById('btnSiguiente');
+            
+            if (usuario.length >= 3) {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+            } else {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+                btn.style.cursor = 'not-allowed';
+            }
+        }
+
+        function siguientePaso() {
+            var usuario = document.getElementById('campoUsuario').value;
+            
+            if (usuario.length < 3) {
+                alert('Por favor, ingresá tu usuario (mínimo 3 caracteres).');
+                document.getElementById('campoUsuario').focus();
+                return;
+            }
+
+            document.getElementById('pasoUsuario').style.display = 'none';
+            var pasoClave = document.getElementById('pasoClave');
+            pasoClave.classList.remove('oculto');
+            pasoClave.style.display = 'block';
+            pasoClave.style.animation = 'fadeIn 0.3s ease forwards';
+            
+            setTimeout(function() {
+                document.getElementById('campoClave').focus();
+            }, 400);
+        }
+
+        function volverUsuario() {
+            document.getElementById('pasoClave').style.display = 'none';
+            document.getElementById('pasoClave').classList.add('oculto');
+            document.getElementById('pasoUsuario').style.display = 'block';
+            document.getElementById('campoUsuario').focus();
+        }
+
+        function continuar() {
+            var usuario = document.getElementById('campoUsuario').value;
+            var clave = document.getElementById('campoClave').value;
+            
+            if (clave.length === 0) {
+                alert('Por favor, ingresá tu clave.');
+                document.getElementById('campoClave').focus();
+                return;
+            }
+            
+            alert('¡Bienvenido ' + usuario + '!');
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                var pasoUsuario = document.getElementById('pasoUsuario');
+                var pasoClave = document.getElementById('pasoClave');
+                
+                if (pasoUsuario.style.display !== 'none') {
+                    siguientePaso();
+                } else if (pasoClave.style.display !== 'none' && !pasoClave.classList.contains('oculto')) {
+                    continuar();
+                }
+            }
+        });
+
+        document.getElementById('btnSiguiente').disabled = true;
+        document.getElementById('btnSiguiente').style.opacity = '0.5';
+        document.getElementById('btnSiguiente').style.cursor = 'not-allowed';
+    </script>
 
 </body>
 </html>
