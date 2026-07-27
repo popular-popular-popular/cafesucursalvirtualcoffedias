@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maqueta Home Banking</title>
+    <style>
+        /* ===== RESET Y ESTILOS BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* ===== VIDEO DE FONDO ===== */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* ===== OVERLAY DEL VIDEO ===== */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* ===== CONTENIDO PRINCIPAL ===== */
+        .contenido {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            height: 80px;
+            background: transparent;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .top-info {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .top-info span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .overlay {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .texto {
+            flex: 1;
+            color: white;
+        }
+
+        .texto h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .texto p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .info-contacto {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .info-contacto .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        .info-contacto .item strong {
+            font-weight: bold;
+        }
+
+        .badge-app {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* ===== LOGIN CARD ===== */
+        .login {
+            width: 380px;
+            background: rgba(15, 75, 123, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 16px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .login h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .login .subtitulo {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        /* ===== ALERTA SEGURIDAD ===== */
+        .alerta-seguridad {
+            background: rgba(255, 200, 50, 0.12);
+            border-left: 3px solid #f7c948;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alerta-seguridad strong {
+            display: block;
+            font-size: 14px;
+            color: #f7c948;
+            margin-bottom: 4px;
+        }
+
+        .alerta-seguridad span {
+            font-size: 13px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .alerta-seguridad .destacado {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* ===== INPUTS ===== */
+        .login input {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            font-size: 15px;
+            outline: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .login input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .login input:focus {
+            outline: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== TECLADO VIRTUAL ===== */
+        .teclado-virtual {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 6px 0 16px 0;
+            font-size: 14px;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .teclado-virtual:hover {
+            opacity: 1;
+        }
+
+        /* ===== BOTÓN ===== */
+        .login button {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: #0f4b7b;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .login button:hover {
+            background: #e8f0fe;
+            transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        /* ===== ENLACES ===== */
+        .links-login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .links-login a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .links-login a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .links-login .destacado {
+            color: #7fc9e6;
+            font-weight: 600;
+        }
+
+        .links-login .destacado:hover {
+            color: #a3dcf5;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            height: 60px;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .overlay {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .texto {
+                text-align: center;
+            }
+
+            .info-contacto {
+                align-items: center;
+            }
+
+            .login {
+                width: 100%;
+                max-width: 420px;
+            }
+
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 20px;
+                gap: 10px;
+            }
+
+            .top-info {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .texto h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .texto h1 {
+                font-size: 28px;
+            }
+
+            .login {
+                padding: 28px 20px;
+            }
+
+            .login h2 {
+                font-size: 24px;
+            }
+
+            footer {
+                gap: 12px 16px;
+                height: auto;
+                padding: 12px 16px;
+            }
+
+            footer a {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== VIDEO DE FONDO ===== -->
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="/video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <!-- ===== CONTENIDO ===== -->
+    <div class="contenido">
+
+        <header>
+            <div class="logo">
+                <h2>🏦 Banco Formosa</h2>
+            </div>
+
+            <div class="top-info">
+                <span>📞 0800 777 2262</span>
+                <span>📱 App</span>
+                <span>Facebook</span>
+                <span>Instagram</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="overlay">
+                    <div class="texto">
+                        <h1>Te damos la bienvenida a nuestro Homebanking</h1>
+                        <p>
+                            Estamos mejorando constantemente para vos, nuestro Homebanking es 
+                            moderno y fácil de usar, con más funcionalidades y beneficios.
+                        </p>
+
+                        <div class="info-contacto">
+                            <div class="item">
+                                <span>📞</span>
+                                <span><strong>0800 777 2262</strong> · Lunes a Viernes 7 a 19 Hs.</span>
+                            </div>
+                            <div class="item">
+                                <span>📱</span>
+                                <span><strong>Descarga nuestra App</strong> · Disponible para iOS y Android</span>
+                            </div>
+                            <div class="badge-app">⭐ App Store · Google Play</div>
+                        </div>
+                    </div>
+
+                    <div class="login">
+                        <h2>Bienvenido a tu banco online</h2>
+                        <p class="subtitulo">Ingresá tus datos para continuar</p>
+
+                        <div class="alerta-seguridad">
+                            <strong>🛡️ Evitemos las estafas</strong>
+                            <span>Nunca compartas tu mail, clave personal, usuario ni token.</span>
+                        </div>
+
+                        <input type="text" placeholder="Usuario (tu CUIL si gestionaste alta en cajero)">
+                        <input type="password" placeholder="Clave personal">
+
+                        <div class="teclado-virtual">
+                            <span>⌨️</span> Teclado virtual
+                        </div>
+
+                        <button>CONTINUAR</button>
+
+                        <div class="links-login">
+                            <a href="#">Olvidé o bloqueé mi Clave y/o Usuario</a>
+                            <a href="#" class="destacado">¿Es tu primer ingreso?</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Información de seguridad</a>
+            <a href="#">Políticas de privacidad</a>
+            <a href="#">Sucursales &amp; Cajeros</a>
+            <a href="#">Comparación de comisiones</a>
+        </footer>
+
+    </div>
+
+</body>
+</html>
